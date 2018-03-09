@@ -1,12 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { BlogComponent } from './blog/blog.component';
 import { ChallengeComponent } from './challenge/challenge.component';
+import { RouterModule, Routes } from '@angular/router';
 
+
+const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: 'challenge', component: ChallengeComponent },
+  { path: 'blog', component: BlogComponent }
+];
 
 @NgModule({
   declarations: [
@@ -16,7 +22,8 @@ import { ChallengeComponent } from './challenge/challenge.component';
     ChallengeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
