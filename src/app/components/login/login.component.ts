@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {LoginService} from '../../services/login.service';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +12,10 @@ import {LoginService} from '../../services/login.service';
 export class LoginComponent implements OnInit {
 
   constructor(private login: LoginService) {
-    login.google().subscribe(object => {
-      console.log(object);
-    });
     login.user().subscribe(object => {
       console.log(object);
     });
+    login.redirect();
   }
 
   ngOnInit() {

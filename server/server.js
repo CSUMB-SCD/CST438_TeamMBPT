@@ -12,6 +12,8 @@ app.use('/', router);
 app.listen(process.env.PORT || 8080);
 
 // Google user authentication
-router.post('/auth/google', require('./routes/google_auth'));
+const google = require('./routes/google_auth');
+router.get('/auth/google/url', google.url);
+router.get('/auth/google', google.callback);
 // Backend user query
 router.post('/user', require('./routes/user'));

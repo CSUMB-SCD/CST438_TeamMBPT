@@ -4,11 +4,13 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class LoginService {
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(
+    private http: HttpClient) { }
 
-  google() {
-    return this.http.post('/auth/google', '');
+  redirect() {
+    this.http.get('/auth/google/url').subscribe(object => {
+      window.location.href = object['url'];
+    });
   }
 
   user() {
