@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { BlogComponent } from './blog/blog.component';
 import { ChallengeComponent } from './challenge/challenge.component';
 import { RouterModule, Routes } from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],
