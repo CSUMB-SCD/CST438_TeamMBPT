@@ -8,12 +8,12 @@ export class LoginService {
     private http: HttpClient) { }
 
   redirect() {
-    this.http.get('/auth/google/url').subscribe(object => {
+    this.http.get('/api/auth/google/url').subscribe(object => {
       window.location.href = object['url'];
     });
   }
 
   user() {
-    return this.http.post('/user', '');
+    return this.http.post('/api/user', '');
   }
 }

@@ -3,15 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { BlogComponent } from './blog/blog.component';
-import { ChallengeComponent } from './challenge/challenge.component';
+import { BlogComponent } from './layout/blog/blog.component';
 import { RouterModule, Routes } from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: '', loadChildren: './layout/layout.module#LayoutModule'},
   { path: 'login', component: LoginComponent },
-  { path: 'challenge', component: ChallengeComponent },
   { path: 'blog', component: BlogComponent }
 ];
 
@@ -20,7 +18,6 @@ const routes: Routes = [
     AppComponent,
     LoginComponent,
     BlogComponent,
-    ChallengeComponent,
   ],
   imports: [
     BrowserModule,

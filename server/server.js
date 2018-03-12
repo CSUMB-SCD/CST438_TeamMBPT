@@ -8,7 +8,7 @@ const __static = path.join(__dirname, '..', '/dist');
 
 app.use(bodyParser.text());
 app.use(express.static(__static));
-app.use('/', router);
+app.use('/api/', router);
 app.listen(process.env.PORT || 8080);
 
 // Google user authentication
@@ -17,3 +17,6 @@ router.get('/auth/google/url', google.url);
 router.get('/auth/google', google.callback);
 // Backend user query
 router.post('/user', require('./routes/user'));
+app.all("/*", function(req, res, next) {
+  res.sendFile('index.html', { root: __static});
+});
