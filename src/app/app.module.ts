@@ -8,8 +8,8 @@ import { ChallengeComponent } from './challenge/challenge.component';
 import { RouterModule, Routes } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 
-
 const routes: Routes = [
+  { path: '', loadChildren: './layout/layout.module#LayoutModule'},
   { path: 'login', component: LoginComponent },
   { path: 'challenge', component: ChallengeComponent },
   { path: 'blog', component: BlogComponent }
@@ -20,7 +20,7 @@ const routes: Routes = [
     AppComponent,
     LoginComponent,
     BlogComponent,
-    ChallengeComponent
+    ChallengeComponent,
   ],
   imports: [
     BrowserModule,
