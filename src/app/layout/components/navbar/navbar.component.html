@@ -1,8 +1,9 @@
 <nav class="navbar navbar-expand-lg fixed-top">
-  <a>Home</a>
+  <a [routerLink]="['/']">Home</a>
   <a [routerLink]="['/challenge']">Challenges</a>
-  <a>Announcements</a>
-  <a>Forum</a>
-  <a>Scoreboard</a>
+  <a [routerLink]="['/announcement']">Announcements</a>
+  <a [routerLink]="['/discussion']">Discussion</a>
+  <a [routerLink]="['/scoreboard']">Scoreboard</a>
+  <a [routerLink]="['/dashboard']">Dashboard</a>
   <a [routerLink]="['/login']">Log In</a>
 </nav>
