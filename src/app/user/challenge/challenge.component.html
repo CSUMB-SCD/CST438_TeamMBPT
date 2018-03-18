@@ -1,4 +1,22 @@
+<head></head>
+
+<body>
+  <table class="table table-dark">
+    <thead>
+      <th>#</th>
+      <th>Name</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let challenge of challengeData; let i = index">
+      <td>{{i+1}}</td>
+      <td>{{challenge.Name}}</td>
+      <td>{{challenge.Description}}</td>
+    </tr>
+    </tbody>
+    </table>
+</body>
+
 <p>
-  challenge works!
   TODO: Query challenges from database
-</p>
+ </p>
