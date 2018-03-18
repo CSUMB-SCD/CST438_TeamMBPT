@@ -8,24 +8,20 @@ import {AuthGuard} from './services/auth-guard.service';
 })
 export class AppComponent {
   title = 'Monterey Bay Programming Team';
-  isLoggedIn: boolean;
 
-  constructor(private authGuard: AuthGuard) {
-    this.isLoggedIn = this.authGuard.isLoggedIn;
+  constructor(public authGuard: AuthGuard) {
   }
 
   login(): void {
-    this.isLoggedIn = true;
     this.authGuard.isLoggedIn = true;
   }
 
   logout(): void {
-    this.isLoggedIn = false;
     this.authGuard.isLoggedIn = false;
   }
 
   toggleLogin() {
-    if (this.isLoggedIn) {
+    if (this.authGuard.isLoggedIn) {
       this.logout();
     } else {
       this.login();
