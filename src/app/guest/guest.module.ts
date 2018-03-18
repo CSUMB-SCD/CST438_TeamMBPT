@@ -43,6 +43,7 @@ import {
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AuthGuard} from '../services/auth-guard.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -84,6 +85,7 @@ import {AuthGuard} from '../services/auth-guard.service';
     MatTooltipModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     GuestRoutingModule
   ],
   entryComponents: [
