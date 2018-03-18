@@ -1,5 +1,2 @@
-<button (click)="toggleLogin()" class="btn">
-  {{authGuard.isLoggedIn ? 'Logout' : 'Login'}}
-</button>
 <app-user *ngIf="authGuard.isLoggedIn"></app-user>
 <app-guest *ngIf="!authGuard.isLoggedIn"></app-guest>
