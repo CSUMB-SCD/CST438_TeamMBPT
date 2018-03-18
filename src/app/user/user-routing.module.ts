@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LayoutComponent } from './layout.component';
+import { UserComponent } from './user.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LayoutComponent,
+    component: UserComponent,
     children: [
       { path: 'announcement', loadChildren: './announcement/announcement.module#AnnouncementModule' },
       { path: 'challenge', loadChildren: './challenge/challenge.module#ChallengeModule' },
@@ -20,4 +20,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class LayoutRoutingModule {}
+export class UserRoutingModule {}
