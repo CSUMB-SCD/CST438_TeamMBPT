@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, CanLoad, Router } from '@angular/router';
+import { CanLoad } from '@angular/router';
 
 @Injectable()
 export class AuthGuard implements CanLoad {
   isLoggedIn: boolean;
 
-  constructor(private router: Router) {
+  constructor() {
     this.isLoggedIn = false;
   }
 
@@ -14,7 +14,6 @@ export class AuthGuard implements CanLoad {
     if (this.isLoggedIn) {
       return true;
     }
-    this.router.navigate(['home']);
     return false;
   }
 }

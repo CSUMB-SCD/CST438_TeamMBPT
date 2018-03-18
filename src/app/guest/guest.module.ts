@@ -8,6 +8,7 @@ import { GuestRoutingModule } from './guest-routing.module';
   imports: [
     CommonModule, GuestRoutingModule
   ],
-  declarations: [LoginComponent, GuestComponent]
+  declarations: [LoginComponent, GuestComponent],
+  exports: [GuestComponent],
 })
 export class GuestModule { }

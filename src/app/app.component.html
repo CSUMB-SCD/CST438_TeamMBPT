@@ -1,4 +1,5 @@
 <button (click)="toggleLogin()" class="btn">
   {{isLoggedIn? 'Logout' : 'Login'}}
 </button>
-<router-outlet></router-outlet>
+<app-user *ngIf="isLoggedIn"></app-user>
+<app-guest *ngIf="!isLoggedIn"></app-guest>

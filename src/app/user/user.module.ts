@@ -4,12 +4,12 @@ import { UserComponent } from './user.component';
 import { UserRoutingModule } from './user-routing.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
-// TODO: Rename this module to `user`
 @NgModule({
   imports: [
     CommonModule,
     UserRoutingModule
   ],
-  declarations: [UserComponent, NavbarComponent]
+  declarations: [UserComponent, NavbarComponent],
+  exports: [UserComponent]
 })
 export class UserModule { }
