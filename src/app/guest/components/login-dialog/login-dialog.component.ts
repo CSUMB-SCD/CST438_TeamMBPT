@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { AuthGuard } from '../../../services/auth-guard.service';
+import {AuthenticationService} from '../../../services/authentication.service';
 
 @Component({
   selector: 'app-login-dialog',
@@ -12,7 +12,7 @@ export class LoginDialogComponent implements OnInit {
   password: string;
 
   constructor(
-    private authGuard: AuthGuard,
+    private auth: AuthenticationService,
     public dialogRef: MatDialogRef<LoginDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
@@ -20,7 +20,7 @@ export class LoginDialogComponent implements OnInit {
   }
 
   signIn(): void {
-    this.authGuard.login();
+    this.auth.getToken(this.username, this.password);
     this.dialogRef.close();
   }
 

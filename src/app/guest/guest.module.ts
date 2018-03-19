@@ -42,8 +42,9 @@ import {
   MatTooltipModule,
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {AuthGuard} from '../services/auth-guard.service';
 import {HttpClientModule} from '@angular/common/http';
+import {AuthGuard} from '../services/auth-guard.service';
+import {AuthenticationService} from '../services/authentication.service';
 
 @NgModule({
   imports: [
@@ -88,6 +89,10 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     GuestRoutingModule
   ],
+  providers: [
+    AuthenticationService,
+    AuthGuard
+  ],
   entryComponents: [
     LoginComponent,
     LoginDialogComponent
@@ -98,7 +103,6 @@ import {HttpClientModule} from '@angular/common/http';
     GuestComponent,
     LoginDialogComponent
   ],
-  providers: [AuthGuard],
   exports: [GuestComponent],
 })
 export class GuestModule { }

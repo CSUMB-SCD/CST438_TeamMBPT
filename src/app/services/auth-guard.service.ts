@@ -3,15 +3,15 @@ import {CanLoad, Router} from '@angular/router';
 
 @Injectable()
 export class AuthGuard implements CanLoad {
-  isLoggedIn: boolean;
+  private loggedIn: boolean;
 
   constructor(private router: Router) {
-    this.isLoggedIn = false;
+    this.loggedIn = false;
   }
 
   canLoad(): boolean {
     console.log('AuthGuard#canLoad called');
-    if (this.isLoggedIn) {
+    if (this.loggedIn) {
       return true;
     }
     return false;
@@ -19,13 +19,17 @@ export class AuthGuard implements CanLoad {
 
   login(): void {
     console.log('AuthGuard#login called');
-    this.isLoggedIn = true;
+    this.loggedIn = true;
     this.router.navigate(['/dashboard']);
   }
 
   logout(): void {
     console.log('AuthGuard#logout called');
-    this.isLoggedIn = false;
+    this.loggedIn = false;
     this.router.navigate(['']);
+  }
+
+  isLoggedIn(): boolean {
+    return this.loggedIn;
   }
 }

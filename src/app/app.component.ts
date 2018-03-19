@@ -11,20 +11,4 @@ export class AppComponent {
 
   constructor(public authGuard: AuthGuard) {
   }
-
-  login(): void {
-    this.authGuard.isLoggedIn = true;
-  }
-
-  logout(): void {
-    this.authGuard.isLoggedIn = false;
-  }
-
-  toggleLogin() {
-    if (this.authGuard.isLoggedIn) {
-      this.logout();
-    } else {
-      this.login();
-    }
-  }
 }

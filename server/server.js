@@ -12,11 +12,10 @@ app.use('/api/', router);
 app.listen(process.env.PORT || 8080);
 
 // Google user authentication
-const google = require('./routes/google_auth');
+const google = require('./routes/auth/google');
 router.get('/auth/google/url', google.url);
 router.get('/auth/google', google.callback);
-// Backend user query
-router.post('/user', require('./routes/user'));
+router.post('/auth/mbpt', require('./routes/auth/mbpt'));
 router.get('/challenge', require('./routes/challenge'));
 app.all("/*", function(req, res, next) {
   res.sendFile('index.html', { root: __static});
