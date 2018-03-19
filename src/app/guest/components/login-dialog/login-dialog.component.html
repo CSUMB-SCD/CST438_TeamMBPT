@@ -1,4 +1,9 @@
 <mat-form-field>
-  <input matInput [(ngModel)]="username" placeholder="Username">
-  <input matInput [(ngModel)]="password" placeholder="Password">
+  <input matInput placeholder="Username" [(ngModel)]="username" name="username">
 </mat-form-field>
+<mat-form-field>
+  <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password">
+</mat-form-field>
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="signIn()">Sign In</button>
+</mat-dialog-actions>

@@ -9,7 +9,7 @@ export class AuthGuard implements CanLoad {
     this.isLoggedIn = false;
   }
 
-  canLoad() {
+  canLoad(): boolean {
     console.log('AuthGuard#canLoad called');
     if (this.isLoggedIn) {
       return true;
@@ -17,7 +17,13 @@ export class AuthGuard implements CanLoad {
     return false;
   }
 
-  logout() {
+  login(): void {
+    console.log('AuthGuard#login called');
+    this.isLoggedIn = true;
+    this.router.navigate(['/dashboard']);
+  }
+
+  logout(): void {
     console.log('AuthGuard#logout called');
     this.isLoggedIn = false;
     this.router.navigate(['']);
