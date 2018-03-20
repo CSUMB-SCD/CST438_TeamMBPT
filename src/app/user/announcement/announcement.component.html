@@ -1,3 +1,14 @@
-<p>
-  announcement works!
-</p>
+<head></head>
+
+<body>
+  <div id="blog_posts" *ngFor="let post of blogposts">
+    <div id="blog_post_container">
+      <div id="blog_head">
+        <div id="title">{{post.title}}</div>
+        <ul alignment="left">{{post.user_id}}</ul>
+        <ul alignment="right">{{post.date}}</ul>
+      </div>
+      <div id="blog_body">{{post.text}}</div>
+    </div>
+  </div>
+</body>
