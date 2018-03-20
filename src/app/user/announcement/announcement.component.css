@@ -1,27 +1,27 @@
-#blog_posts{
+blog_posts{
   font-family: Arial;
   position: absolute;
   margin: 10px;
   width: max-content;
 }
-.blog_post_container{
+blog_post_container{
   position: relative;
   width: max-content;
   margin-bottom: 5px;
   border: #1a237e;
   border-width: 1px;
 }
-.blog_head{
+blog_head{
   background: #1a237e;
   font-size: 10pt;
   text-decoration-color: white;
   margin-left: 5px;
   margin-right: 5px;
 }
-.title{
+title{
   font-size: 16pt;
 }
-.blog_body{
+blog_body{
   background: white;
   font-size: 12pt;
   text-decoration-color: #1a237e;
