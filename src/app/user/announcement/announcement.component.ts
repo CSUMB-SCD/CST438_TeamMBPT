@@ -19,6 +19,10 @@ export class AnnouncementComponent implements OnInit {
       'date': Date().toString(),
       'title': 'This is a title',
       'text': 'This is some text'
+    }, {'user_id': 'Test User2',
+      'date': Date().toString(),
+      'title': 'This is a title',
+      'text': 'this is some text'
     }];
     /*this.blogServ.get_blogposts().subscribe(object => {
       this.blogposts = object;
