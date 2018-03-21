@@ -10,18 +10,26 @@ import {AuthenticationService} from '../../../services/authentication.service';
 export class LoginDialogComponent implements OnInit {
   username: string;
   password: string;
+  invalid: boolean;
 
   constructor(
     private auth: AuthenticationService,
     public dialogRef: MatDialogRef<LoginDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+    this.invalid = false;
+  }
 
   ngOnInit() {
   }
 
   signIn(): void {
-    this.auth.getToken(this.username, this.password);
-    this.dialogRef.close();
+    this.auth.getToken(this.username, this.password).subscribe(result => {
+      if (result) {
+        this.dialogRef.close();
+      } else {
+        this.invalid = true;
+      }
+    });
   }
 
   onNoClick(): void {

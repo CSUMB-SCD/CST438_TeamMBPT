@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import {AuthGuard} from './auth-guard.service';
 import {HttpClient} from '@angular/common/http';
-import 'rxjs/add/operator/map';
 import { JSEncrypt } from 'jsencrypt';
 import { environment } from '../../environments/environment';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class AuthenticationService {
@@ -17,14 +20,19 @@ export class AuthenticationService {
   }
 
   getToken(username: string, password: string) {
-    this.http.post('/api/auth/mbpt', JSON.stringify({
+    // TODO: catch the error completely
+    return this.http.post('/api/auth/mbpt', JSON.stringify({
       unm: username,
       pwd: this.encrypt.encrypt(password)
-    })).subscribe(object => {
+    })).map(object => {
       console.log(object);
       if (object['user_id'] !== undefined) {
         this.authGuard.login();
+        return true;
       }
+      return false;
+    }).catch(() => {
+      return Observable.of(false);
     });
   }
 }
