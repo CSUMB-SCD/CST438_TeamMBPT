@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../services/blog.service';
+import { MatDialog } from '@angular/material';
+import { AnnouncementEditDialogComponent } from '../announcement-edit-dialog/announcement-edit-dialog.component';
 
 @Component({
   selector: 'app-announcement',
@@ -10,8 +12,11 @@ import { BlogService } from '../services/blog.service';
 })
 export class AnnouncementComponent implements OnInit {
   blogposts: any;
+  user: any;
 
-  constructor(private blogServ: BlogService) {}
+  constructor(private blogServ: BlogService,
+              public dialog: MatDialog) {}
+
 
   ngOnInit() {
     // sample case; ignore -J
@@ -27,5 +32,9 @@ export class AnnouncementComponent implements OnInit {
     /*this.blogServ.get_blogposts().subscribe(object => {
       this.blogposts = object;
     });*/
+  }
+
+  editPost() {
+    const dialogRef = this.dialog.open(AnnouncementEditDialogComponent);
   }
 }
