@@ -18,7 +18,8 @@ module.exports = function(req, res) {
   http.setRequestHeader("Content-Type", "application/json");
   http.onreadystatechange = function() {
     if (http.readyState === 4) {
-      res.status(http.status);
+      // TODO: Adding this line will cause an error from zone.js
+      // res.status(http.status);
       res.send(http.responseText);
     }
   };
