@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
@@ -6,18 +6,18 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   templateUrl: './announcement-edit-dialog.component.html',
   styleUrls: ['./announcement-edit-dialog.component.css']
 })
+
 export class AnnouncementEditDialogComponent implements OnInit {
-  constructor(private post: any,
-    public dialogRef: MatDialogRef<AnnouncementEditDialogComponent>,
+  constructor(public dialogRef: MatDialogRef<AnnouncementEditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
   }
 
   submitChange($title, $text) {
-    this.post.date = Date().toString();
-    this.post.title = $title;
-    this.post.text = $text;
+    this.data.date = Date().toString();
+    this.data.title = $title;
+    this.data.text = $text;
     this.dialogRef.close();
   }
   onNoClick() {
