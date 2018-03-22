@@ -3,33 +3,24 @@ import {CanLoad, Router} from '@angular/router';
 
 @Injectable()
 export class AuthGuard implements CanLoad {
-  private loggedIn: boolean;
+  token: string;
 
   constructor(private router: Router) {
-    this.loggedIn = false;
+    this.token = document.cookie;
   }
 
   canLoad(): boolean {
-    console.log('AuthGuard#canLoad called');
-    if (this.loggedIn) {
-      return true;
-    }
-    return false;
+    return this.token !== '';
   }
 
-  login(): void {
-    console.log('AuthGuard#login called');
-    this.loggedIn = true;
+  login(token: string): void {
+    this.token = token;
+    document.cookie = token;
     this.router.navigate(['/dashboard']);
   }
 
   logout(): void {
-    console.log('AuthGuard#logout called');
-    this.loggedIn = false;
+    this.token = '';
     this.router.navigate(['']);
-  }
-
-  isLoggedIn(): boolean {
-    return this.loggedIn;
   }
 }

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {AuthGuard} from './auth-guard.service';
-import {HttpClient} from '@angular/common/http';
+import { AuthGuard } from './auth-guard.service';
+import { HttpClient } from '@angular/common/http';
 import { JSEncrypt } from 'jsencrypt';
 import { environment } from '../../environments/environment';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -25,9 +25,8 @@ export class AuthenticationService {
       unm: username,
       pwd: this.encrypt.encrypt(password)
     })).map(object => {
-      console.log(object);
-      if (object['user_id'] !== undefined) {
-        this.authGuard.login();
+      if (object['token'] !== undefined) {
+        this.authGuard.login(object['token']);
         return true;
       }
       return false;

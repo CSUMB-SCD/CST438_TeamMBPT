@@ -1,2 +1,2 @@
-<app-user *ngIf="authGuard.isLoggedIn()"></app-user>
-<app-guest *ngIf="!authGuard.isLoggedIn()"></app-guest>
+<app-user *ngIf="authGuard.canLoad()"></app-user>
+<app-guest *ngIf="!authGuard.canLoad()"></app-guest>
