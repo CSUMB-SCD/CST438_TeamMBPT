@@ -8,8 +8,7 @@ import {AuthGuard} from '../../../services/auth-guard.service';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor(private authGuard: AuthGuard) {
-    authGuard.logout();
+  constructor(public authGuard: AuthGuard) {
   }
 
   ngOnInit() {

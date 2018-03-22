@@ -7,9 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GuestComponent implements OnInit {
 
-  constructor() {
-    document.cookie = '';
-  }
+  constructor() { }
 
   ngOnInit() {
   }

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a [routerLink]="['/dashboard']" class="navbar-brand">MBPT</a>
+  <a [routerLink]="['/welcome']" class="navbar-brand">MBPT</a>
   <div class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -15,7 +15,7 @@
           <a [routerLink]="['/scoreboard']" class="nav-link">Scoreboard</a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/logout']" class="nav-link">Logout</a>
+          <app-logout></app-logout>
         </li>
       </ul>
   </div>

@@ -41,14 +41,12 @@ import {
   MatToolbarModule,
   MatTooltipModule,
 } from '@angular/material';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import {AuthGuard} from '../services/auth-guard.service';
 import {AuthenticationService} from '../services/authentication.service';
 
 @NgModule({
   imports: [
-    BrowserAnimationsModule,
     CommonModule,
     MatNativeDateModule,
     CdkTableModule,
@@ -103,6 +101,5 @@ import {AuthenticationService} from '../services/authentication.service';
     GuestComponent,
     LoginDialogComponent
   ],
-  exports: [GuestComponent],
 })
 export class GuestModule { }

@@ -1,26 +1,30 @@
 import { Injectable } from '@angular/core';
-import {CanLoad, Router} from '@angular/router';
+import {CanActivate, Router} from '@angular/router';
 
 @Injectable()
-export class AuthGuard implements CanLoad {
-  token: string;
+export class AuthGuard implements CanActivate {
+  constructor(private router: Router) { }
 
-  constructor(private router: Router) {
-    this.token = document.cookie;
+  static getToken(): string {
+    return localStorage.getItem('MBPT_ACCESS_TOKEN');
   }
 
-  canLoad(): boolean {
-    return this.token !== '';
+  canActivate(): boolean {
+    console.log(AuthGuard.getToken());
+    return true;
   }
 
   login(token: string): void {
-    this.token = token;
-    document.cookie = token;
-    this.router.navigate(['/dashboard']);
+    localStorage.setItem('MBPT_ACCESS_TOKEN', token);
+    this.router.navigate(['/dashboard']).then(() => {
+      console.log('login with token:' + token);
+    });
   }
 
   logout(): void {
-    this.token = '';
-    this.router.navigate(['']);
+    this.router.navigate(['/welcome']).then(() => {
+      console.log('logout');
+      localStorage.removeItem('MBPT_ACCESS_TOKEN');
+    });
   }
 }

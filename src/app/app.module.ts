@@ -4,12 +4,18 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthGuard } from './services/auth-guard.service';
-import { UserModule } from './user/user.module';
-import { GuestModule } from './guest/guest.module';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthenticationService } from './services/authentication.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
-  { path: '', component: AppComponent }
+  { path: '',
+    component: AppComponent,
+    children: [
+      { path: 'welcome', loadChildren: './guest/guest.module#GuestModule', pathMatch: 'full'},
+      { path: '**', canActivate: [AuthGuard], loadChildren: './user/user.module#UserModule'},
+    ]
+  }
 ];
 
 @NgModule({
@@ -18,13 +24,13 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    GuestModule,
-    UserModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     NgbModule.forRoot()
   ],
   providers: [
-    AuthGuard
+    AuthGuard,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })
