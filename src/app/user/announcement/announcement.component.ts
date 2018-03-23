@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../services/blog.service';
 import { MatDialog } from '@angular/material';
-import { AnnouncementEditDialogComponent } from '../announcement-edit-dialog/announcement-edit-dialog.component';
+import { AnnouncementEditDialogComponent } from './components/announcement-edit-dialog/announcement-edit-dialog.component';
 
 @Component({
   selector: 'app-announcement',
