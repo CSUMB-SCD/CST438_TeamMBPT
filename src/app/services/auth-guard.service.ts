@@ -17,17 +17,13 @@ export class AuthGuard implements CanActivate {
     return true;
   }
 
-  login(token: string): void {
+  login(token: string) {
     localStorage.setItem('MBPT_ACCESS_TOKEN', token);
-    this.router.navigate(['/dashboard']).then(() => {
-      console.log('login with token:' + token);
-    });
+    return this.router.navigate(['/dashboard']);
   }
 
-  logout(): void {
-    this.router.navigate(['/welcome']).then(() => {
-      console.log('logout');
-      localStorage.removeItem('MBPT_ACCESS_TOKEN');
-    });
+  logout() {
+    localStorage.removeItem('MBPT_ACCESS_TOKEN');
+    return this.router.navigate(['/welcome']);
   }
 }

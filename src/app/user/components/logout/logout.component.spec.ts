@@ -5,6 +5,7 @@ import {UserModule} from '../../user.module';
 import {AuthenticationService} from '../../../services/authentication.service';
 import {AuthGuard} from '../../../services/auth-guard.service';
 import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('LogoutComponent', () => {
   let component: LogoutComponent;
@@ -13,6 +14,7 @@ describe('LogoutComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        HttpClientTestingModule,
         RouterTestingModule,
         UserModule
       ],
@@ -32,5 +34,14 @@ describe('LogoutComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call AuthGuard.logout() when #a tag is clicked', () => {
+    const link = fixture.nativeElement.querySelector('a');
+    localStorage.setItem('MBPT_ACCESS_TOKEN', 'test123');
+    link.click();
+    fixture.whenStable().then(() => {
+      expect(localStorage.getItem('MBPT_ACCESS_TOKEN')).toBe(null);
+    });
   });
 });
