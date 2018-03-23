@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChallengeComponent } from './challenge.component';
+import {UserModule} from '../user.module';
+import {ChallengeModule} from './challenge.module';
 
 describe('ChallengeComponent', () => {
   let component: ChallengeComponent;
@@ -8,7 +10,10 @@ describe('ChallengeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChallengeComponent ]
+      imports: [
+        UserModule,
+        ChallengeModule
+      ]
     })
     .compileComponents();
   }));

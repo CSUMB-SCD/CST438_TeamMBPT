@@ -85,6 +85,6 @@ import {
     HttpClientModule,
     UserRoutingModule
   ],
-  declarations: [UserComponent, LogoutComponent, NavbarComponent, AnnouncementEditDialogComponent],
+  declarations: [UserComponent, LogoutComponent, NavbarComponent],
 })
 export class UserModule { }

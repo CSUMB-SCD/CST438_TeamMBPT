@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LogoutComponent } from './logout.component';
+import {UserModule} from '../../user.module';
+import {AuthenticationService} from '../../../services/authentication.service';
+import {AuthGuard} from '../../../services/auth-guard.service';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('LogoutComponent', () => {
   let component: LogoutComponent;
@@ -8,7 +12,14 @@ describe('LogoutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LogoutComponent ]
+      imports: [
+        RouterTestingModule,
+        UserModule
+      ],
+      providers: [
+        AuthenticationService,
+        AuthGuard
+      ]
     })
     .compileComponents();
   }));
