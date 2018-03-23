@@ -19,4 +19,18 @@ describe('AuthenticationService', () => {
   it('should be created', inject([AuthenticationService], (service: AuthenticationService) => {
     expect(service).toBeTruthy();
   }));
+
+  it('should return true after entering the correct user credential',
+    inject([AuthenticationService], (service: AuthenticationService) => {
+      service.getToken('root', 'mbpt').subscribe(result => {
+        expect(result).toBe(true);
+      });
+  }));
+
+  it('should return false after entering the incorrect user credential',
+    inject([AuthenticationService], (service: AuthenticationService) => {
+      service.getToken('root', '!mbpt').subscribe(result => {
+        expect(result).toBe(false);
+      });
+    }));
 });
