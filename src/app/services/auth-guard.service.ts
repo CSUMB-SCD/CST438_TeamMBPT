@@ -10,7 +10,10 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate(): boolean {
-    console.log(AuthGuard.getToken());
+    if (AuthGuard.getToken() === null) {
+      this.logout();
+      return false;
+    }
     return true;
   }
 
