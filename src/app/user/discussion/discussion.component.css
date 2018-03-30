@@ -1,0 +1,7 @@
+button {
+  margin-bottom: 10px;
+}
+
+.fill-space {
+flex: 1 1 auto;
+}

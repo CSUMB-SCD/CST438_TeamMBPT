@@ -1,3 +1,21 @@
-<p>
-  discussion works!
-</p>
+<head>
+  <title>Discussion</title>
+</head>
+
+<body>
+    <h1>Discussion</h1>
+    <button mat-raised-button (click)="openDialog()">New Post</button>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let card of discussionData;">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{card.title}}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{card.user_name}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      {{card.body}}
+    </mat-expansion-panel>
+  </mat-accordion>
+</body>
