@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DiscussionService} from '../services/discussion.service';
+import {MatDialog} from '@angular/material';
+import {DiscussionDialogComponent} from './discussion-dialog/discussion-dialog.component';
 
 @Component({
   selector: 'app-discussion',
@@ -10,7 +12,8 @@ import {DiscussionService} from '../services/discussion.service';
 export class DiscussionComponent implements OnInit {
   discussionData: any;
 
-  constructor(private service: DiscussionService) { }
+  constructor(private service: DiscussionService,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
     this.discussionData =
@@ -29,5 +32,9 @@ export class DiscussionComponent implements OnInit {
     // this.service.get_Discussion().subscribe(object => {
     //   this.discussionData = object;
     // });
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DiscussionDialogComponent);
   }
 }

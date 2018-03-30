@@ -7,10 +7,12 @@ import { AuthenticationService } from './services/authentication.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthGuard } from './services/auth-guard.service';
 import {AppRoutingModule} from './app-routing.module';
+import {DiscussionDialogComponent} from './user/discussion/discussion-dialog/discussion-dialog.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DiscussionDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -22,6 +24,7 @@ import {AppRoutingModule} from './app-routing.module';
     AuthGuard,
     AuthenticationService
   ],
+  entryComponents: [DiscussionDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
