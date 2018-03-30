@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthGuard } from './services/auth-guard.service';
 import {AppRoutingModule} from './app-routing.module';
 import {DiscussionDialogComponent} from './user/discussion/discussion-dialog/discussion-dialog.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {DiscussionDialogComponent} from './user/discussion/discussion-dialog/dis
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    EditorModule,
     NgbModule.forRoot()
   ],
   providers: [
