@@ -1,18 +1,31 @@
 <head></head>
 
 <body>
-  <div id="blog_posts" *ngFor="let post of blogposts">
-    <div id="blog_post_container">
-      <div *ngIf="user.isAdmin">
-        <button onclick="editPost()">Edit</button>
-      </div>
-      <div id="blog_head">
-        <pre font-size="16pt">
-          {{post.title}}
-        </pre>
-        <pre font-size="8pt">{{post.user_id}}    ({{post.date}})</pre>
-      </div>
-      <div id="blog_body">{{post.text}}</div>
+  <h1>Announcements</h1>
+  <mat-tab-group>
+    <div *ngFor="let post of blogposts; let i = index">
+      <mat-tab  label="Announcement {{i+1}}">
+        <br>
+        <h2>{{post.title}}</h2>
+        <h6>&nbsp; by {{post.user_id}} on {{post.date}}</h6>
+        <br>
+        <p>{{post.text}}</p>
+      </mat-tab>
     </div>
-  </div>
+  </mat-tab-group>
+
+  <!--<div id="blog_posts" *ngFor="let post of blogposts">-->
+    <!--<div id="blog_post_container">-->
+      <!--<div *ngIf="user.isAdmin">-->
+        <!--<button onclick="editPost()">Edit</button>-->
+      <!--</div>-->
+      <!--<div id="blog_head">-->
+        <!--<pre font-size="16pt">-->
+          <!--{{post.title}}-->
+        <!--</pre>-->
+        <!--<pre font-size="8pt">{{post.user_id}}    ({{post.date}})</pre>-->
+      <!--</div>-->
+      <!--<div id="blog_body">{{post.text}}</div>-->
+    <!--</div>-->
+  <!--</div>-->
 </body>

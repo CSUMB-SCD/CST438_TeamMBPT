@@ -4,11 +4,13 @@ import { AnnouncementRoutingModule } from './announcement-routing.module';
 import { AnnouncementComponent } from './announcement.component';
 import {BlogService} from '../services/blog.service';
 import {AnnouncementEditDialogComponent} from './components/announcement-edit-dialog/announcement-edit-dialog.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   imports: [
     CommonModule,
-    AnnouncementRoutingModule
+    AnnouncementRoutingModule,
+    MatTabsModule
   ],
   providers: [BlogService],
   declarations: [AnnouncementComponent, AnnouncementEditDialogComponent]

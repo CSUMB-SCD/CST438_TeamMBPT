@@ -1,26 +1,41 @@
 <head></head>
 
 <body>
-  <h1>Challenges</h1>
-  <mat-accordion>
-    <mat-expansion-panel *ngFor="let challenge of challengeData; let i = index">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{challenge.Name}}
-        </mat-panel-title>
-        <mat-panel-description>
-          {{challenge.Description}}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-    </mat-expansion-panel>
-  </mat-accordion>
-  <br>
-  <mat-paginator [length]= "5"
-                 [pageSize]="10"
-                 [pageSizeOptions]="[5, 10, 25, 100]">
-  </mat-paginator>
+<h1>Challenges</h1>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let challenge of challengeData; let i = index">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{challenge.Name}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{challenge.Description}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+</mat-accordion>
+<br>
+<mat-paginator [length]= "5"
+               [pageSize]="10"
+               [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+
+  <!--<table class="table table-dark">-->
+    <!--<thead>-->
+      <!--<th>#</th>-->
+      <!--<th>Name</th>-->
+      <!--<th>Description</th>-->
+    <!--</thead>-->
+    <!--<tbody>-->
+    <!--<tr *ngFor="let challenge of challengeData; let i = index">-->
+      <!--<td>{{i+1}}</td>-->
+      <!--<td>{{challenge.Name}}</td>-->
+      <!--<td>{{challenge.Description}}</td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+    <!--</table>-->
 </body>
 
 <p>
   TODO: Query challenges from database
-</p>
+ </p>

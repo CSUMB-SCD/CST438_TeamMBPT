@@ -13,7 +13,7 @@ import { AnnouncementEditDialogComponent } from './components/announcement-edit-
 export class AnnouncementComponent implements OnInit {
   user = {'isAdmin': true};
   blogposts: any;
-  //user: any;
+  // user: any;
 
   constructor(private blogServ: BlogService,
               public dialog: MatDialog) {}
