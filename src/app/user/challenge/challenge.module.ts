@@ -3,12 +3,17 @@ import { CommonModule } from '@angular/common';
 import { ChallengeComponent } from './challenge.component';
 import { ChallengeRoutingModule } from './challenge-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatPaginatorModule} from '@angular/material';
+
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    ChallengeRoutingModule
+    ChallengeRoutingModule,
+    MatExpansionModule,
+    MatPaginatorModule
   ],
   declarations: [
     ChallengeComponent

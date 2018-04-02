@@ -3,8 +3,9 @@
 </head>
 
 <body>
-    <h1>Discussion</h1>
-    <button mat-raised-button (click)="openDialog()">New Post</button>
+  <h1>Discussion</h1>
+  <button mat-raised-button (click)="openDialog()">New Post</button>
+  <br><br>
   <mat-accordion>
     <mat-expansion-panel *ngFor="let card of discussionData;">
       <mat-expansion-panel-header>
