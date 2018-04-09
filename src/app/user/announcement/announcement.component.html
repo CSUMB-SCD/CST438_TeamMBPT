@@ -3,13 +3,13 @@
 <body>
   <h1>Announcements</h1>
   <mat-tab-group>
-    <div *ngFor="let post of blogposts; let i = index">
+    <div *ngFor="let post of announcements; let i = index">
       <mat-tab  label="Announcement {{i+1}}">
         <br>
         <h2>{{post.title}}</h2>
-        <h6>&nbsp; by {{post.user_id}} on {{post.date}}</h6>
+        <h6>&nbsp; by {{post.publisher}} on {{post.created}}</h6>
         <br>
-        <p>{{post.text}}</p>
+        <p>{{post.content}}</p>
       </mat-tab>
     </div>
   </mat-tab-group>
