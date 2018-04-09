@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChallengeService } from '../services/challenge.service';
+import {AuthGuard} from '../../services/auth-guard.service';
 
 @Component({
   selector: 'app-challenge',
@@ -10,10 +11,11 @@ import { ChallengeService } from '../services/challenge.service';
 export class ChallengeComponent implements OnInit {
   challengeData: any;
 
-  constructor(private service: ChallengeService) { }
+  constructor(
+    private service: ChallengeService) { }
 
   ngOnInit() {
-    this.service.get_Challenges().subscribe(object => {
+    this.service.get_Challenges(AuthGuard.getToken()).subscribe(object => {
       this.challengeData = object;
     });
   }
