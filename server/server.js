@@ -15,7 +15,6 @@ app.listen(process.env.PORT || 8080);
 const google = require('./routes/auth/google');
 router.get('/auth/google/url', google.url);
 router.get('/auth/google', google.callback);
-router.post('/auth/mbpt', require('./routes/auth/mbpt'));
 router.get('/challenge', require('./routes/challenge'));
 app.all("/*", function(req, res, next) {
   res.sendFile('index.html', { root: __static});

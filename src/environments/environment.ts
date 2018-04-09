@@ -5,6 +5,5 @@
 
 export const environment = {
   production: false,
-  secret: 'MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJQm+aCKSB9wBktIDYqX5WCV28od+RH+\n' +
-  'ZxlJ3V9hSEtm6WziunTNGsK93E4Nuv448XgpHCu0fEZTbnkD3CH2E0cCAwEAAQ=='
+  auth_token_url: 'https://mbpt-api.herokuapp.com/auth/token/'
 };

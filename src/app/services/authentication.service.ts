@@ -1,23 +1,18 @@
 import { Injectable } from '@angular/core';
 import { AuthGuard } from './auth-guard.service';
-import { HttpClient } from '@angular/common/http';
-import { JSEncrypt } from 'jsencrypt';
-import { environment } from '../../environments/environment';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class AuthenticationService {
-  private encrypt: JSEncrypt;
 
   constructor(
     private http: HttpClient,
-    private authGuard: AuthGuard) {
-    this.encrypt = new JSEncrypt();
-    this.encrypt.setPublicKey(environment.secret);
-  }
+    private authGuard: AuthGuard) {}
 
   getToken(username: string, password: string) {
     if (username  === '' || password === '' || username === undefined || password === undefined) {
@@ -25,10 +20,13 @@ export class AuthenticationService {
       return Observable.of(true);
     }
     // TODO: catch the error completely
-    return this.http.post('/api/auth/mbpt', JSON.stringify({
-      unm: username,
-      pwd: this.encrypt.encrypt(password)
-    })).map(object => {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(environment.auth_token_url, JSON.stringify({
+      username: username,
+      password: password,
+    }), {
+      headers: headers
+    }).map(object => {
       if (object['token'] !== undefined) {
         this.authGuard.login(object['token']);
         return true;
