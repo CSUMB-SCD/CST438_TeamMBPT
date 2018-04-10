@@ -5,8 +5,8 @@
 
 export const environment = {
   production: false,
-  auth_token_url: 'https://mbpt-api.herokuapp.com/auth/token/',
-  announcement_url: 'https://mbpt-api.herokuapp.com/announcement/',
-  challenge_url: 'https://mbpt-api.herokuapp.com/challenge/',
-  discussion_url: 'https://mbpt-api.herokuapp.com/discussion/'
+  auth_token_url: 'http://localhost:8000/auth/token/',
+  announcement_url: 'http://localhost:8000/announcement/',
+  challenge_url: 'http://localhost:8000/challenge/',
+  discussion_url: 'http://localhost:8000/discussion/'
 };
