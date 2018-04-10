@@ -9,14 +9,24 @@ import {AuthGuard} from '../../services/auth-guard.service';
   providers: [ChallengeService]
 })
 export class ChallengeComponent implements OnInit {
-  challengeData: any;
+  challenges: Challenge[];
 
   constructor(
     private service: ChallengeService) { }
 
   ngOnInit() {
     this.service.get_Challenges(AuthGuard.getToken()).subscribe(object => {
-      this.challengeData = object;
+      this.challenges = object as Challenge[];
     });
   }
+}
+
+interface Challenge {
+  title: string;
+  challenge_id: string;
+  description: string;
+  submission_count: number;
+  accepted_count: number;
+  created: string;
+  publisher: string;
 }
