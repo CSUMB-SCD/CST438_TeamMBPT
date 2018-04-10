@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
+import {AuthGuard} from '../../services/auth-guard.service';
 
 @Injectable()
 export class DiscussionService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private auth: AuthGuard) { }
 
   get_discussion(jwt: string) {
     const headers = new HttpHeaders({
@@ -14,6 +17,8 @@ export class DiscussionService {
     });
     return this.http.get(environment.discussion_url, {
       headers: headers
+    }).catch(() => {
+      return this.auth.logout();
     });
   }
 }
