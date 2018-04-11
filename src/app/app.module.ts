@@ -7,9 +7,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthGuard } from './services/auth-guard.service';
 import {AppRoutingModule} from './app-routing.module';
-import {DiscussionDialogComponent} from './user/discussion/discussion-dialog/discussion-dialog.component';
-import { EditorModule } from '@tinymce/tinymce-angular';
-import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
+import {DiscussionDialogComponent} from './user/discussion/components/discussion-dialog/discussion-dialog.component';
 
 @NgModule({
   declarations: [

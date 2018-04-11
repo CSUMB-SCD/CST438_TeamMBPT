@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DiscussionComponent } from './discussion.component';
-import {DiscsussionNewpostComponent} from './components/discsussion-newpost/discsussion-newpost.component';
+import {DiscussionNewpostComponent} from './components/discussion-newpost/discussion-newpost.component';
 
 const routes: Routes = [
   {
     path: '', component: DiscussionComponent
   },
   {
-    path: 'newpost', component: DiscsussionNewpostComponent
+    path: 'newpost', component: DiscussionNewpostComponent
   }
 ];
 
