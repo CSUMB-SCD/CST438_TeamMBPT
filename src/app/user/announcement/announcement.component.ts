@@ -1,38 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogService } from '../services/blog.service';
+import { AnnouncementService } from '../services/announcement.service';
 import { MatDialog } from '@angular/material';
 import { AnnouncementEditDialogComponent } from './components/announcement-edit-dialog/announcement-edit-dialog.component';
+import {AuthGuard} from '../../services/auth-guard.service';
 
 @Component({
   selector: 'app-announcement',
   templateUrl: './announcement.component.html',
   styleUrls: ['./announcement.component.css'],
-  providers: [BlogService]
+  providers: [ AnnouncementService ]
 
 })
 export class AnnouncementComponent implements OnInit {
-  user = {'isAdmin': true};
-  blogposts: any;
-  // user: any;
+  announcements: any;
 
-  constructor(private blogServ: BlogService,
+  constructor(private service: AnnouncementService,
               public dialog: MatDialog) {}
 
 
   ngOnInit() {
-    // sample case; ignore -J
-    this.blogposts = [{'user_id': 'Test User',
-      'date': Date().toString(),
-      'title': 'This is a title',
-      'text': 'This is some text'
-    }, {'user_id': 'Test User2',
-      'date': Date().toString(),
-      'title': 'This is a title',
-      'text': 'this is some text'
-    }];
-    /*this.blogServ.get_blogposts().subscribe(object => {
-      this.blogposts = object;
-    });*/
+    this.service.get_announcements(AuthGuard.getToken()).subscribe(object => {
+      this.announcements = object;
+    });
   }
 
   editPost() {

@@ -4,18 +4,18 @@ import {environment} from '../../../environments/environment';
 import {AuthGuard} from '../../services/auth-guard.service';
 
 @Injectable()
-export class ChallengeService {
+export class AnnouncementService {
 
   constructor(
     private http: HttpClient,
     private auth: AuthGuard) { }
 
-  query(jwt: string, id: string = '') {
+  get_announcements(jwt: string) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'JWT ' + jwt
     });
-    return this.http.get(environment.challenge_url + id, {
+    return this.http.get(environment.announcement_url, {
       headers: headers
     }).catch(() => {
       return this.auth.logout();

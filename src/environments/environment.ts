@@ -5,6 +5,8 @@
 
 export const environment = {
   production: false,
-  secret: 'MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJQm+aCKSB9wBktIDYqX5WCV28od+RH+\n' +
-  'ZxlJ3V9hSEtm6WziunTNGsK93E4Nuv448XgpHCu0fEZTbnkD3CH2E0cCAwEAAQ=='
+  auth_token_url: 'http://localhost:8000/auth/token/',
+  announcement_url: 'http://localhost:8000/announcement/',
+  challenge_url: 'http://localhost:8000/challenge/',
+  discussion_url: 'http://localhost:8000/discussion/'
 };

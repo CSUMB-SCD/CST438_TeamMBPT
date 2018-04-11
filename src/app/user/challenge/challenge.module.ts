@@ -5,6 +5,7 @@ import { ChallengeRoutingModule } from './challenge-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatPaginatorModule} from '@angular/material';
+import { ChallengeDetailComponent } from './components/challenge-detail/challenge-detail.component';
 
 
 @NgModule({
@@ -16,7 +17,9 @@ import {MatPaginatorModule} from '@angular/material';
     MatPaginatorModule
   ],
   declarations: [
-    ChallengeComponent
+    ChallengeDetailComponent,
+    ChallengeComponent,
+    ChallengeDetailComponent
   ]
 })
 export class ChallengeModule { }
