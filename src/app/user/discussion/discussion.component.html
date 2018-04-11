@@ -4,7 +4,7 @@
 
 <body>
   <h1>Discussion</h1>
-  <button mat-raised-button (click)="openDialog()">New Post</button>
+  <a routerLink="/discussion/newpost"><button mat-raised-button>New Post</button></a>
   <br><br>
   <mat-accordion>
     <mat-expansion-panel *ngFor="let card of discussionData;">

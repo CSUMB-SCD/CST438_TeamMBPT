@@ -29,6 +29,7 @@
     "@ng-bootstrap/ng-bootstrap": "^1.0.1",
     "@tinymce/tinymce-angular": "^1.0.5",
     "ajv": "^6.2.1",
+    "angular-froala-wysiwyg": "^2.7.6",
     "axios": "^0.18.0",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0-beta.3",
