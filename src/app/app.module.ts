@@ -9,6 +9,7 @@ import { AuthGuard } from './services/auth-guard.service';
 import {AppRoutingModule} from './app-routing.module';
 import {DiscussionDialogComponent} from './user/discussion/discussion-dialog/discussion-dialog.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,6 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    EditorModule,
     NgbModule.forRoot()
   ],
   providers: [

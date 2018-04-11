@@ -8,6 +8,10 @@ import {HttpClientModule} from '@angular/common/http';
 
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonModule} from '@angular/material/button';
+import { DiscsussionNewpostComponent } from './components/discsussion-newpost/discsussion-newpost.component';
+import {DiscussionDetailComponent} from './components/discussion-detail/discussion-detail.component';
+import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
+import {MatInputModule} from '@angular/material';
 
 
 @NgModule({
@@ -15,11 +19,14 @@ import {MatButtonModule} from '@angular/material/button';
     CommonModule,
     MatExpansionModule,
     MatButtonModule,
+    MatInputModule,
     CdkTableModule,
     FormsModule,
     HttpClientModule,
-    DiscussionRoutingModule
+    DiscussionRoutingModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot(),
   ],
-  declarations: [DiscussionComponent]
+  declarations: [DiscussionComponent, DiscsussionNewpostComponent, DiscussionDetailComponent]
 })
 export class DiscussionModule { }
