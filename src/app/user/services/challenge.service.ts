@@ -10,10 +10,10 @@ export class ChallengeService {
     private http: HttpClient,
     private auth: AuthGuard) { }
 
-  query(jwt: string, id: string = '') {
+  query(token: string, id: string = '') {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'JWT ' + jwt
+      'Authorization': 'Bearer ' + token
     });
     return this.http.get(environment.challenge_url + id, {
       headers: headers

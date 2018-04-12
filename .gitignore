@@ -43,7 +43,7 @@ testem.log
 Thumbs.db
 
 # API keys
-key.sh
+env.prod.*
 
 # Batch files
 key.bat

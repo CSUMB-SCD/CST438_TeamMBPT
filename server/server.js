@@ -7,14 +7,16 @@ const app = express();
 const __static = path.join(__dirname, '..', '/dist');
 
 app.use(bodyParser.text());
+app.use(bodyParser.json());
 app.use(express.static(__static));
-app.use('/api/', router);
+app.use(router);
 app.listen(process.env.PORT || 8080);
 
 // Google user authentication
 const google = require('./routes/auth/google');
 router.get('/auth/google/url', google.url);
 router.get('/auth/google', google.callback);
+router.post('/auth/mbpt', require('./routes/auth/mbpt'));
 app.all("/*", function(req, res, next) {
   res.sendFile('index.html', { root: __static});
 });

@@ -10,10 +10,9 @@ export class DiscussionService {
     private http: HttpClient,
     private auth: AuthGuard) { }
 
-  getDiscussion(jwt: string) {
+  getDiscussion(token: string) {
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'JWT ' + jwt
+      'Authorization': 'Bearer ' + token
     });
     return this.http.get(environment.discussion_url, {
       headers: headers
@@ -22,10 +21,10 @@ export class DiscussionService {
     });
   }
 
-  createDiscussion(jwt: string, body: string) {
+  createDiscussion(token: string, body: string) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'JWT ' + jwt
+      'Authorization': 'Bearer ' + token
     });
     return this.http.post(environment.discussion_url, body,  {
       headers: headers

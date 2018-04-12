@@ -44,7 +44,6 @@ import {
 import {HttpClientModule} from '@angular/common/http';
 import {AuthGuard} from '../services/auth-guard.service';
 import {AuthenticationService} from '../services/authentication.service';
-import {LoginService} from '../services/login.service';
 
 @NgModule({
   imports: [
@@ -91,7 +90,6 @@ import {LoginService} from '../services/login.service';
   providers: [
     AuthenticationService,
     AuthGuard,
-    LoginService
   ],
   entryComponents: [
     LoginComponent,

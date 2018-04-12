@@ -19,7 +19,7 @@ export class AnnouncementComponent implements OnInit {
 
 
   ngOnInit() {
-    this.service.get_announcements(AuthGuard.getToken()).subscribe(object => {
+    this.service.get_announcements(AuthGuard.getAccessToken()).subscribe(object => {
       this.announcements = object;
     });
   }

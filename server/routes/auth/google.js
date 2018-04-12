@@ -15,6 +15,7 @@ var url = oauth2Client.generateAuthUrl({
   access_type: 'online',
   scope: scopes
 });
+const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 module.exports = {
   url: function(req, res) {
@@ -23,11 +24,23 @@ module.exports = {
   callback: function(req, res) {
     oauth2Client.getToken(req.query.code, function (err, tokens) {
       if (!err) {
-        // TODO: Use the tokens!
+        const url = process.env.MBPT_SOCIAL_AUTH_URI;
+        const http = new XMLHttpRequest();
+        http.open("POST", url, true);
+        http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        http.onreadystatechange = function() {
+          if (http.readyState === 4 && http.status === 200) {
+            console.log(this.responseText);
+          }
+        };
         console.log(tokens);
-        oauth2Client.setCredentials(tokens);
+        http.send("client_id=" + process.env.MBPT_API_CLIENT_ID +
+          "&client_secret=" + process.env.MBPT_API_CLIENT_SECRET +
+          "&token=" + tokens['access_token'] +
+          "&backend=google-oauth2" +
+          "&grant_type=convert_token");
+        res.redirect('/');
       }
-      res.redirect('/');
     });
   }
 };

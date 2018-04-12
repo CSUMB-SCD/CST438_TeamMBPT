@@ -17,7 +17,7 @@ export class DiscussionComponent implements OnInit {
               public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.service.getDiscussion(AuthGuard.getToken()).subscribe(object => {
+    this.service.getDiscussion(AuthGuard.getAccessToken()).subscribe(object => {
       this.discussionData = object;
     });
   }

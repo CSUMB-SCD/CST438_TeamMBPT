@@ -25,7 +25,7 @@ export class ChallengeComponent implements OnInit {
     private service: ChallengeService) { }
 
   ngOnInit() {
-    this.service.query(AuthGuard.getToken()).subscribe(object => {
+    this.service.query(AuthGuard.getAccessToken()).subscribe(object => {
       this.challenges = object as Challenge[];
     });
   }

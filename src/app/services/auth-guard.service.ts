@@ -5,20 +5,20 @@ import {CanActivate, Router} from '@angular/router';
 export class AuthGuard implements CanActivate {
   constructor(private router: Router) { }
 
-  static getToken(): string {
+  static getAccessToken(): string {
     return localStorage.getItem('MBPT_ACCESS_TOKEN');
   }
 
   canActivate(): boolean {
-    if (AuthGuard.getToken() === null) {
+    if (AuthGuard.getAccessToken() === null) {
       this.logout();
       return false;
     }
     return true;
   }
 
-  login(token: string) {
-    localStorage.setItem('MBPT_ACCESS_TOKEN', token);
+  login(accessToken: string) {
+    localStorage.setItem('MBPT_ACCESS_TOKEN', accessToken);
     return this.router.navigate(['/dashboard']);
   }
 

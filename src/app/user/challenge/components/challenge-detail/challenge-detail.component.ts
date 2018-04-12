@@ -27,7 +27,7 @@ export class ChallengeDetailComponent implements OnInit {
   ngOnInit() {
     this.challenge = null;
     this.route.params.forEach(param => {
-      this.service.query(AuthGuard.getToken(), param.challenge_id).subscribe(object => {
+      this.service.query(AuthGuard.getAccessToken(), param.challenge_id).subscribe(object => {
         this.challenge = object as Challenge;
       });
     });

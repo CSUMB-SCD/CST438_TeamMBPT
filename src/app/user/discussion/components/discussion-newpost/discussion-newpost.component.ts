@@ -21,7 +21,7 @@ export class DiscussionNewpostComponent implements OnInit {
   }
 
   submit() {
-    this.service.createDiscussion(AuthGuard.getToken(), JSON.stringify({
+    this.service.createDiscussion(AuthGuard.getAccessToken(), JSON.stringify({
       'title': this.title,
       'content': this.editorContent
     })).subscribe(() => {

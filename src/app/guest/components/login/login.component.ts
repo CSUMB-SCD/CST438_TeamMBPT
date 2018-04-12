@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
+import {AuthenticationService} from '../../../services/authentication.service';
 
 @Component({
   selector: 'app-user-login',
@@ -10,7 +11,8 @@ import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 
 export class LoginComponent implements OnInit {
   constructor(
-    public dialog: MatDialog) {
+    public dialog: MatDialog,
+    private auth: AuthenticationService) {
   }
 
   ngOnInit() {
@@ -18,5 +20,9 @@ export class LoginComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(LoginDialogComponent);
+  }
+
+  googleAuth() {
+    return this.auth.googleAuth();
   }
 }

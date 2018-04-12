@@ -15,11 +15,6 @@ export class AuthenticationService {
     private authGuard: AuthGuard) {}
 
   getToken(username: string, password: string) {
-    if (username  === '' || password === '' || username === undefined || password === undefined) {
-      this.authGuard.login('fake_token');
-      return Observable.of(true);
-    }
-    // TODO: catch the error completely
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(environment.auth_token_url, JSON.stringify({
       username: username,
@@ -27,13 +22,19 @@ export class AuthenticationService {
     }), {
       headers: headers
     }).map(object => {
-      if (object['token'] !== undefined) {
-        this.authGuard.login(object['token']);
+      if (object['access_token'] !== undefined) {
+        this.authGuard.login(object['access_token']);
         return true;
       }
       return false;
     }).catch(() => {
       return Observable.of(false);
+    });
+  }
+
+  googleAuth() {
+    this.http.get('/auth/google/url').subscribe(object => {
+      window.location.href = object['url'];
     });
   }
 }
