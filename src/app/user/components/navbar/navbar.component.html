@@ -6,36 +6,19 @@
     <a mat-button [routerLink]="['/discussion']">Discussion</a>
     <a mat-button [routerLink]="['/scoreboard']">Scoreboard</a>
     <span class="spacer"></span>
+    <a mat-icon-button color="primary">
+      <mat-icon aria-label="This is suppose to be the user icon">favorite</mat-icon>
+    </a>
     <div>
       <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon color="accent">more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
+        <a mat-menu-item routerLink="/setting">
+          <span>Settings</span>
+        </a>
         <app-logout></app-logout>
       </mat-menu>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
-
-<!--<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">-->
-  <!--<a [routerLink]="['/dashboard']" class="navbar-brand">MBPT</a>-->
-  <!--<div class="collapse navbar-collapse">-->
-      <!--<ul class="navbar-nav mr-auto">-->
-        <!--<li class="nav-item">-->
-          <!--<a [routerLink]="['/challenge']" class="nav-link">Challenges</a>-->
-        <!--</li>-->
-        <!--<li class="nav-item">-->
-          <!--<a [routerLink]="['/announcement']" class="nav-link">Announcements</a>-->
-        <!--</li>-->
-        <!--<li class="nav-item">-->
-          <!--<a [routerLink]="['/discussion']" class="nav-link">Discussion</a>-->
-        <!--</li>-->
-        <!--<li class="nav-item">-->
-          <!--<a [routerLink]="['/scoreboard']" class="nav-link">Scoreboard</a>-->
-        <!--</li>-->
-      <!--</ul>-->
-      <!--<ul class="nav navbar-nav navbar-right">-->
-
-      <!--</ul>-->
-  <!--</div>-->
-<!--</nav>-->

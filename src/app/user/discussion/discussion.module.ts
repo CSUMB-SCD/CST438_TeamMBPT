@@ -8,7 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonModule} from '@angular/material/button';
-import { DiscsussionNewpostComponent } from './components/discsussion-newpost/discsussion-newpost.component';
+import { DiscussionNewpostComponent } from './components/discussion-newpost/discussion-newpost.component';
 import {DiscussionDetailComponent} from './components/discussion-detail/discussion-detail.component';
 import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
 import {MatInputModule} from '@angular/material';
@@ -27,6 +27,6 @@ import {MatInputModule} from '@angular/material';
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
   ],
-  declarations: [DiscussionComponent, DiscsussionNewpostComponent, DiscussionDetailComponent]
+  declarations: [DiscussionComponent, DiscussionNewpostComponent, DiscussionDetailComponent]
 })
 export class DiscussionModule { }

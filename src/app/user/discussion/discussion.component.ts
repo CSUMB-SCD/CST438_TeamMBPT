@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DiscussionService} from '../services/discussion.service';
 import {MatDialog} from '@angular/material';
-import {DiscussionDialogComponent} from './discussion-dialog/discussion-dialog.component';
+import {DiscussionDialogComponent} from './components/discussion-dialog/discussion-dialog.component';
 import {AuthGuard} from '../../services/auth-guard.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class DiscussionComponent implements OnInit {
               public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.service.get_discussion(AuthGuard.getToken()).subscribe(object => {
+    this.service.getDiscussion(AuthGuard.getToken()).subscribe(object => {
       this.discussionData = object;
     });
   }

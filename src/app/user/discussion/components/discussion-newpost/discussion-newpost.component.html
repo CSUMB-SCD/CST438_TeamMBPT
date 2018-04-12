@@ -1,0 +1,14 @@
+<head>
+
+</head>
+<body>
+  <h1>Discussion - New Post</h1>
+  <form>
+    <mat-form-field class="newpost-full-width">
+      <input [(ngModel)]="title" name="title" matInput placeholder="Title">
+    </mat-form-field>
+    <div [froalaEditor] [(froalaModel)]="editorContent"></div>
+    <br>
+    <button mat-raised-button (click)="submit()">Submit</button>
+  </form>
+</body>

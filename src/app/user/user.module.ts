@@ -42,6 +42,7 @@ import {
   MatToolbarModule,
   MatTooltipModule,
 } from '@angular/material';
+import { SettingComponent } from './components/setting/setting.component';
 
 @NgModule({
   imports: [
@@ -85,6 +86,6 @@ import {
     HttpClientModule,
     UserRoutingModule
   ],
-  declarations: [UserComponent, LogoutComponent, NavbarComponent],
+  declarations: [UserComponent, LogoutComponent, NavbarComponent, SettingComponent],
 })
 export class UserModule { }
