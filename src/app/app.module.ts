@@ -8,11 +8,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthGuard } from './services/auth-guard.service';
 import {AppRoutingModule} from './app-routing.module';
 import {DiscussionDialogComponent} from './user/discussion/components/discussion-dialog/discussion-dialog.component';
+import { AuthCallbackComponent } from './components/auth-callback/auth-callback.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DiscussionDialogComponent
+    DiscussionDialogComponent,
+    AuthCallbackComponent
   ],
   imports: [
     BrowserModule,

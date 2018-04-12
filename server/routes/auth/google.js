@@ -17,6 +17,14 @@ var url = oauth2Client.generateAuthUrl({
 });
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
+function querify(json) {
+  return '?' +
+    Object.keys(json).map(function(key) {
+      return encodeURIComponent(key) + '=' +
+        encodeURIComponent(json[key]);
+    }).join('&');
+}
+
 module.exports = {
   url: function(req, res) {
     res.json({url: url});
@@ -30,7 +38,8 @@ module.exports = {
         http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         http.onreadystatechange = function() {
           if (http.readyState === 4 && http.status === 200) {
-            console.log(this.responseText);
+            const params = querify(JSON.parse(this.responseText));
+            res.redirect('/auth/callback' + params);
           }
         };
         console.log(tokens);
@@ -39,7 +48,6 @@ module.exports = {
           "&token=" + tokens['access_token'] +
           "&backend=google-oauth2" +
           "&grant_type=convert_token");
-        res.redirect('/');
       }
     });
   }
