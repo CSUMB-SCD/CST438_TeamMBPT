@@ -1,3 +1,14 @@
-<p>
-  dashboard works!
-</p>
+<div *ngIf="profile !== null">
+  <h1>
+    Welcome, {{profile.first_name}} {{profile.last_name}}
+  </h1>
+  <h1>
+    {{ profile.title }}
+  </h1>
+  <p>
+    {{ profile.content }}
+  </p>
+  <p>
+    {{ profile.username }}: {{ profile.email }}
+  </p>
+</div>
