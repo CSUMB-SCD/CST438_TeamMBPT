@@ -1,0 +1,48 @@
+<div class="mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+      <mat-cell *matCellDef="let challenge"> {{challenge.title}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="submission_count">
+      <mat-header-cell *matHeaderCellDef> Submission </mat-header-cell>
+      <mat-cell *matCellDef="let challenge"> {{challenge.submission_count}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="accepted_count">
+      <mat-header-cell *matHeaderCellDef> Accepted </mat-header-cell>
+      <mat-cell *matCellDef="let challenge"> {{challenge.accepted_count}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="created">
+      <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+      <mat-cell *matCellDef="let challenge"> {{ challenge.created | date: 'MM/dd/yyyy'}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="publisher">
+      <mat-header-cell *matHeaderCellDef> Publisher </mat-header-cell>
+      <mat-cell *matCellDef="let challenge"> {{challenge.publisher}} </mat-cell>
+    </ng-container>
+
+    <!-- Expanded Content Column - The detail row is made up of this one column -->
+    <ng-container matColumnDef="expandedDetail">
+      <mat-cell *matCellDef="let detail">
+        {{detail.challenge.description}}
+        <a mat-button routerLink="/challenge/{{ detail.challenge.challenge_id }}">Detail</a>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"
+             matRipple
+             class="challenge-row"
+             [class.expanded]="expandedElement == row"
+             (click)="expandedElement = row"></mat-row>
+    <mat-row *matRowDef="let row; columns: ['expandedDetail']; when: isExpansionDetailRow"
+             [@detailExpand]="row.challenge == expandedElement ? 'expanded' : 'collapsed'"
+             style="overflow: hidden">
+    </mat-row>
+  </mat-table>
+</div>

@@ -2,26 +2,7 @@
 
 <body>
 <h1>Challenges</h1>
-<mat-accordion>
-  <mat-expansion-panel *ngFor="let challenge of challenges;">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{challenge.title}}
-      </mat-panel-title>
-      <mat-panel-description>
-        {{challenge.description}}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <a class="btn btn-dark float-right" routerLink="/challenge/{{ challenge.challenge_id }}">Detail</a>
-    Challenge id: {{challenge.challenge_id}}, added by <strong>{{ challenge.publisher }}</strong>
-    <br>
-    Total submission: {{challenge.submission_count}}
-    <br>
-    Accepted count: {{challenge.accepted_count}}
-    <br>
-    Added date: {{ challenge.created | date: 'MM/dd/yyyy'}}
-  </mat-expansion-panel>
-</mat-accordion>
+  <app-challenge-table></app-challenge-table>
 <br>
 <mat-paginator [length]= "5"
                [pageSize]="10"

@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { ChallengeComponent } from './challenge.component';
 import { ChallengeRoutingModule } from './challenge-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatPaginatorModule} from '@angular/material';
+import {MatPaginatorModule, MatTableModule} from '@angular/material';
 import { ChallengeDetailComponent } from './components/challenge-detail/challenge-detail.component';
+import {ChallengeTableComponent} from './components/challenge-table/challenge-table.component';
 
 
 @NgModule({
@@ -13,10 +13,11 @@ import { ChallengeDetailComponent } from './components/challenge-detail/challeng
     CommonModule,
     HttpClientModule,
     ChallengeRoutingModule,
-    MatExpansionModule,
+    MatTableModule,
     MatPaginatorModule
   ],
   declarations: [
+    ChallengeTableComponent,
     ChallengeDetailComponent,
     ChallengeComponent,
     ChallengeDetailComponent
