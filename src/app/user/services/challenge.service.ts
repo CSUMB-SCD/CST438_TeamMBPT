@@ -30,7 +30,7 @@ export class ChallengeService {
     return this.http.get<Challenge[]>(environment.challenge_url, {
       headers: headers
     }).catch(() => {
-      this.auth.logout();
+      this.auth.redirectLogout();
       return Observable.of(null);
     });
   }
@@ -43,7 +43,7 @@ export class ChallengeService {
     return this.http.get<Challenge>(environment.challenge_url + id, {
       headers: headers
     }).catch(() => {
-      this.auth.logout();
+      this.auth.redirectLogout();
       return Observable.of(null);
     });
   }

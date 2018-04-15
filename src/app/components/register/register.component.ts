@@ -1,12 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import {AuthenticationService} from '../../services/authentication.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
+  providers: [
+    AuthenticationService
+  ]
 })
 export class RegisterComponent implements OnInit {
+  username = new FormControl();
   firstName = new FormControl();
   lastName = new FormControl();
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -19,11 +25,33 @@ export class RegisterComponent implements OnInit {
     [
       Validators.required
   ]);
-  hide_password = true;
+  hidePassword = true;
+  emailReadonly = false;
 
-  constructor() { }
+  constructor(
+    private auth: AuthenticationService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      if (params.hasOwnProperty('params')) {
+        params = params['params'];
+      }
+      if (params.hasOwnProperty('email')) {
+        this.emailReadonly = true;
+        this.email.setValue(params['email']);
+      }
+      if (params.hasOwnProperty('username')) {
+        this.username.setValue(params['username']);
+      }
+      if (params.hasOwnProperty('first_name')) {
+        this.firstName.setValue(params['first_name']);
+      }
+      if (params.hasOwnProperty('last_name')) {
+        this.lastName.setValue(params['last_name']);
+      }
+    });
   }
 
   getPasswordErrorMessage() {
@@ -36,5 +64,16 @@ export class RegisterComponent implements OnInit {
     return this.email.hasError('required') ? 'You must enter a value' :
       this.email.hasError('email') ? 'Not a valid email' :
         '';
+  }
+
+  submit() {
+    const data = {
+      username: this.username.value,
+      password: this.password.value,
+      first_name: this.firstName.value,
+      last_name: this.lastName.value,
+      email: this.email.value,
+    };
+    this.auth.register(data);
   }
 }

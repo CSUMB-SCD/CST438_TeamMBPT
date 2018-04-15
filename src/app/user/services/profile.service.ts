@@ -17,8 +17,11 @@ export class ProfileService {
     });
     return this.http.get(environment.profile_url, {
        headers: headers
-    }).catch(() => {
-       return this.auth.logout();
+    }).catch(err => {
+      if (err.status === 423) {
+        return this.auth.redirectRegister(err.error);
+      }
+      return this.auth.redirectLogout();
     });
   }
 }

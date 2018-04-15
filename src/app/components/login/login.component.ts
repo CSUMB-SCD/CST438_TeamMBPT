@@ -23,6 +23,6 @@ export class LoginComponent implements OnInit {
   }
 
   googleAuth() {
-    return this.auth.googleAuth();
+    return this.auth.redirectGoogleAuth();
   }
 }

@@ -9,14 +9,18 @@
   <mat-form-field [hideRequiredMarker]="true">
     <input matInput placeholder="Last Name" [formControl]="lastName" required/>
   </mat-form-field>
+  <mat-form-field [hideRequiredMarker]="true">
+    <input matInput placeholder="Username" [formControl]="username" required/>
+  </mat-form-field>
   <mat-form-field>
-    <input matInput type="email" placeholder="Email" [formControl]="email" />
+    <input matInput type="email" placeholder="Email" [formControl]="email" [readonly]="emailReadonly"/>
     <mat-error *ngIf="email !== undefined && email.invalid">{{getEmailErrorMessage()}}</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <input matInput type="password" placeholder="Password" [formControl]="password" />
-    <mat-icon matSuffix (click)="hide_password = !hide_password">
-      {{hide_password ? 'visibility' : 'visibility_off'}}
+    <input matInput type="password" placeholder="Password" [formControl]="password"
+           [type]="hidePassword ? 'password' : 'text'"/>
+    <mat-icon matSuffix (click)="hidePassword = !hidePassword">
+      {{hidePassword ? 'visibility' : 'visibility_off'}}
     </mat-icon>
     <mat-error *ngIf="password !== undefined && password.invalid">{{ getPasswordErrorMessage() }}</mat-error>
   </mat-form-field>
@@ -25,5 +29,5 @@
       <mat-error *ngIf="password !== undefined && confirmPassword !== undefined
       && password !== confirmPassword">Your passwords didn't match.</mat-error>
     </mat-form-field>
-  <button mat-raised-button color="primary">Register</button>
+  <button mat-raised-button color="primary" (click)="submit()">Register</button>
 </div>

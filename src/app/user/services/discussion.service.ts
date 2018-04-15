@@ -17,7 +17,7 @@ export class DiscussionService {
     return this.http.get(environment.discussion_url, {
       headers: headers
     }).catch(() => {
-      return this.auth.logout();
+      return this.auth.redirectLogout();
     });
   }
 
@@ -29,7 +29,7 @@ export class DiscussionService {
     return this.http.post(environment.discussion_url, body,  {
       headers: headers
     }).catch(() => {
-      return this.auth.logout();
+      return this.auth.redirectLogout();
     });
   }
 }

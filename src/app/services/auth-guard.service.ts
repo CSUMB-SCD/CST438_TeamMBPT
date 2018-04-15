@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {CanActivate, Router} from '@angular/router';
 
+
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(private router: Router) { }
@@ -11,19 +12,23 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): boolean {
     if (AuthGuard.getAccessToken() === null) {
-      this.logout();
+      this.redirectLogout();
       return false;
     }
     return true;
   }
 
-  login(accessToken: string) {
+  redirectLogin(accessToken: string) {
     localStorage.setItem('MBPT_ACCESS_TOKEN', accessToken);
     return this.router.navigate(['/dashboard']);
   }
 
-  logout() {
+  redirectLogout() {
     localStorage.removeItem('MBPT_ACCESS_TOKEN');
     return this.router.navigate(['/welcome']);
+  }
+
+  redirectRegister(params: any) {
+    return this.router.navigate(['/register', params]);
   }
 }
