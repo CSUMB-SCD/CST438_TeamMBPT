@@ -1,6 +1,29 @@
+<app-user-login></app-user-login>
 <div class="container">
-  <app-user-login></app-user-login>
-  <p>
-    register works!
-  </p>
+  <h1>
+    Registration
+  </h1>
+  <mat-form-field [hideRequiredMarker]="true">
+    <input matInput placeholder="First Name" [formControl]="firstName" required/>
+  </mat-form-field>
+  <mat-form-field [hideRequiredMarker]="true">
+    <input matInput placeholder="Last Name" [formControl]="lastName" required/>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="email" placeholder="Email" [formControl]="email" />
+    <mat-error *ngIf="email !== undefined && email.invalid">{{getEmailErrorMessage()}}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="password" placeholder="Password" [formControl]="password" />
+    <mat-icon matSuffix (click)="hide_password = !hide_password">
+      {{hide_password ? 'visibility' : 'visibility_off'}}
+    </mat-icon>
+    <mat-error *ngIf="password !== undefined && password.invalid">{{ getPasswordErrorMessage() }}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="password" placeholder="Confirm Password" [formControl]="confirmPassword" />
+      <mat-error *ngIf="password !== undefined && confirmPassword !== undefined
+      && password !== confirmPassword">Your passwords didn't match.</mat-error>
+    </mat-form-field>
+  <button mat-raised-button color="primary">Register</button>
 </div>
