@@ -10,15 +10,15 @@ export class AnnouncementService {
     private http: HttpClient,
     private auth: AuthGuard) { }
 
-  get_announcements(jwt: string) {
+  get_announcements(token: string) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'JWT ' + jwt
+      'Authorization': 'Bearer ' + token
     });
     return this.http.get(environment.announcement_url, {
       headers: headers
     }).catch(() => {
-      return this.auth.logout();
+      return this.auth.redirectLogout();
     });
   }
 }

@@ -1,15 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {ChallengeService} from '../../../services/challenge.service';
+import {Challenge, ChallengeService} from '../../../services/challenge.service';
 import {AuthGuard} from '../../../../services/auth-guard.service';
-
-interface Challenge {
-  title: string;
-  description: string;
-  created: string;
-  publisher: string;
-  content: string;
-}
 
 @Component({
   selector: 'app-challenge-detail',
@@ -27,8 +19,8 @@ export class ChallengeDetailComponent implements OnInit {
   ngOnInit() {
     this.challenge = null;
     this.route.params.forEach(param => {
-      this.service.query(AuthGuard.getToken(), param.challenge_id).subscribe(object => {
-        this.challenge = object as Challenge;
+      this.service.query_id(AuthGuard.getAccessToken(), param.challenge_id).subscribe(object => {
+        this.challenge = object;
       });
     });
   }

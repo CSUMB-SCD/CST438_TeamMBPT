@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import {AuthenticationService} from '../../../services/authentication.service';
+import {AuthenticationService} from '../../services/authentication.service';
 
 @Component({
   selector: 'app-login-dialog',
@@ -32,7 +32,7 @@ export class LoginDialogComponent implements OnInit {
     });
   }
 
-  onNoClick(): void {
+  close(): void {
     this.dialogRef.close();
   }
 }

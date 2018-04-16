@@ -12,6 +12,7 @@ import { DiscussionNewpostComponent } from './components/discussion-newpost/disc
 import {DiscussionDetailComponent} from './components/discussion-detail/discussion-detail.component';
 import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
 import {MatInputModule} from '@angular/material';
+import {DiscussionDialogComponent} from './components/discussion-dialog/discussion-dialog.component';
 
 
 @NgModule({
@@ -27,6 +28,15 @@ import {MatInputModule} from '@angular/material';
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
   ],
-  declarations: [DiscussionComponent, DiscussionNewpostComponent, DiscussionDetailComponent]
+  declarations: [
+    DiscussionComponent,
+    DiscussionDialogComponent,
+    DiscussionNewpostComponent,
+    DiscussionDetailComponent
+  ],
+  entryComponents: [
+    DiscussionComponent,
+    DiscussionDialogComponent
+  ]
 })
 export class DiscussionModule { }

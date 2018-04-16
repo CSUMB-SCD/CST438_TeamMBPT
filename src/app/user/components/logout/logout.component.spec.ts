@@ -36,7 +36,7 @@ describe('LogoutComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call AuthGuard.logout() when #a tag is clicked', () => {
+  it('should call AuthGuard.redirectLogout() when #a tag is clicked', () => {
     const link = fixture.nativeElement.querySelector('a');
     localStorage.setItem('MBPT_ACCESS_TOKEN', 'test123');
     link.click();

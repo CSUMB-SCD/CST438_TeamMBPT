@@ -17,7 +17,7 @@ const routes: Routes = [
       { path: 'discussion', loadChildren: './discussion/discussion.module#DiscussionModule' },
       { path: 'scoreboard', loadChildren: './scoreboard/scoreboard.module#ScoreboardModule' },
       { path: 'setting', component: SettingComponent},
-      { path: 'logout', component: LogoutComponent},
+      { path: 'redirectLogout', component: LogoutComponent},
     ]
   }
 ];

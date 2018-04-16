@@ -1,29 +1,34 @@
 import { Injectable } from '@angular/core';
 import {CanActivate, Router} from '@angular/router';
 
+
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(private router: Router) { }
 
-  static getToken(): string {
+  static getAccessToken(): string {
     return localStorage.getItem('MBPT_ACCESS_TOKEN');
   }
 
   canActivate(): boolean {
-    if (AuthGuard.getToken() === null) {
-      this.logout();
+    if (AuthGuard.getAccessToken() === null) {
+      this.redirectLogout();
       return false;
     }
     return true;
   }
 
-  login(token: string) {
-    localStorage.setItem('MBPT_ACCESS_TOKEN', token);
+  redirectLogin(accessToken: string) {
+    localStorage.setItem('MBPT_ACCESS_TOKEN', accessToken);
     return this.router.navigate(['/dashboard']);
   }
 
-  logout() {
+  redirectLogout() {
     localStorage.removeItem('MBPT_ACCESS_TOKEN');
     return this.router.navigate(['/welcome']);
+  }
+
+  redirectRegister(params: any) {
+    return this.router.navigate(['/register', params]);
   }
 }
