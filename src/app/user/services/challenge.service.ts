@@ -5,7 +5,6 @@ import {AuthGuard} from '../../services/auth-guard.service';
 
 @Injectable()
 export class ChallengeService {
-
   constructor(
     private http: HttpClient,
     private auth: AuthGuard) { }

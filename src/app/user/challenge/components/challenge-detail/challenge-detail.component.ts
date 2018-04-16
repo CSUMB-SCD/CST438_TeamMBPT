@@ -19,18 +19,19 @@ interface Challenge {
 })
 export class ChallengeDetailComponent implements OnInit {
   challenge: Challenge;
-
   constructor(
     private route: ActivatedRoute,
-    private service: ChallengeService) { }
+    private service: ChallengeService){ }
 
   ngOnInit() {
     this.challenge = null;
     this.route.params.forEach(param => {
       this.service.query(AuthGuard.getAccessToken(), param.challenge_id).subscribe(object => {
         this.challenge = object as Challenge;
+        //document.getElementById("contentDesc").innerHTML = eval(this.challenge.content);
+        document.getElementById("contentDesc").innerHTML = "Kamehameha";
+        //document.write(this.challenge.content); //Testing
       });
     });
   }
-
 }
