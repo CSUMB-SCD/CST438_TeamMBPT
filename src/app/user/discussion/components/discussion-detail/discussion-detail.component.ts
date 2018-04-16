@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./discussion-detail.component.css']
 })
 export class DiscussionDetailComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit() {
