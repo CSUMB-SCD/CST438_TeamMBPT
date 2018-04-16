@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {AuthenticationService} from '../../services/authentication.service';
 import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
+import {AuthGuard} from '../../services/auth-guard.service';
 
 @Component({
   selector: 'app-register',
@@ -29,6 +31,7 @@ export class RegisterComponent implements OnInit {
   emailReadonly = false;
 
   constructor(
+    private authGuard: AuthGuard,
     private auth: AuthenticationService,
     private route: ActivatedRoute
   ) { }
@@ -54,6 +57,11 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  getUsernameErrorMessage() {
+    return this.username.hasError('usernameExist') ? 'This username has been registered.' :
+      '';
+  }
+
   getPasswordErrorMessage() {
     return this.password.hasError('required') ? 'You must enter a value' :
       this.password.hasError('minlength') ? 'The minimum length of the password is 8 characters.' :
@@ -63,7 +71,23 @@ export class RegisterComponent implements OnInit {
   getEmailErrorMessage() {
     return this.email.hasError('required') ? 'You must enter a value' :
       this.email.hasError('email') ? 'Not a valid email' :
-        '';
+        this.email.hasError('emailExist') ? 'This email address has been registered.' :
+      '';
+  }
+
+  errorHandler(err): Observable<boolean> {
+    if (err.error === 'email') {
+      this.email.setErrors({
+        emailExist: true
+      });
+    } else if (err.error === 'username') {
+      this.username.setErrors({
+        usernameExist: true
+      });
+    } else {
+      this.authGuard.redirectLogout();
+    }
+    return Observable.of(false);
   }
 
   submit() {
@@ -74,6 +98,6 @@ export class RegisterComponent implements OnInit {
       last_name: this.lastName.value,
       email: this.email.value,
     };
-    this.auth.register(data);
+    this.auth.register(data, (error) => this.errorHandler(error));
   }
 }
