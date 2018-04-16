@@ -5,7 +5,8 @@
 
 export const environment = {
   production: false,
-  auth_token_url: '/auth/mbpt',
+  auth_token_url: '/auth/mbpt/token',
+  auth_revoke_token_url: '/auth/mbpt/revoke',
   auth_google_url: '/auth/google/url',
   announcement_url: 'http://localhost:8000/announcement/',
   challenge_url: 'http://localhost:8000/challenge/',
