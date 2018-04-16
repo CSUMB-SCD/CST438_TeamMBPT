@@ -10,6 +10,8 @@ module.exports = {
       console.log(this.responseText);
       if (http.readyState === 4 && http.status === 200) {
         res.send(this.responseText);
+      } else if (http.readyState === 4) {
+        res.send('');
       }
     };
     http.send("client_id=" + process.env.MBPT_API_CLIENT_ID +
