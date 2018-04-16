@@ -12,7 +12,7 @@ const routes: Routes = [
     path: 'newpost', component: DiscussionNewpostComponent
   },
   {
-    path: 'detail', component: DiscussionDetailComponent
+    path: ':id', component: DiscussionDetailComponent
   }
 ];
 

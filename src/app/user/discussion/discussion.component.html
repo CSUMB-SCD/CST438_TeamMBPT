@@ -7,18 +7,17 @@
   <a routerLink="/discussion/newpost"><button mat-raised-button>New Post</button></a>
   <br><br>
   <mat-accordion>
-    <mat-expansion-panel *ngFor="let card of discussionData;">
+    <mat-expansion-panel *ngFor="let discussion of discussions;">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{card.title}}
+          {{discussion.title}}
         </mat-panel-title>
         <mat-panel-description>
-          {{card.publisher}}
+          {{discussion.publisher}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      {{card.content}}
       <mat-action-row>
-        <a routerLink="/discussion/detail"><button mat-raised-button color="primary">Detail</button></a>
+        <a routerLink="/discussion/{{ discussion.id }}"><button mat-raised-button color="primary">Detail</button></a>
       </mat-action-row>
       </mat-expansion-panel>
   </mat-accordion>
