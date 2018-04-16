@@ -2,8 +2,8 @@
   <h1>
     {{challenge.title}}
   </h1>
-  <div>
-    {{ challenge.content }}
+  <div [innerHTML]="challenge.content">
+    <!--{{ challenge.content }} -->
   </div>
   <div>
     {{ challenge.publisher }}

@@ -24,5 +24,4 @@ export class ChallengeDetailComponent implements OnInit {
       });
     });
   }
-
 }
