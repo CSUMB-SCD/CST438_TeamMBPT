@@ -44,6 +44,3 @@ Thumbs.db
 
 # API keys
 env.prod.*
-
-# Batch files
-key.bat
