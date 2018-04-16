@@ -4,7 +4,7 @@ import { ChallengeComponent } from './challenge.component';
 import { ChallengeRoutingModule } from './challenge-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import {MatPaginatorModule, MatTableModule} from '@angular/material';
-import { ChallengeDetailComponent } from './components/challenge-detail/challenge-detail.component';
+import {ChallengeDetailComponent, SafeHtmlPipe} from './components/challenge-detail/challenge-detail.component';
 import {ChallengeTableComponent} from './components/challenge-table/challenge-table.component';
 
 
