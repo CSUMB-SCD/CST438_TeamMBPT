@@ -19,6 +19,7 @@ export class DiscussionComponent implements OnInit {
   ngOnInit() {
     this.service.getDiscussion(AuthGuard.getAccessToken()).subscribe(object => {
       this.discussionData = object;
+      console.log(this.discussionData);
     });
   }
 

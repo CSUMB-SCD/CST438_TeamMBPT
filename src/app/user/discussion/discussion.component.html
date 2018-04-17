@@ -8,15 +8,17 @@
   <br><br>
   <mat-accordion>
     <mat-expansion-panel *ngFor="let card of discussionData;">
+      {{card.content}}
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{card.title}}
         </mat-panel-title>
         <mat-panel-description>
+          <mat-icon>account_circle</mat-icon>
           {{card.publisher}}
         </mat-panel-description>
+        <div class="card-info">{{card.upvotes}} votes {{card.view_count}} views</div>
       </mat-expansion-panel-header>
-      {{card.content}}
       <mat-action-row>
         <a routerLink="/discussion/detail"><button mat-raised-button color="primary">Detail</button></a>
       </mat-action-row>
