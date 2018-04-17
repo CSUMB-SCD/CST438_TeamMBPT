@@ -1,5 +1,6 @@
 blockquote {
   border-style: solid;
+  padding: 10px;
 }
 
 .detail-reply {
@@ -10,3 +11,4 @@ blockquote {
 .full-width {
   width: 100%;
 }
+

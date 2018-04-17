@@ -7,12 +7,11 @@
     <a mat-button [routerLink]="['/scoreboard']">Scoreboard</a>
     <span class="spacer"></span>
     <a mat-icon-button color="primary">
-      <mat-icon aria-label="This is suppose to be the user icon">favorite</mat-icon>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon aria-label="This is suppose to be the user icon">account_circle</mat-icon>
+      </button>
     </a>
     <div>
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon color="accent">more_vert</mat-icon>
-      </button>
       <mat-menu #menu="matMenu">
         <a mat-menu-item routerLink="/setting">
           <span>Settings</span>
