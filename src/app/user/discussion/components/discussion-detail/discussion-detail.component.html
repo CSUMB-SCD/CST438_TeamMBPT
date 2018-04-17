@@ -2,51 +2,77 @@
   <title>Discussion Detail Page</title>
 </head>
 <body>
-<mat-card>
-  <mat-card-header>
-    <!--This is where the avatar of the user will go-->
-    <div mat-card-avatar>
-      <mat-icon>record_voice_over</mat-icon>
+  <mat-card>
+    <mat-card-header>
+      <!--This is where the avatar of the user will go-->
+      <div mat-card-avatar>
+        <mat-icon>record_voice_over</mat-icon>
+      </div>
+
+      <mat-card-title>
+        <h3>This is where discussion.title will go</h3>
+      </mat-card-title>
+
+      <mat-card-subtitle>
+        This is where discussion.publisher will go
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-divider [inset]="true"></mat-divider>
+
+    <mat-card-content>
+      <br>
+      <p>
+        This is where discussion.content will go
+      </p>
+    </mat-card-content>
+
+    <mat-divider [inset]="true"></mat-divider>
+
+    <mat-card-actions>
+      <div mat-line>
+        <button mat-raised-button>Reply</button>
+
+        <button mat-icon-button>
+          <mat-icon>thumb_up</mat-icon>
+        </button>
+
+        0 <!-- This is where discussion.upvotes will go -->
+
+        <button mat-icon-button>
+          <mat-icon>thumb_down</mat-icon>
+        </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+  <br>
+  <h2>Comments</h2>
+  <mat-divider></mat-divider>
+  <mat-card *ngFor="let comment of comments.comments; let i = index">
+    <mat-card-header>
+      <!--This is where the avatar of the user will go-->
+      <div mat-card-avatar>
+        <mat-icon>record_voice_over</mat-icon>
+      </div>
+
+      <mat-card-title>
+        <h6>{{comment.publisher}}</h6>
+      </mat-card-title>
+
+      <mat-card-subtitle>
+        {{comment.created}}
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-divider [inset]="true"></mat-divider>
+
+    <div *ngIf="comment.parent_comment == null">
+      {{comment.content}}
     </div>
-
-    <mat-card-title>
-      <h3>This is where discussion.title will go</h3>
-    </mat-card-title>
-
-    <mat-card-subtitle>
-      This is where discussion.publisher will go
-    </mat-card-subtitle>
-  </mat-card-header>
-
-  <mat-divider [inset]="true"></mat-divider>
-
-  <mat-card-content>
-    <br>
-    <p>
-      This is where discussion.content will go
-    </p>
-  </mat-card-content>
-
-  <mat-divider [inset]="true"></mat-divider>
-
-  <mat-card-actions>
-    <div mat-line>
-    <button mat-button>
-      <mat-icon>thumb_up</mat-icon>
-    </button>
-
-    0 <!-- This is where discussion.upvotes will go -->
-
-    <button mat-button>
-      <mat-icon>thumb_down</mat-icon>
-    </button>
-
-      Views: 0 <!-- This is where discussion.views will go -->
+    <div *ngIf="comment.parent_comment !== null">
+      <b>{{comment.parent_comment.publisher}} posted...</b>
+      <blockquote>{{comment.parent_comment.content}}</blockquote>
+      {{comment.content}}
     </div>
-  </mat-card-actions>
-</mat-card>
-<br>
-<mat-card>
-  This is where the comments can go
-</mat-card>
+  </mat-card>
 </body>
