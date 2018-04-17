@@ -33,4 +33,6 @@ export interface Profile {
   email: string;
   title: string;
   content: string;
+  lang: string;
+  lang_icon: string;
 }
