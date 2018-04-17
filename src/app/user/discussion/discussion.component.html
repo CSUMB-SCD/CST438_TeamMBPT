@@ -14,12 +14,12 @@
           {{card.title}}
         </mat-panel-title>
         <mat-panel-description>
-          <mat-icon>account_circle</mat-icon>
-          {{card.publisher}}
+          by {{card.publisher}} on {{card.created}}
         </mat-panel-description>
-        <div class="card-info">{{card.upvotes}} votes {{card.view_count}} views</div>
+        <mat-icon class="card-avatar">account_circle</mat-icon>
       </mat-expansion-panel-header>
       <mat-action-row>
+        <div class="card-info">{{card.upvotes}} votes {{card.view_count}} views</div>
         <a routerLink="/discussion/detail"><button mat-raised-button color="primary">Detail</button></a>
       </mat-action-row>
       </mat-expansion-panel>
