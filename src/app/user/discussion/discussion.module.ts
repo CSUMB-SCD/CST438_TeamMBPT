@@ -10,7 +10,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { DiscussionNewpostComponent } from './components/discussion-newpost/discussion-newpost.component';
 import {DiscussionDetailComponent} from './components/discussion-detail/discussion-detail.component';
 import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
-import {MatInputModule} from '@angular/material';
+import {MatCardModule, MatDividerModule, MatIconModule, MatInputModule, MatListModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 import {DiscussionDialogComponent} from './components/discussion-dialog/discussion-dialog.component';
 
@@ -20,7 +20,11 @@ import {DiscussionDialogComponent} from './components/discussion-dialog/discussi
     CommonModule,
     MatExpansionModule,
     MatButtonModule,
+    MatCardModule,
+    MatListModule,
     MatInputModule,
+    MatDividerModule,
+    MatIconModule,
     CdkTableModule,
     FormsModule,
     HttpClientModule,

@@ -1,17 +1,89 @@
-<head>
-  <title>Detail</title>
+<head *ngIf="discussion !== null">
+  <title>{{discussion.title}}</title>
 </head>
-<div *ngIf="discussion !== null">
-  <h1>
-    {{ discussion.title }}
-  </h1>
-  <div [innerHTML]="discussion.content">
-  </div>
-  <div>
-    {{ discussion.created | date: 'MM/dd/yyyy' }}
-  </div>
-  <div>
-    {{ discussion.comments }}
-  </div>
-</div>
+<body *ngIf="discussion !== null">
+  <h1>{{discussion.title}}</h1>
+  <mat-card> <!-- Start of card for main post -->
+    <mat-card-header>
+      <!--This is where the avatar of the user will go-->
+      <div mat-card-avatar>
+        <mat-icon>account_circle</mat-icon>
+      </div>
 
+      <mat-card-title>
+        <h6>{{discussion.publisher}}</h6>
+      </mat-card-title>
+
+      <mat-card-subtitle>
+        {{discussion.created | date: 'MM/dd/yyyy'}}
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-divider [inset]="true"></mat-divider>
+
+    <mat-card-content>
+      <br>
+      <p>
+        {{discussion.content}}
+      </p>
+    </mat-card-content>
+
+    <mat-divider [inset]="true"></mat-divider>
+
+    <mat-card-actions>
+      <div mat-line>
+        <button mat-icon-button>
+          <mat-icon>thumb_up</mat-icon>
+        </button>
+        {{discussion.upvotes}}
+        <button mat-icon-button>
+          <mat-icon>thumb_down</mat-icon>
+        </button>
+
+      </div>
+    </mat-card-actions>
+  </mat-card>
+
+  <br>
+
+  <h2>Comments</h2>
+
+  <mat-divider></mat-divider>
+
+  <form class="detail-form">
+    <mat-form-field class="full-width">
+      <textarea matInput placeholder="Leave a comment"></textarea>
+    </mat-form-field>
+    <button mat-raised-button class="detail-reply">Reply</button>
+  </form>
+
+  <mat-card *ngFor="let comment of discussion.comments; let i = index"> <!-- Start of card for comments -->
+    <mat-card-header>
+      <!--This is where the avatar of the user will go-->
+      <div mat-card-avatar>
+        <mat-icon>account_circle</mat-icon>
+      </div>
+
+      <mat-card-title>
+        <h6>{{comment.publisher}}</h6>
+      </mat-card-title>
+
+      <mat-card-subtitle>
+        {{comment.created | date: 'MM/dd/yyyy'}}
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-divider [inset]="true"></mat-divider>
+
+    <mat-card-content>
+      <div *ngIf="comment.parent_comment == null">
+        {{comment.content}}
+      </div>
+      <div *ngIf="comment.parent_comment !== null">
+        <b>{{comment.parent_comment.publisher}} posted...</b>
+        <blockquote>{{comment.parent_comment.content}}</blockquote>
+        {{comment.content}}
+      </div>
+    </mat-card-content>
+  </mat-card>
+</body>
