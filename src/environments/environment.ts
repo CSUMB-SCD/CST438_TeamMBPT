@@ -8,9 +8,9 @@ export const environment = {
   auth_token_url: '/auth/mbpt/token',
   auth_revoke_token_url: '/auth/mbpt/revoke',
   auth_google_url: '/auth/google/url',
-  announcement_url: 'http://localhost:8000/announcement/',
-  challenge_url: 'http://localhost:8000/challenge/',
-  discussion_url: 'http://localhost:8000/discussion/',
-  profile_url: 'http://localhost:8000/profile/',
-  user_url: 'http://localhost:8000/user/'
+  announcement_url: 'https://mbpt-api.herokuapp.com/announcement/',
+  challenge_url: 'https://mbpt-api.herokuapp.com/challenge/',
+  discussion_url: 'https://mbpt-api.herokuapp.com/discussion/',
+  profile_url: 'https://mbpt-api.herokuapp.com/profile/',
+  user_url: 'https://mbpt-api.herokuapp.com/user/'
 };
