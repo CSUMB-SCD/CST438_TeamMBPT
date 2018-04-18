@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthGuard} from '../../../services/auth-guard.service';
-import {Profile, ProfileService} from '../../services/profile.service';
+import {Language, Profile, ProfileService} from '../../services/profile.service';
 import {FormControl} from '@angular/forms';
 
 @Component({
@@ -12,11 +12,11 @@ import {FormControl} from '@angular/forms';
 export class ProfileComponent implements OnInit {
 
   public profile: Profile;
+  public languages: Language[];
 
   firstName = new FormControl();
   lastName = new FormControl();
   displayName = new FormControl();
-  language = new FormControl();
   country = new FormControl();
 
 
@@ -24,11 +24,15 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.profile = null;
+    this.languages = [];
     this.profileService.query(AuthGuard.getAccessToken()).subscribe(object => {
       this.profile = object as Profile;
       this.firstName.setValue(this.profile.first_name);
       this.lastName.setValue(this.profile.last_name);
       this.displayName.setValue(this.profile.display_name);
+    });
+    this.profileService.getLanguages(AuthGuard.getAccessToken()).subscribe(object => {
+      this.languages = object as Language[];
     });
   }
 

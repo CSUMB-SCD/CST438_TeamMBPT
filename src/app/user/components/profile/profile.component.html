@@ -1,7 +1,5 @@
 <div *ngIf="profile !== null">
-  <div>
-    Here is a user icon (changable)
-  </div>
+  <mat-icon aria-label="This is suppose to be the user icon">account_circle</mat-icon>
   <div>
     <mat-form-field [hideRequiredMarker]="true">
       <input matInput placeholder="Display Name" [formControl]="displayName" required/>
@@ -20,10 +18,22 @@
   </div>
   <div>
     <mat-form-field>
-      <mat-select placeholder="Deafault Language">
-        <mat-option value="option">Option</mat-option>
+      <mat-select placeholder="Default Language">
+        <mat-option *ngFor="let language of languages" [value]="language.name">
+          <mat-icon aria-label="This is suppose to be the language icon">code</mat-icon>
+          {{ language.name }}
+        </mat-option>
       </mat-select>
     </mat-form-field>
+    <!--<mat-form-field>-->
+      <!--<mat-select placeholder="Default Language" *ngIf="languages !== null"-->
+                  <!--[(ngModel)]="selected" [formControl]="languageSelect">-->
+        <!--<mat-option *ngFor="let language of languages" [value]="language.name">-->
+          <!--{{ language.name }}-->
+          <!--<mat-icon aria-label="This is suppose to be the language icon">code</mat-icon>-->
+        <!--</mat-option>-->
+      <!--</mat-select>-->
+    <!--</mat-form-field>-->
   </div>
   <button mat-raised-button (click)="submit()">Submit</button>
 </div>

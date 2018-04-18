@@ -7,5 +7,6 @@ export const environment = {
   challenge_url: 'https://mbpt-api.herokuapp.com/challenge/',
   discussion_url: 'https://mbpt-api.herokuapp.com/discussion/',
   profile_url: 'https://mbpt-api.herokuapp.com/profile/',
-  user_url: 'https://mbpt-api.herokuapp.com/user/'
+  user_url: 'https://mbpt-api.herokuapp.com/user/',
+  language_url: 'https://mbpt-api.herokuapp.com/lang/',
 };

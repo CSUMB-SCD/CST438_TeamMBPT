@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthGuard} from '../../services/auth-guard.service';
 import {environment} from '../../../environments/environment';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class ProfileService {
@@ -24,6 +25,21 @@ export class ProfileService {
       return this.auth.redirectLogout();
     });
   }
+
+  getLanguages(token: string): Observable<Language[]> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+    return this.http.get<Language[]>(environment.language_url, {
+      headers: headers
+    });
+  }
+}
+
+export interface Language {
+  name: string;
+  icon: string;
 }
 
 export interface Profile {

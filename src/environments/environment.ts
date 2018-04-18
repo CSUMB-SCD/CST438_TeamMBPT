@@ -12,5 +12,6 @@ export const environment = {
   challenge_url: 'http://localhost:8000/challenge/',
   discussion_url: 'http://localhost:8000/discussion/',
   profile_url: 'http://localhost:8000/profile/',
-  user_url: 'http://localhost:8000/user/'
+  user_url: 'http://localhost:8000/user/',
+  language_url: 'http://localhost:8000/lang/',
 };
