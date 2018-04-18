@@ -21,7 +21,6 @@ export class DiscussionDetailComponent implements OnInit {
     this.route.params.forEach(param => {
       this.service.query_id(AuthGuard.getAccessToken(), param.id).subscribe(object => {
         this.discussion = object;
-        console.log(this.discussion);
       });
     });
   }
