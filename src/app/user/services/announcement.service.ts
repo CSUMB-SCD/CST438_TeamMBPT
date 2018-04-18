@@ -18,7 +18,7 @@ export class AnnouncementService {
     return this.http.get(environment.announcement_url, {
       headers: headers
     }).catch(() => {
-      return this.auth.logout();
+      return this.auth.redirectLogout();
     });
   }
 }

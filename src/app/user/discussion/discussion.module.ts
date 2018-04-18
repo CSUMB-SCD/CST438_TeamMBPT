@@ -7,11 +7,12 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 
 import {MatExpansionModule} from '@angular/material/expansion';
-import {MatButtonModule} from '@angular/material/button';
 import { DiscussionNewpostComponent } from './components/discussion-newpost/discussion-newpost.component';
 import {DiscussionDetailComponent} from './components/discussion-detail/discussion-detail.component';
 import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
-import {MatInputModule} from '@angular/material';
+import {MatCardModule, MatDividerModule, MatIconModule, MatInputModule, MatListModule} from '@angular/material';
+import {MatButtonModule} from '@angular/material/button';
+import {DiscussionDialogComponent} from './components/discussion-dialog/discussion-dialog.component';
 
 
 @NgModule({
@@ -19,7 +20,11 @@ import {MatInputModule} from '@angular/material';
     CommonModule,
     MatExpansionModule,
     MatButtonModule,
+    MatCardModule,
+    MatListModule,
     MatInputModule,
+    MatDividerModule,
+    MatIconModule,
     CdkTableModule,
     FormsModule,
     HttpClientModule,
@@ -27,6 +32,15 @@ import {MatInputModule} from '@angular/material';
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
   ],
-  declarations: [DiscussionComponent, DiscussionNewpostComponent, DiscussionDetailComponent]
+  declarations: [
+    DiscussionComponent,
+    DiscussionDialogComponent,
+    DiscussionNewpostComponent,
+    DiscussionDetailComponent
+  ],
+  entryComponents: [
+    DiscussionComponent,
+    DiscussionDialogComponent
+  ]
 })
 export class DiscussionModule { }

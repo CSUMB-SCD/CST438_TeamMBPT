@@ -1,11 +1,15 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
 <div *ngIf="challenge !== null">
-  <h1>
-    {{challenge.title}}
+  <h1 class="title">
+    <b>{{challenge.title}}</b>
   </h1>
-  <p id = "contentDesc">
-    placeHolder
-    <!--{{ challenge.content}}--><!--This-->
-  </p>
+  <br>
+  <div [innerHTML]="challenge.content"></div>
+  <br>
+  <br>
   <div>
     {{ challenge.publisher }}
   </div>
@@ -13,3 +17,4 @@
     {{ challenge.created | date: 'MM/dd/yyyy' }}
   </div>
 </div>
+</html>

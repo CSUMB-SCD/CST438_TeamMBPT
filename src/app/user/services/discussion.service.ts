@@ -2,6 +2,18 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {AuthGuard} from '../../services/auth-guard.service';
+import {Observable} from 'rxjs/Observable';
+
+export interface Discussion {
+  id: number;
+  title: string;
+  created: string;
+  view_count: number;
+  upvotes: number;
+  publisher: string;
+  comments: any;
+  content: string;
+}
 
 @Injectable()
 export class DiscussionService {
@@ -17,7 +29,7 @@ export class DiscussionService {
     return this.http.get(environment.discussion_url, {
       headers: headers
     }).catch(() => {
-      return this.auth.logout();
+      return this.auth.redirectLogout();
     });
   }
 
@@ -29,7 +41,20 @@ export class DiscussionService {
     return this.http.post(environment.discussion_url, body,  {
       headers: headers
     }).catch(() => {
-      return this.auth.logout();
+      return this.auth.redirectLogout();
+    });
+  }
+
+  query_id(token: string, id: string): Observable<Discussion> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+    return this.http.get<Discussion>(environment.discussion_url + id, {
+      headers: headers
+    }).catch(() => {
+      this.auth.redirectLogout();
+      return Observable.of(null);
     });
   }
 }

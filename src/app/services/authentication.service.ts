@@ -7,6 +7,13 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {environment} from '../../environments/environment';
 
+export interface User {
+  first_name: string;
+  last_name: string;
+  username: string;
+  email: string;
+}
+
 @Injectable()
 export class AuthenticationService {
 
@@ -23,7 +30,7 @@ export class AuthenticationService {
       headers: headers
     }).map(object => {
       if (object['access_token'] !== undefined) {
-        this.authGuard.login(object['access_token']);
+        this.authGuard.redirectLogin(object['access_token']);
         return true;
       }
       return false;
@@ -32,9 +39,45 @@ export class AuthenticationService {
     });
   }
 
-  googleAuth() {
-    this.http.get('/auth/google/url').subscribe(object => {
+  redirectGoogleAuth() {
+    this.http.get(environment.auth_google_url).subscribe(object => {
       window.location.href = object['url'];
+    });
+  }
+
+  getUser(token: string): Observable<User> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json' ,
+      'Authorization': 'Bearer ' + token
+    });
+    return this.http.get<User>(environment.user_url, {
+      headers: headers
+    });
+  }
+
+  register(data: any, errorHandler) {
+    const token = AuthGuard.getAccessToken();
+    let headers: HttpHeaders;
+    if (token !== undefined && token !== null && token !== '') {
+      headers = new HttpHeaders({
+        'Content-Type': 'application/json' ,
+        'Authorization': 'Bearer ' + token
+      });
+    } else {
+      headers = new HttpHeaders({
+        'Content-Type': 'application/json'
+      });
+    }
+    return this.http.post<User>(environment.user_url, JSON.stringify(data), {
+      headers: headers
+    }).catch(err => {
+      return errorHandler(err);
+    }).subscribe(user => {
+      if (token !== undefined && token !== null && token !== '') {
+        return this.authGuard.redirectLogin(token);
+      } else {
+        return this.getToken(data.username, data.password).subscribe();
+      }
     });
   }
 }

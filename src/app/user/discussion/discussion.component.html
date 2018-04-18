@@ -7,16 +7,21 @@
   <a routerLink="/discussion/newpost"><button mat-raised-button>New Post</button></a>
   <br><br>
   <mat-accordion>
-    <mat-expansion-panel *ngFor="let card of discussionData;">
+    <mat-expansion-panel *ngFor="let discussion of discussions;">
+      {{discussion.content}}
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{card.title}}
+          {{discussion.title}}
         </mat-panel-title>
         <mat-panel-description>
-          {{card.publisher}}
+          by {{discussion.publisher}} on {{discussion.created | date: 'MM/dd/yyyy'}}
         </mat-panel-description>
+        <mat-icon class="card-avatar">account_circle</mat-icon>
       </mat-expansion-panel-header>
-      {{card.content}}
-    </mat-expansion-panel>
+      <mat-action-row>
+        <div class="card-info">{{discussion.upvotes}} votes {{discussion.view_count}} views</div>
+        <a routerLink="/discussion/{{ discussion.id }}"><button mat-raised-button color="primary">Detail</button></a>
+      </mat-action-row>
+      </mat-expansion-panel>
   </mat-accordion>
 </body>

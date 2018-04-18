@@ -15,7 +15,7 @@ export class AuthCallbackComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.auth.login(params['access_token']);
+      this.auth.redirectLogin(params['access_token']);
     });
   }
 }

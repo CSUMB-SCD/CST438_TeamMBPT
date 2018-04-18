@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { UserComponent } from './user.component';
 import { UserRoutingModule } from './user-routing.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { AnnouncementEditDialogComponent } from './announcement/components/announcement-edit-dialog/announcement-edit-dialog.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import {HttpClientModule} from '@angular/common/http';
 import {CdkTableModule} from '@angular/cdk/table';
@@ -42,7 +41,7 @@ import {
   MatToolbarModule,
   MatTooltipModule,
 } from '@angular/material';
-import { SettingComponent } from './components/setting/setting.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   imports: [
@@ -86,6 +85,6 @@ import { SettingComponent } from './components/setting/setting.component';
     HttpClientModule,
     UserRoutingModule
   ],
-  declarations: [UserComponent, LogoutComponent, NavbarComponent, SettingComponent],
+  declarations: [UserComponent, LogoutComponent, NavbarComponent, ProfileComponent]
 })
 export class UserModule { }

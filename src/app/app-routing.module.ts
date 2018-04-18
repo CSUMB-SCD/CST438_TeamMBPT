@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {AuthCallbackComponent} from './components/auth-callback/auth-callback.component';
+import {RegisterComponent} from './components/register/register.component';
+import {WelcomeComponent} from './components/welcome/welcome.component';
 
 const routes: Routes = [
   {
@@ -9,11 +11,15 @@ const routes: Routes = [
   },
   {
     path: 'welcome',
-    loadChildren: './guest/guest.module#GuestModule'
+    component: WelcomeComponent
   },
   {
     path: 'auth/callback',
     component: AuthCallbackComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   }
 ];
 

@@ -1,0 +1,14 @@
+blockquote {
+  border-style: solid;
+  padding: 10px;
+}
+
+.detail-reply {
+  margin-left: 90%;
+  margin-bottom: 10px;
+}
+
+.full-width {
+  width: 100%;
+}
+
