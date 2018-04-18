@@ -20,8 +20,7 @@ export class ProfileComponent implements OnInit {
   country = new FormControl();
 
 
-  constructor(private profileService: ProfileService) {
-  }
+  constructor(private profileService: ProfileService) { }
 
   ngOnInit() {
     this.profile = null;
