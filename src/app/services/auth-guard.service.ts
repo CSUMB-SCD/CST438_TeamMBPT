@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
 import {CanActivate, Router} from '@angular/router';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {environment} from '../../environments/environment';
 
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private http: HttpClient
+    ) { }
 
   static getAccessToken(): string {
     return localStorage.getItem('MBPT_ACCESS_TOKEN');
@@ -24,7 +29,17 @@ export class AuthGuard implements CanActivate {
   }
 
   redirectLogout() {
-    localStorage.removeItem('MBPT_ACCESS_TOKEN');
+    const token = AuthGuard.getAccessToken();
+    if (token !== undefined && token !== null && token !== '') {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'access_token': token
+      });
+      this.http.post(environment.auth_revoke_token_url, '', {
+        headers: headers
+      }).subscribe();
+      localStorage.removeItem('MBPT_ACCESS_TOKEN');
+    }
     return this.router.navigate(['/welcome']);
   }
 

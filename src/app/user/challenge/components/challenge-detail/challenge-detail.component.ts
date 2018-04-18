@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Challenge, ChallengeService} from '../../../services/challenge.service';
 import {AuthGuard} from '../../../../services/auth-guard.service';
@@ -7,7 +7,8 @@ import {AuthGuard} from '../../../../services/auth-guard.service';
   selector: 'app-challenge-detail',
   templateUrl: './challenge-detail.component.html',
   styleUrls: ['./challenge-detail.component.css'],
-  providers: [ChallengeService]
+  providers: [ChallengeService],
+  encapsulation: ViewEncapsulation.None
 })
 export class ChallengeDetailComponent implements OnInit {
   challenge: Challenge;
@@ -24,5 +25,4 @@ export class ChallengeDetailComponent implements OnInit {
       });
     });
   }
-
 }

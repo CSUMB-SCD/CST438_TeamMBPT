@@ -55,7 +55,7 @@ export class AuthenticationService {
     });
   }
 
-  register(data: any) {
+  register(data: any, errorHandler) {
     const token = AuthGuard.getAccessToken();
     let headers: HttpHeaders;
     if (token !== undefined && token !== null && token !== '') {
@@ -70,6 +70,8 @@ export class AuthenticationService {
     }
     return this.http.post<User>(environment.user_url, JSON.stringify(data), {
       headers: headers
+    }).catch(err => {
+      return errorHandler(err);
     }).subscribe(user => {
       if (token !== undefined && token !== null && token !== '') {
         return this.authGuard.redirectLogin(token);

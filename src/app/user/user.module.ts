@@ -41,9 +41,7 @@ import {
   MatToolbarModule,
   MatTooltipModule,
 } from '@angular/material';
-import { SettingComponent } from './components/setting/setting.component';
-import {DiscussionDialogComponent} from './discussion/components/discussion-dialog/discussion-dialog.component';
-import {DiscussionComponent} from './discussion/discussion.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   imports: [
@@ -87,6 +85,6 @@ import {DiscussionComponent} from './discussion/discussion.component';
     HttpClientModule,
     UserRoutingModule
   ],
-  declarations: [UserComponent, LogoutComponent, NavbarComponent, SettingComponent]
+  declarations: [UserComponent, LogoutComponent, NavbarComponent, ProfileComponent]
 })
 export class UserModule { }

@@ -1,10 +1,11 @@
+<!DOCTYPE html>
+<html>
+
 <div *ngIf="challenge !== null">
   <h1>
     {{challenge.title}}
   </h1>
-  <div>
-    {{ challenge.content }}
-  </div>
+  <div [innerHTML]="challenge.content"></div>
   <div>
     {{ challenge.publisher }}
   </div>
@@ -12,3 +13,4 @@
     {{ challenge.created | date: 'MM/dd/yyyy' }}
   </div>
 </div>
+</html>
