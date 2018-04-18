@@ -35,4 +35,5 @@ export interface Profile {
   content: string;
   lang: string;
   lang_icon: string;
+  display_name: string;
 }

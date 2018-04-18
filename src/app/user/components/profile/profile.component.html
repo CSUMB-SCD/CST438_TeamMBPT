@@ -1,16 +1,29 @@
 <div *ngIf="profile !== null">
-  <mat-card class="profile-card">
-    <mat-card-header>
-      <div mat-card-avatar class="profile-card-image"></div>
-      <mat-card-title>{{profile.first_name}} {{profile.last_name}}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>
-        {{ profile.username }}: {{ profile.email }}
-      </p>
-      <p>
-        Language: {{ profile.lang }} {{ profile.lang_icon }}
-      </p>
-    </mat-card-content>
-  </mat-card>
+  <div>
+    Here is a user icon (changable)
+  </div>
+  <div>
+    <mat-form-field [hideRequiredMarker]="true">
+      <input matInput placeholder="Display Name" [formControl]="displayName" required/>
+      <mat-error *ngIf="displayName !== undefined && displayName.invalid">{{getDisplayNameErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field [hideRequiredMarker]="true">
+      <input matInput placeholder="First Name" [formControl]="firstName" required/>
+      <mat-error *ngIf="firstName !== undefined && firstName.invalid">{{getFirstNameErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field [hideRequiredMarker]="true">
+      <input matInput placeholder="Last Name" [formControl]="lastName" required/>
+      <mat-error *ngIf="lastName !== undefined && lastName.invalid">{{getLastNameErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-select placeholder="Deafault Language">
+        <mat-option value="option">Option</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <button mat-raised-button (click)="submit()">Submit</button>
 </div>
