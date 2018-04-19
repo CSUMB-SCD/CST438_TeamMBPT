@@ -8,6 +8,15 @@
   <br>
   <div [innerHTML]="challenge.content"></div>
   <br>
+
+  <!-- File upload -->
+  <div class="form-group">
+    <label for="file">Upload submission here</label>
+    <br>
+    <input type="file"
+           id="file"
+           (change)="handleFileInput($event.target.files)">
+  </div>
   <div>
     {{ challenge.publisher }}
   </div>
