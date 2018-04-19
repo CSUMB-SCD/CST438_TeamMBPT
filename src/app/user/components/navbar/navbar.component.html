@@ -1,16 +1,18 @@
-<mat-toolbar color="secondary" role="navigation">
-  <mat-toolbar-row>
-    <a mat-button [routerLink]="['/dashboard']">MBPT</a>
+<mat-toolbar color="primary" role="navigation">
+  <mat-toolbar-row class="top-row">
+    <a [routerLink]="['/dashboard']"><img  src="../../../../assets/csumblogo.jpg"></a>
+    <a mat-button [routerLink]="['/dashboard']">Monterey Bay Programming Team</a>
+    <span class="spacer"></span>
+    <a mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon aria-label="This is suppose to be the user icon">account_circle</mat-icon>
+    </a>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row class="bottom-row">
     <a mat-button [routerLink]="['/challenge']">Challenges</a>
     <a mat-button [routerLink]="['/announcement']">Announcements</a>
     <a mat-button [routerLink]="['/discussion']">Discussion</a>
     <a mat-button [routerLink]="['/scoreboard']">Scoreboard</a>
-    <span class="spacer"></span>
-    <a mat-icon-button color="primary">
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon aria-label="This is suppose to be the user icon">account_circle</mat-icon>
-      </button>
-    </a>
     <div>
       <mat-menu #menu="matMenu">
         <a mat-menu-item routerLink="/profile">
