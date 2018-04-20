@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {AuthGuard} from '../../../../services/auth-guard.service';
 import {Discussion, DiscussionService} from '../../../services/discussion.service';
 import {ActivatedRoute} from '@angular/router';
@@ -7,7 +7,8 @@ import {ActivatedRoute} from '@angular/router';
   selector: 'app-discussion-detail',
   templateUrl: './discussion-detail.component.html',
   styleUrls: ['./discussion-detail.component.css'],
-  providers: [ DiscussionService ]
+  providers: [ DiscussionService ],
+  encapsulation: ViewEncapsulation.None
 })
 export class DiscussionDetailComponent implements OnInit {
   discussion: Discussion;
