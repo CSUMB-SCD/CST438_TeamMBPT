@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
-import {MatCardModule} from '@angular/material';
+import {MatCardModule, MatIconModule, MatListModule} from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule,
+    MatListModule,
   ],
   declarations: [
     DashboardComponent
