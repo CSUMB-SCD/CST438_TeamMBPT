@@ -29,7 +29,6 @@ import {LoginComponent} from './components/login/login.component';
 import {LoginDialogComponent} from './components/login-dialog/login-dialog.component';
 import {RegisterComponent} from './components/register/register.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
-import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +39,6 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     LoginDialogComponent,
     RegisterComponent,
     WelcomeComponent,
-    FileUploadComponent,
   ],
   imports: [
     BrowserModule,

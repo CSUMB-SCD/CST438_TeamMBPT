@@ -20,7 +20,7 @@ export class ProfileService {
        headers: headers
     }).catch(err => {
       if (err.status === 423) {
-        return this.auth.redirectRegister(err.error);
+        console.log('should not happen anymore');
       }
       return this.auth.redirectLogout();
     });

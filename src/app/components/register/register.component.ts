@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {AuthenticationService} from '../../services/authentication.service';
-import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {AuthGuard} from '../../services/auth-guard.service';
 
@@ -28,34 +27,13 @@ export class RegisterComponent implements OnInit {
       Validators.required
   ]);
   hidePassword = true;
-  emailReadonly = false;
 
   constructor(
     private authGuard: AuthGuard,
     private auth: AuthenticationService,
-    private route: ActivatedRoute
   ) { }
 
-  ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      if (params.hasOwnProperty('params')) {
-        params = params['params'];
-      }
-      if (params.hasOwnProperty('email')) {
-        this.emailReadonly = true;
-        this.email.setValue(params['email']);
-      }
-      if (params.hasOwnProperty('username')) {
-        this.username.setValue(params['username']);
-      }
-      if (params.hasOwnProperty('first_name')) {
-        this.firstName.setValue(params['first_name']);
-      }
-      if (params.hasOwnProperty('last_name')) {
-        this.lastName.setValue(params['last_name']);
-      }
-    });
-  }
+  ngOnInit() { }
 
   getUsernameErrorMessage() {
     return this.username.hasError('usernameExist') ? 'This username has been registered.' :

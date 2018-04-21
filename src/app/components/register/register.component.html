@@ -14,7 +14,7 @@
     <mat-error *ngIf="username !== undefined && username.invalid">{{getUsernameErrorMessage()}}</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <input matInput type="email" placeholder="Email" [formControl]="email" [readonly]="emailReadonly"/>
+    <input matInput type="email" placeholder="Email" [formControl]="email">
     <mat-error *ngIf="email !== undefined && email.invalid">{{getEmailErrorMessage()}}</mat-error>
   </mat-form-field>
   <mat-form-field>

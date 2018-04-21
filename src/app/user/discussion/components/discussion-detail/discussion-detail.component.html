@@ -23,9 +23,7 @@
 
     <mat-card-content>
       <br>
-      <p>
-        {{discussion.content}}
-      </p>
+      <div [innerHTML]="discussion.content"></div>
     </mat-card-content>
 
     <mat-divider [inset]="true"></mat-divider>
@@ -36,10 +34,6 @@
           <mat-icon>thumb_up</mat-icon>
         </button>
         {{discussion.upvotes}}
-        <button mat-icon-button>
-          <mat-icon>thumb_down</mat-icon>
-        </button>
-
       </div>
     </mat-card-actions>
   </mat-card>
