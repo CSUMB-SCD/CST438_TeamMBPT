@@ -1,7 +1,11 @@
 <div *ngIf="profile !== null">
   <mat-card class="profile-card">
     <mat-card-header>
-      <div mat-card-avatar class="profile-card-image"></div>
+      <div class="user-icon">
+        <mat-icon *ngIf="profile.image === ''">account_circle</mat-icon>
+        <div mat-card-avatar class="profile-card-image" *ngIf="profile.image !== ''"
+             [style.backgroundImage]="'url('+ profile.image + ')'"></div>
+      </div>
       <mat-card-title>{{profile.first_name}} {{profile.last_name}}</mat-card-title>
     </mat-card-header>
     <mat-card-content>

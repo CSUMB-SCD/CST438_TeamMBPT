@@ -3,6 +3,7 @@
 }
 
 .profile-card-image {
-  background-image: url('http://www.wishalley.com/pub/media/netbaseteam/Blog/customer_avatar/default/profile_1.png');
   background-size: cover;
+  width: 50px;
+  height: 50px;
 }
