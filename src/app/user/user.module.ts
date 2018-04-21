@@ -42,6 +42,7 @@ import {
   MatTooltipModule,
 } from '@angular/material';
 import { ProfileComponent } from './components/profile/profile.component';
+import {SidenavService} from './services/sidenav';
 
 @NgModule({
   imports: [
@@ -85,6 +86,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     HttpClientModule,
     UserRoutingModule
   ],
-  declarations: [UserComponent, LogoutComponent, NavbarComponent, ProfileComponent]
+  declarations: [UserComponent, LogoutComponent, NavbarComponent, ProfileComponent],
+  providers: [SidenavService]
 })
 export class UserModule { }

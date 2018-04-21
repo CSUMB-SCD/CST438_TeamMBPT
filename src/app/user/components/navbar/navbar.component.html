@@ -7,16 +7,10 @@
       <mat-icon aria-label="This is suppose to be the user icon">account_circle</mat-icon>
     </a>
   </mat-toolbar-row>
-
   <mat-toolbar-row class="bottom-row">
-    <button mat-icon-button (click)="snav.toggle()">
+    <button mat-icon-button (click)="toggleNav()">
       <mat-icon>menu</mat-icon>
     </button>
-    <mat-sidenav #snav>
-      <mat-nav-list>
-        <a>123</a>
-      </mat-nav-list>
-    </mat-sidenav>
     <a mat-button [routerLink]="['/challenge']">Challenges</a>
     <a mat-button [routerLink]="['/announcement']">Announcements</a>
     <a mat-button [routerLink]="['/discussion']">Discussion</a>
