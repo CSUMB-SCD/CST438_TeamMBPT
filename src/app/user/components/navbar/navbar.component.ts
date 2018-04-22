@@ -13,7 +13,6 @@ export class NavbarComponent {
   ) { }
 
   toggleNav() {
-    console.log('123');
     this.sidenav.toggle();
   }
 }

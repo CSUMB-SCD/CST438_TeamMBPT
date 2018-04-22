@@ -1,9 +1,49 @@
 .profile-card {
-  max-width: 400px;
+
 }
 
-.profile-card-image {
+.user p {
+  margin-top: 15px;
+}
+
+.user-image {
+  margin: auto;
   background-size: cover;
   width: 50px;
   height: 50px;
+}
+
+.user-icon {
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  font-size: 50px;
+}
+
+.display-name {
+  color: gray;
+}
+
+.heat-map {
+  margin-top: 20px;
+  background-color: gray;
+  height: 100px;
+}
+
+.todo-progress {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+.todo {
+  height: 150px;
+}
+
+.activity {
+  height: 150px;
+}
+
+.dashboard-container {
+  margin-bottom: 50px;
 }

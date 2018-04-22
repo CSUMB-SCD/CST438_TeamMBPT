@@ -1,20 +1,60 @@
-<div *ngIf="profile !== null">
-  <mat-card class="profile-card">
-    <mat-card-header>
-      <div class="user-icon">
-        <mat-icon *ngIf="profile.image === ''">account_circle</mat-icon>
-        <div mat-card-avatar class="profile-card-image" *ngIf="profile.image !== ''"
-             [style.backgroundImage]="'url('+ profile.image + ')'"></div>
+<div *ngIf="profile !== null" class="dashboard-container">
+  <mat-card>
+    <div class="profile-card row">
+      <div class="col-md-2">
+        <div class="user">
+          <mat-icon *ngIf="profile.image === ''" class="user-icon">account_circle</mat-icon>
+          <div mat-card-avatar class="user-image" *ngIf="profile.image !== ''"
+               [style.backgroundImage]="'url('+ profile.image + ')'"></div>
+          <h4>{{profile.first_name}} {{profile.last_name}}</h4>
+        <p class="display-name">{{profile.display_name}}</p>
+        </div>
       </div>
-      <mat-card-title>{{profile.first_name}} {{profile.last_name}}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>
-        {{ profile.username }}: {{ profile.email }}
-      </p>
-      <p>
-        Language: {{ profile.lang }} {{ profile.lang_icon }}
-      </p>
-    </mat-card-content>
+      <div class="col-md-3">
+        <h4>Ranking</h4>
+        <h1>N/A</h1>
+      </div>
+      <div class="col-md-3">
+        <h4>Tier</h4>
+        <h1>N/A</h1>
+      </div>
+      <div class="col-md-4">
+        <p>Default Language: {{ profile.lang }}</p>
+        <p>Enrollment Data: Unknown</p>
+        <p>Country: Unknown</p>
+      </div>
+    </div>
   </mat-card>
+  <hr>
+  <mat-card>
+    <div class="row">
+      <div class="col-md-3 todo">
+        <h4>To Do List Progress</h4>
+        <mat-progress-spinner class="todo-progress"
+          [color]="color"
+          [mode]="mode"
+          [value]="value">
+        </mat-progress-spinner>
+      </div>
+      <div class="col-md-9 activity">
+        <h4>Activity</h4>
+        <div class="heat-map">
+          Activity Heat Map
+        </div>
+      </div>
+    </div>
+  </mat-card>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <mat-card>
+        <mat-card-title>Recent Activity</mat-card-title>
+      </mat-card>
+    </div>
+    <div class="col-md-6">
+      <mat-card>
+        <mat-card-title>Recent Discussion</mat-card-title>
+      </mat-card>
+    </div>
+  </div>
 </div>

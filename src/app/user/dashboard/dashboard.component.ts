@@ -10,6 +10,9 @@ import {Profile, ProfileService} from '../services/profile.service';
 })
 export class DashboardComponent implements OnInit {
   public profile: Profile;
+  color = 'primary';
+  mode = 'determinate';
+  value = 50;
 
   constructor(
     private profileService: ProfileService,
