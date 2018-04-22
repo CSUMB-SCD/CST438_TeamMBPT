@@ -42,8 +42,8 @@ import {
   MatTooltipModule,
 } from '@angular/material';
 import { ProfileComponent } from './components/profile/profile.component';
-import {SidenavService} from './services/sidenav';
 import { SubmissionListComponent } from './components/submission-list/submission-list.component';
+import {SidenavService} from './services/sidenav.service';
 
 @NgModule({
   imports: [

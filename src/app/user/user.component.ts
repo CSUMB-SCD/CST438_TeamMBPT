@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {MatSidenav} from '@angular/material';
-import {SidenavService} from './services/sidenav';
+import {SidenavService} from './services/sidenav.service';
 
 @Component({
   selector: 'app-user',

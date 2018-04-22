@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthGuard} from '../../services/auth-guard.service';
 import {Profile, ProfileService} from '../services/profile.service';
+import {SubmissionService} from '../services/submission.service';
+import {SubmissionListDataSource} from '../components/submission-list/submission-list.component';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  providers: [ ProfileService ]
+  providers: [ ProfileService, SubmissionService]
 })
 export class DashboardComponent implements OnInit {
   public profile: Profile;
@@ -14,9 +16,16 @@ export class DashboardComponent implements OnInit {
   mode = 'determinate';
   value = 50;
 
+
+  dataSource: SubmissionListDataSource;
+  submissionColumns = ['id', 'challenge_id', 'status'];
+
   constructor(
     private profileService: ProfileService,
-  ) { }
+    private service: SubmissionService
+  ) {
+    this.dataSource = new SubmissionListDataSource(this.service);
+  }
 
   ngOnInit() {
     this.profile = null;
