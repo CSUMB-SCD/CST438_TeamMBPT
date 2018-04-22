@@ -35,10 +35,14 @@ export class ChallengeDetailComponent implements OnInit {
   }
 
   submissionUpload() {
-    return this.fileUploadService.submissionUpload(AuthGuard.getAccessToken(),
-      this.file, this.challenge.challenge_id).subscribe(object => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.fileUploadService.submissionUpload(AuthGuard.getAccessToken(),
+        reader.result, this.challenge.challenge_id).subscribe(object => {
         console.log('File uploaded!');
         console.log(object);
-    });
+      });
+    };
+    reader.readAsText(this.file);
   }
 }

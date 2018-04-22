@@ -11,15 +11,14 @@ export class FileUploadService {
     private http: HttpClient,
     private auth: AuthGuard) { }
 
-  submissionUpload(token: string, file: File, challenge_id: string): Observable<Object> {
+  submissionUpload(token: string, content: string, challenge_id: string): Observable<Object> {
     const headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': 'Bearer ' + token,
-      'Content-Disposition': 'Content-Disposition: form-data;filename="' + file.name + '"'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
     });
-    const formData: FormData = new FormData();
-    formData.append('file', file);
-    return this.http.post(environment.submission_url + challenge_id, formData, {
+    return this.http.post(environment.submission_url + challenge_id, {
+      content: content
+    }, {
       headers: headers
     }).catch(() => {
       this.auth.redirectLogout();
