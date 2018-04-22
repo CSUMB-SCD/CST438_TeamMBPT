@@ -1,0 +1,17 @@
+.user-image {
+  margin: auto;
+  background-size: cover;
+  width: 164px;
+  height: 164px;
+}
+
+.user-icon {
+  margin: auto;
+  width: 164px;
+  height: 164px;
+  font-size: 164px;
+}
+
+.tab-content {
+  margin-top: 35px;
+}

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthGuard} from '../../../services/auth-guard.service';
 import {Language, Profile, ProfileService} from '../../services/profile.service';
-import {FormControl} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
+import {Observable} from 'rxjs/Observable';
+import {AuthenticationService} from '../../../services/authentication.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,13 +16,27 @@ export class ProfileComponent implements OnInit {
   public profile: Profile;
   public languages: Language[];
 
+  displayName = new FormControl();
+  username = new FormControl();
   firstName = new FormControl();
   lastName = new FormControl();
-  displayName = new FormControl();
+  password = new FormControl('',
+    [
+      Validators.required,
+      Validators.minLength(8),
+    ]);
+  confirmPassword = new FormControl('',
+    [
+      Validators.required
+    ]);
   country = new FormControl();
+  hidePassword = true;
 
 
-  constructor(private profileService: ProfileService) { }
+  constructor(
+    private profileService: ProfileService,
+    private authGuard: AuthGuard,
+    private auth: AuthenticationService) { }
 
   ngOnInit() {
     this.profile = null;
@@ -46,6 +62,28 @@ export class ProfileComponent implements OnInit {
 
   getDisplayNameErrorMessage() {
     return this.displayName.hasError('required') ? 'First Name cannot be empty' : '';
+  }
+
+  getUsernameErrorMessage() {
+    return this.username.hasError('usernameExist') ? 'This username has been registered.' :
+      '';
+  }
+
+  getPasswordErrorMessage() {
+    return this.password.hasError('required') ? 'You must enter a value' :
+      this.password.hasError('minlength') ? 'The minimum length of the password is 8 characters.' :
+        '';
+  }
+
+  errorHandler(err): Observable<boolean> {
+    if (err.error === 'username') {
+      this.username.setErrors({
+        usernameExist: true
+      });
+    } else {
+      this.authGuard.redirectLogout();
+    }
+    return Observable.of(false);
   }
 
   submit() {
