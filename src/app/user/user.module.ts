@@ -43,6 +43,7 @@ import {
 } from '@angular/material';
 import { ProfileComponent } from './components/profile/profile.component';
 import {SidenavService} from './services/sidenav';
+import { SubmissionListComponent } from './components/submission-list/submission-list.component';
 
 @NgModule({
   imports: [
@@ -86,7 +87,7 @@ import {SidenavService} from './services/sidenav';
     HttpClientModule,
     UserRoutingModule
   ],
-  declarations: [UserComponent, LogoutComponent, NavbarComponent, ProfileComponent],
+  declarations: [UserComponent, LogoutComponent, NavbarComponent, ProfileComponent, SubmissionListComponent],
   providers: [SidenavService]
 })
 export class UserModule { }
