@@ -26,6 +26,16 @@ export class ProfileService {
     });
   }
 
+  update(token: string, body: any) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+    return this.http.put(environment.profile_url, body, {
+      headers: headers
+    });
+  }
+
   getLanguages(token: string): Observable<Language[]> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -38,8 +48,8 @@ export class ProfileService {
 }
 
 export interface Language {
+  id: number;
   name: string;
-  icon: string;
 }
 
 export interface Profile {
@@ -49,8 +59,7 @@ export interface Profile {
   email: string;
   title: string;
   content: string;
-  lang: string;
-  lang_icon: string;
+  lang_id: number;
   display_name: string;
   image: string;
 }
