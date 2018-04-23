@@ -4,7 +4,11 @@
     <a mat-button [routerLink]="['/dashboard']">Monterey Bay Programming Team</a>
     <span class="spacer"></span>
     <a mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon aria-label="This is suppose to be the user icon">account_circle</mat-icon>
+      <div *ngIf="profile !== null" class="nav-user">
+        <mat-icon *ngIf="profile.image === ''" class="nav-user-icon">account_circle</mat-icon>
+        <div mat-card-avatar *ngIf="profile.image !== ''"
+             [style.backgroundImage]="'url('+ profile.image + ')'" class="nav-user-icon"></div>
+      </div>
     </a>
   </mat-toolbar-row>
   <mat-toolbar-row class="bottom-row">

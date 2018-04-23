@@ -9,15 +9,15 @@
 .user-image {
   margin: auto;
   background-size: cover;
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
 }
 
 .user-icon {
   margin: auto;
-  width: 50px;
-  height: 50px;
-  font-size: 50px;
+  width: 80px;
+  height: 80px;
+  font-size: 80px;
 }
 
 .display-name {

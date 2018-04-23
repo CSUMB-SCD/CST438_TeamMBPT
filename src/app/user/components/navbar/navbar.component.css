@@ -16,3 +16,13 @@ img {
   width: 50px;
   height: 50px;
 }
+
+.nav-user-icon {
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+}
+
+.nav-user .mat-icon, .nav-user .mat-icon-button i {
+  line-height: normal;
+}

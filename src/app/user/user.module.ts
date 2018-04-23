@@ -44,6 +44,7 @@ import {
 import { ProfileComponent } from './components/profile/profile.component';
 import { SubmissionListComponent } from './components/submission-list/submission-list.component';
 import {SidenavService} from './services/sidenav.service';
+import {ProfileService} from './services/profile.service';
 
 @NgModule({
   imports: [
@@ -88,6 +89,6 @@ import {SidenavService} from './services/sidenav.service';
     UserRoutingModule
   ],
   declarations: [UserComponent, LogoutComponent, NavbarComponent, ProfileComponent, SubmissionListComponent],
-  providers: [SidenavService]
+  providers: [SidenavService, ProfileService]
 })
 export class UserModule { }

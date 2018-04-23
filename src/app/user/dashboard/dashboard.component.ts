@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
   color = 'primary';
   mode = 'determinate';
   value = 50;
-
+  enrollmentDate: string;
 
   dataSource: SubmissionListDataSource;
   submissionColumns = ['id', 'challenge_id', 'status'];
@@ -29,8 +29,10 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.profile = null;
+    this.enrollmentDate = new Date().toLocaleString();
     this.profileService.query(AuthGuard.getAccessToken()).subscribe(object => {
-      this.profile = object as Profile;
+      this.profile = new Profile(object);
+      this.profile.changeImageSize(80);
     });
   }
 }
