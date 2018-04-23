@@ -38,7 +38,7 @@ export class ChallengeDetailComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = () => {
       this.fileUploadService.submissionUpload(AuthGuard.getAccessToken(),
-        reader.result, this.challenge.challenge_id).subscribe(object => {
+        reader.result, 1, this.challenge.challenge_id).subscribe(object => {
         console.log('File uploaded!');
         console.log(object);
       });

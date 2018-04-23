@@ -66,6 +66,7 @@ export class Profile {
   constructor(object) {
     this.username = object['username'];
     this.first_name = object['first_name'];
+    this.last_name = object['last_name'];
     this.email = object['email'];
     this.lang_id = object['lang_id'];
     this.display_name = object['display_name'];
@@ -73,6 +74,9 @@ export class Profile {
   }
 
   public changeImageSize(size: number) {
+    if (this.image === null || this.image === undefined) {
+      return;
+    }
     const sizeIndex = this.image.lastIndexOf('sz=');
     if (sizeIndex >= 0) {
       this.image = this.image.substring(0, sizeIndex) + 'sz=' + size;
