@@ -1,24 +1,83 @@
-<div *ngIf="profile !== null">
-  <mat-card class="profile-card">
-    <mat-card-header>
-      <div mat-card-avatar class="profile-card-image"></div>
-      <mat-card-title>{{profile.first_name}} {{profile.last_name}}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>
-        {{ profile.username }}: {{ profile.email }}
-      </p>
-      <p>
-        Language: {{ profile.lang }} {{ profile.lang_icon }}
-      </p>
-    </mat-card-content>
+<div *ngIf="profile !== null" class="dashboard-container">
+  <mat-card>
+    <div class="profile-card row">
+      <div class="col-md-2">
+        <div class="user">
+          <mat-icon *ngIf="profile.image === ''" class="user-icon">account_circle</mat-icon>
+          <div mat-card-avatar class="user-image" *ngIf="profile.image !== ''"
+               [style.backgroundImage]="'url('+ profile.image + ')'"></div>
+          <h4>{{profile.first_name}} {{profile.last_name}}</h4>
+        <p class="display-name">{{profile.display_name}}</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h4>Ranking</h4>
+        <h1>N/A</h1>
+      </div>
+      <div class="col-md-3">
+        <h4>Tier</h4>
+        <h1>N/A</h1>
+      </div>
+      <div class="col-md-4">
+        <p>Default Language: {{ profile.lang_id }}</p>
+        <p>Joined: {{enrollmentDate}}</p>
+        <p>Country: United States</p>
+      </div>
+    </div>
   </mat-card>
-  <mat-nav-list>
-    <mat-list-item>
-      <a matLine href="#">Link 1</a>
-      <button mat-icon-button>
-        <mat-icon>info</mat-icon>
-      </button>
-    </mat-list-item>
-  </mat-nav-list>
+  <hr>
+  <mat-card>
+    <div class="row">
+      <div class="col-md-3 todo">
+        <h4>To Do List Progress</h4>
+        <mat-progress-spinner class="todo-progress"
+          [color]="color"
+          [mode]="mode"
+          [value]="value">
+        </mat-progress-spinner>
+      </div>
+      <div class="col-md-9 activity">
+        <h4>Activity</h4>
+        <div class="heat-map">
+          Activity Heat Map
+        </div>
+      </div>
+    </div>
+  </mat-card>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <mat-card>
+        <mat-card-title>Recent Submission</mat-card-title>
+        <mat-table #table [dataSource]="dataSource">
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+          <mat-cell *matCellDef="let submission">
+            <a routerLink="/submission/{{submission.id}}">{{submission.id}}</a>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="challenge_id">
+          <mat-header-cell *matHeaderCellDef> Challenge </mat-header-cell>
+          <mat-cell *matCellDef="let submission">
+            <a routerLink="/challenge/{{submission.challenge_id}}">{{submission.challenge_id}}</a>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+          <mat-cell *matCellDef="let submission"> {{submission.status}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="submissionColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: submissionColumns;"></mat-row>
+      </mat-table>
+      </mat-card>
+    </div>
+    <div class="col-md-6">
+      <mat-card>
+        <mat-card-title>Recent Discussion</mat-card-title>
+      </mat-card>
+    </div>
+  </div>
 </div>

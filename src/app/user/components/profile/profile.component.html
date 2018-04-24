@@ -1,39 +1,73 @@
 <div *ngIf="profile !== null">
-  <mat-icon aria-label="This is suppose to be the user icon">account_circle</mat-icon>
-  <div>
-    <mat-form-field [hideRequiredMarker]="true">
-      <input matInput placeholder="Display Name" [formControl]="displayName" required/>
-      <mat-error *ngIf="displayName !== undefined && displayName.invalid">{{getDisplayNameErrorMessage()}}</mat-error>
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field [hideRequiredMarker]="true">
-      <input matInput placeholder="First Name" [formControl]="firstName" required/>
-      <mat-error *ngIf="firstName !== undefined && firstName.invalid">{{getFirstNameErrorMessage()}}</mat-error>
-    </mat-form-field>
-    <mat-form-field [hideRequiredMarker]="true">
-      <input matInput placeholder="Last Name" [formControl]="lastName" required/>
-      <mat-error *ngIf="lastName !== undefined && lastName.invalid">{{getLastNameErrorMessage()}}</mat-error>
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field>
-      <mat-select placeholder="Default Language">
-        <mat-option *ngFor="let language of languages" [value]="language.name">
-          <mat-icon aria-label="This is suppose to be the language icon">code</mat-icon>
-          {{ language.name }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <!--<mat-form-field>-->
-      <!--<mat-select placeholder="Default Language" *ngIf="languages !== null"-->
-                  <!--[(ngModel)]="selected" [formControl]="languageSelect">-->
-        <!--<mat-option *ngFor="let language of languages" [value]="language.name">-->
-          <!--{{ language.name }}-->
-          <!--<mat-icon aria-label="This is suppose to be the language icon">code</mat-icon>-->
-        <!--</mat-option>-->
-      <!--</mat-select>-->
-    <!--</mat-form-field>-->
-  </div>
+  <mat-tab-group>
+    <mat-tab  label="Public information">
+      <div class="row tab-content">
+        <div class="col-md-4">
+          <div class="user">
+            <mat-icon *ngIf="profile.image === ''" class="user-icon">account_circle</mat-icon>
+            <div mat-card-avatar class="user-image" *ngIf="profile.image !== ''"
+                 [style.backgroundImage]="'url('+ profile.image + ')'"></div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="row">
+            <mat-form-field [hideRequiredMarker]="true">
+              <input matInput placeholder="Display Name" [formControl]="displayName" required/>
+              <mat-error *ngIf="displayName !== undefined && displayName.invalid">{{getDisplayNameErrorMessage()}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field [hideRequiredMarker]="true">
+              <input matInput placeholder="First Name" [formControl]="firstName" required/>
+              <mat-error *ngIf="firstName !== undefined && firstName.invalid">{{getFirstNameErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <div class="col-md-1"></div>
+            <mat-form-field [hideRequiredMarker]="true">
+              <input matInput placeholder="Last Name" [formControl]="lastName" required/>
+              <mat-error *ngIf="lastName !== undefined && lastName.invalid">{{getLastNameErrorMessage()}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field>
+              <mat-select placeholder="Default Language" [(value)]="selectedLanguage">
+                <mat-option *ngFor="let language of languages" [value]="language.id">
+                  {{ language.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Account Setting">
+      <div class="col-md-4"></div>
+      <div class="col-md-8 tab-content">
+        <div class="row">
+          <mat-form-field [hideRequiredMarker]="true">
+            <input matInput placeholder="Username" [formControl]="username" required/>
+            <mat-error *ngIf="username !== undefined && username.invalid">{{getUsernameErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field>
+            <input matInput type="password" placeholder="Password" [formControl]="password"
+                   [type]="hidePassword ? 'password' : 'text'"/>
+            <mat-icon matSuffix (click)="hidePassword = !hidePassword">
+              {{hidePassword ? 'visibility' : 'visibility_off'}}
+            </mat-icon>
+            <mat-error *ngIf="password !== undefined && password.invalid">{{ getPasswordErrorMessage() }}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field>
+            <input matInput type="password" placeholder="Confirm Password" [formControl]="confirmPassword" />
+            <mat-error *ngIf="password !== undefined && confirmPassword !== undefined
+      && password !== confirmPassword">Your passwords didn't match.</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <hr>
   <button mat-raised-button (click)="submit()">Submit</button>
 </div>

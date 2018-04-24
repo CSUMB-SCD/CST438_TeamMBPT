@@ -1,0 +1,39 @@
+<mat-table #table [dataSource]="dataSource">
+
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+    <mat-cell *matCellDef="let submission">
+      <a routerLink="/submission/{{submission.id}}">{{submission.id}}</a>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="date">
+    <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+    <mat-cell *matCellDef="let submission"> {{submission.created | date: 'yyyy-MM-dd HH:MM:SS'}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="challenge_id">
+    <mat-header-cell *matHeaderCellDef> Challenge </mat-header-cell>
+    <mat-cell *matCellDef="let submission">
+      <a routerLink="/challenge/{{submission.challenge_id}}">{{submission.challenge_id}}</a>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+    <mat-cell *matCellDef="let submission"> {{submission.status}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="cpu">
+    <mat-header-cell *matHeaderCellDef> CPU </mat-header-cell>
+    <mat-cell *matCellDef="let submission"> 0.00s </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="lang">
+    <mat-header-cell *matHeaderCellDef> Language </mat-header-cell>
+    <mat-cell *matCellDef="let submission"> Python </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

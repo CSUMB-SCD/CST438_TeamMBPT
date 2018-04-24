@@ -9,5 +9,7 @@ export const environment = {
   profile_url: 'https://mbpt-api.herokuapp.com/profile/',
   user_url: 'https://mbpt-api.herokuapp.com/user/',
   language_url: 'https://mbpt-api.herokuapp.com/lang/',
-  submission_url: 'https://mbpt-api.herokuapp.com/challenge/submission/'
+  submission_list_url: 'https://mbpt-api.herokuapp.com/challenge/submission/',
+  submission_url: 'https://mbpt-api.herokuapp.com/submission/',
+  todo_url: 'https://mbpt-api.herokuapp.com/todo/',
 };

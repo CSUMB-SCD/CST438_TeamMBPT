@@ -1,18 +1,43 @@
-<mat-toolbar color="primary" role="navigation">
-  <mat-toolbar-row class="top-row">
-    <a [routerLink]="['/dashboard']"><img  src="../../../../assets/csumblogo.jpg"></a>
+<mat-toolbar color="secondary" role="navigation">
+  <mat-toolbar-row>
+    <a [routerLink]="['/dashboard']"><img  src="../../../../assets/logo.png"></a>
     <a mat-button [routerLink]="['/dashboard']">Monterey Bay Programming Team</a>
     <span class="spacer"></span>
+    <div *ngIf="showSearchBar">
+      <button mat-button (click)="search()">
+        <mat-icon>search</mat-icon>
+      </button>
+      <mat-input-container>
+        <input class="search-bar" type="search" matInput [ngModel]="searchBar">
+      </mat-input-container>
+      <button mat-button (click)="endSearch()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <button mat-button (click)="startSearch()" *ngIf="!showSearchBar">
+      <mat-icon>search</mat-icon>
+      <span>Search</span>
+    </button>
     <a mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon aria-label="This is suppose to be the user icon">account_circle</mat-icon>
+      <div *ngIf="profile !== null" class="nav-user">
+        <mat-icon *ngIf="profile.image === ''" class="nav-user-icon">account_circle</mat-icon>
+        <div mat-card-avatar *ngIf="profile.image !== ''"
+             [style.backgroundImage]="'url('+ profile.image + ')'" class="nav-user-icon"></div>
+      </div>
     </a>
   </mat-toolbar-row>
-
-  <mat-toolbar-row class="bottom-row">
-    <a mat-button [routerLink]="['/challenge']">Challenges</a>
-    <a mat-button [routerLink]="['/announcement']">Announcements</a>
-    <a mat-button [routerLink]="['/discussion']">Discussion</a>
-    <a mat-button [routerLink]="['/scoreboard']">Scoreboard</a>
+</mat-toolbar>
+<mat-toolbar color="primary" role="navigation" class="nav">
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="toggleNav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/challenge']">Challenges</a>
+      <a mat-list-item [routerLink]="['/announcement']">Announcements</a>
+      <a mat-list-item [routerLink]="['/discussion']">Discussion</a>
+      <a mat-list-item [routerLink]="['/scoreboard']">Scoreboard</a>
+    </mat-nav-list>
     <div>
       <mat-menu #menu="matMenu">
         <a mat-menu-item routerLink="/profile">
@@ -23,3 +48,4 @@
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
+

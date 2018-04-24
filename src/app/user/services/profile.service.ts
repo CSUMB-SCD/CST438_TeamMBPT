@@ -11,6 +11,8 @@ export class ProfileService {
     private http: HttpClient,
     private auth: AuthGuard) { }
 
+
+
   query(token: string) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -20,9 +22,19 @@ export class ProfileService {
        headers: headers
     }).catch(err => {
       if (err.status === 423) {
-        return this.auth.redirectRegister(err.error);
+        console.log('should not happen anymore');
       }
       return this.auth.redirectLogout();
+    });
+  }
+
+  update(token: string, body: any) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+    return this.http.put(environment.profile_url, body, {
+      headers: headers
     });
   }
 
@@ -38,18 +50,36 @@ export class ProfileService {
 }
 
 export interface Language {
+  id: number;
   name: string;
-  icon: string;
 }
 
-export interface Profile {
+export class Profile {
   username: string;
   first_name: string;
   last_name: string;
   email: string;
-  title: string;
-  content: string;
-  lang: string;
-  lang_icon: string;
+  lang_id: number;
   display_name: string;
+  image: string;
+
+  constructor(object) {
+    this.username = object['username'];
+    this.first_name = object['first_name'];
+    this.last_name = object['last_name'];
+    this.email = object['email'];
+    this.lang_id = object['lang_id'];
+    this.display_name = object['display_name'];
+    this.image = object['image'];
+  }
+
+  public changeImageSize(size: number) {
+    if (this.image === null || this.image === undefined) {
+      return;
+    }
+    const sizeIndex = this.image.lastIndexOf('sz=');
+    if (sizeIndex >= 0) {
+      this.image = this.image.substring(0, sizeIndex) + 'sz=' + size;
+    }
+  }
 }

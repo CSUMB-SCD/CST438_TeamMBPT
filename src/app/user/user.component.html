@@ -1,6 +1,32 @@
 <app-navbar></app-navbar>
-<div class="container">
-  <div class="content">
-    <router-outlet></router-outlet>
+<mat-sidenav-container fullscreen class="sidenav-container">
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+        <a mat-list-item routerLink="/dashboard">
+          <mat-icon>dashboard</mat-icon>
+          Dashboard
+        </a>
+        <a mat-list-item routerLink="/submission">
+          <mat-icon>file_upload</mat-icon>
+          Submission
+        </a>
+        <a mat-list-item routerLink="/post">
+          <mat-icon>comment</mat-icon>
+          Post
+        </a>
+        <a mat-list-item routerLink="/todo">
+          <mat-icon>view_list</mat-icon>
+          To Do List
+        </a>
+        <a mat-list-item routerLink="/statistics">
+          <mat-icon>assessment</mat-icon>
+          Statistics
+        </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <div class="container">
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-</div>
+</mat-sidenav-container>

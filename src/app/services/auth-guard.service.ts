@@ -42,8 +42,4 @@ export class AuthGuard implements CanActivate {
     }
     return this.router.navigate(['/welcome']);
   }
-
-  redirectRegister(params: any) {
-    return this.router.navigate(['/register', params]);
-  }
 }

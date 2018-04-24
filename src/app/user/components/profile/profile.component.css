@@ -1,8 +1,17 @@
-.profile-card {
-  max-width: 400px;
+.user-image {
+  margin: auto;
+  background-size: cover;
+  width: 164px;
+  height: 164px;
 }
 
-.profile-card-image {
-  background-image: url('http://www.wishalley.com/pub/media/netbaseteam/Blog/customer_avatar/default/profile_1.png');
-  background-size: cover;
+.user-icon {
+  margin: auto;
+  width: 164px;
+  height: 164px;
+  font-size: 164px;
+}
+
+.tab-content {
+  margin-top: 35px;
 }

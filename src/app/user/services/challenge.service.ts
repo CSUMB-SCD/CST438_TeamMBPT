@@ -13,6 +13,7 @@ export interface Challenge {
   created: string;
   publisher: string;
   content: string;
+  difficulty: number;
 }
 
 @Injectable()
