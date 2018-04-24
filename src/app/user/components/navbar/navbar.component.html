@@ -33,18 +33,10 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-nav-list>
-      <mat-list-item>
-        <a [routerLink]="['/challenge']">Challenges</a>
-      </mat-list-item>
-      <mat-list-item>
-        <a [routerLink]="['/announcement']">Announcements</a>
-      </mat-list-item>
-      <mat-list-item>
-        <a [routerLink]="['/discussion']">Discussion</a>
-      </mat-list-item>
-      <mat-list-item>
-        <a [routerLink]="['/scoreboard']">Scoreboard</a>
-      </mat-list-item>
+      <a mat-list-item [routerLink]="['/challenge']">Challenges</a>
+      <a mat-list-item [routerLink]="['/announcement']">Announcements</a>
+      <a mat-list-item [routerLink]="['/discussion']">Discussion</a>
+      <a mat-list-item [routerLink]="['/scoreboard']">Scoreboard</a>
     </mat-nav-list>
     <div>
       <mat-menu #menu="matMenu">
