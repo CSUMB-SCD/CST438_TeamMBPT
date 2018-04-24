@@ -1,3 +1,32 @@
-<p>
-  todo-list works!
-</p>
+<mat-table #table [dataSource]="dataSource">
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+    <mat-cell *matCellDef="let challenge">
+      <a routerLink="/challenge/{{challenge.challenge_id}}">{{challenge.title}}</a>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+    <mat-cell *matCellDef="let challenge"> {{challenge.description}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="difficulty">
+    <mat-header-cell *matHeaderCellDef> Difficulty </mat-header-cell>
+    <mat-cell *matCellDef="let challenge"> {{challenge.difficulty}} </mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="submission_count">
+    <mat-header-cell *matHeaderCellDef> Submission </mat-header-cell>
+    <mat-cell *matCellDef="let challenge"> {{challenge.submission_count}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="accepted_count">
+    <mat-header-cell *matHeaderCellDef> Accepted </mat-header-cell>
+    <mat-cell *matCellDef="let challenge"> {{challenge.accepted_count}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

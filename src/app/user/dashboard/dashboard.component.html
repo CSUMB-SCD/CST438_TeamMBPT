@@ -57,7 +57,9 @@
 
         <ng-container matColumnDef="challenge_id">
           <mat-header-cell *matHeaderCellDef> Challenge </mat-header-cell>
-          <mat-cell *matCellDef="let submission"> {{submission.challenge_id}} </mat-cell>
+          <mat-cell *matCellDef="let submission">
+            <a routerLink="/challenge/{{submission.challenge_id}}">{{submission.challenge_id}}</a>
+          </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="status">
