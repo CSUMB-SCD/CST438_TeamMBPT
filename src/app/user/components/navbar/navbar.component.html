@@ -1,6 +1,6 @@
-<mat-toolbar color="primary" role="navigation">
-  <mat-toolbar-row class="top-row">
-    <a [routerLink]="['/dashboard']"><img  src="../../../../assets/csumblogo.jpg"></a>
+<mat-toolbar color="secondary" role="navigation">
+  <mat-toolbar-row>
+    <a [routerLink]="['/dashboard']"><img  src="../../../../assets/logo.png"></a>
     <a mat-button [routerLink]="['/dashboard']">Monterey Bay Programming Team</a>
     <span class="spacer"></span>
     <a mat-icon-button [matMenuTriggerFor]="menu">
@@ -11,14 +11,26 @@
       </div>
     </a>
   </mat-toolbar-row>
-  <mat-toolbar-row class="bottom-row">
+</mat-toolbar>
+<mat-toolbar color="primary" role="navigation" class="nav">
+  <mat-toolbar-row>
     <button mat-icon-button (click)="toggleNav()">
       <mat-icon>menu</mat-icon>
     </button>
-    <a mat-button [routerLink]="['/challenge']">Challenges</a>
-    <a mat-button [routerLink]="['/announcement']">Announcements</a>
-    <a mat-button [routerLink]="['/discussion']">Discussion</a>
-    <a mat-button [routerLink]="['/scoreboard']">Scoreboard</a>
+    <mat-nav-list>
+      <mat-list-item>
+        <a [routerLink]="['/challenge']">Challenges</a>
+      </mat-list-item>
+      <mat-list-item>
+        <a [routerLink]="['/announcement']">Announcements</a>
+      </mat-list-item>
+      <mat-list-item>
+        <a [routerLink]="['/discussion']">Discussion</a>
+      </mat-list-item>
+      <mat-list-item>
+        <a [routerLink]="['/scoreboard']">Scoreboard</a>
+      </mat-list-item>
+    </mat-nav-list>
     <div>
       <mat-menu #menu="matMenu">
         <a mat-menu-item routerLink="/profile">
@@ -29,8 +41,4 @@
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
-
-
-
-
 

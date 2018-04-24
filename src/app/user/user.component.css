@@ -4,5 +4,13 @@
 }
 
 .sidenav-container {
-  margin-top: 114px;
+  margin-top: 128px;
+}
+
+.mat-list-item {
+  font-size: 13px;
+}
+
+.mat-list-item mat-icon {
+  vertical-align: middle;
 }

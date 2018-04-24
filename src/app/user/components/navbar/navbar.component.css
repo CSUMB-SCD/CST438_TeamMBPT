@@ -2,16 +2,6 @@
   flex: 1 1 auto;
 }
 
-.top-row {
-  background-color: white;
-  color: slategray;
-  height: 100%;
-}
-
-.bottom-row {
-  background-color: #1a237e;
-}
-
 img {
   width: 50px;
   height: 50px;
@@ -25,4 +15,10 @@ img {
 
 .nav-user .mat-icon, .nav-user .mat-icon-button i {
   line-height: normal;
+}
+
+.nav .mat-list-item {
+  float: right;
+  color: white;
+  font-size: 13px;
 }
