@@ -10,6 +10,8 @@ import {Profile, ProfileService} from '../../services/profile.service';
 })
 export class NavbarComponent implements OnInit {
   public profile: Profile;
+  showSearchBar: boolean;
+  searchBar: string;
 
   constructor(
     private sidenav: SidenavService,
@@ -22,9 +24,22 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.profile = null;
+    this.showSearchBar = false;
     this.profileService.query(AuthGuard.getAccessToken()).subscribe(object => {
       this.profile = new Profile(object);
       this.profile.changeImageSize(40);
     });
+  }
+
+  search() {
+  }
+
+  startSearch() {
+    this.showSearchBar = true;
+  }
+
+  endSearch() {
+    this.showSearchBar = false;
+
   }
 }

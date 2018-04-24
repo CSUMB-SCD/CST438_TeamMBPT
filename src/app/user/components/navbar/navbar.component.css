@@ -18,7 +18,12 @@ img {
 }
 
 .nav .mat-list-item {
-  float: right;
+  float: left;
   color: white;
   font-size: 13px;
+}
+
+.search-bar {
+  display: flex;
+  flex-flow: row wrap
 }

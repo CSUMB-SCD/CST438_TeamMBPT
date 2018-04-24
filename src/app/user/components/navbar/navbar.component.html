@@ -3,6 +3,21 @@
     <a [routerLink]="['/dashboard']"><img  src="../../../../assets/logo.png"></a>
     <a mat-button [routerLink]="['/dashboard']">Monterey Bay Programming Team</a>
     <span class="spacer"></span>
+    <div *ngIf="showSearchBar">
+      <button mat-button (click)="search()">
+        <mat-icon>search</mat-icon>
+      </button>
+      <mat-input-container>
+        <input class="search-bar" type="search" matInput [ngModel]="searchBar">
+      </mat-input-container>
+      <button mat-button (click)="endSearch()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <button mat-button (click)="startSearch()" *ngIf="!showSearchBar">
+      <mat-icon>search</mat-icon>
+      <span>Search</span>
+    </button>
     <a mat-icon-button [matMenuTriggerFor]="menu">
       <div *ngIf="profile !== null" class="nav-user">
         <mat-icon *ngIf="profile.image === ''" class="nav-user-icon">account_circle</mat-icon>
