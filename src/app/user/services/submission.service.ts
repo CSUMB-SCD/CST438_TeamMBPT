@@ -14,7 +14,17 @@ export class SubmissionService {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token
     });
-    return this.http.get<Submission[]>(environment.submission_url, {
+    return this.http.get<Submission[]>(environment.submission_list_url, {
+      headers: headers
+    });
+  }
+
+  query_id(token: string, id: string): Observable<Submission> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+    return this.http.get<Submission>(environment.submission_url + id, {
       headers: headers
     });
   }
@@ -26,5 +36,9 @@ export interface Submission {
   owner: string;
   status: string;
   challenge_id: string;
-  lang: string;
+  content: string;
+  language: {
+    id: number;
+    name: string;
+  };
 }

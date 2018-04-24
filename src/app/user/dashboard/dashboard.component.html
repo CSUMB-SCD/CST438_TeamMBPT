@@ -52,7 +52,9 @@
         <mat-table #table [dataSource]="dataSource">
         <ng-container matColumnDef="id">
           <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-          <mat-cell *matCellDef="let submission"> {{submission.id}} </mat-cell>
+          <mat-cell *matCellDef="let submission">
+            <a routerLink="/submission/{{submission.id}}">{{submission.id}}</a>
+          </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="challenge_id">

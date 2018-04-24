@@ -16,7 +16,7 @@ export class FileUploadService {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token
     });
-    return this.http.post(environment.submission_url + challenge_id, {
+    return this.http.post(environment.submission_list_url + challenge_id, {
       content: content,
       language_id: language_id
     }, {

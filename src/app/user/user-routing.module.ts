@@ -8,6 +8,7 @@ import {SubmissionListComponent} from './components/submission-list/submission-l
 import {TodoListComponent} from './components/todo-list/todo-list.component';
 import {PostListComponent} from './components/post-list/post-list.component';
 import {StatisticsComponent} from './components/statistics/statistics.component';
+import {SubmissionComponent} from './components/submission/submission.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: 'discussion', loadChildren: './discussion/discussion.module#DiscussionModule' },
       { path: 'scoreboard', loadChildren: './scoreboard/scoreboard.module#ScoreboardModule' },
       { path: 'submission', component: SubmissionListComponent },
+      { path: 'submission/:id', component: SubmissionComponent },
       { path: 'todo', component: TodoListComponent },
       { path: 'post', component: PostListComponent },
       { path: 'statistics', component: StatisticsComponent },

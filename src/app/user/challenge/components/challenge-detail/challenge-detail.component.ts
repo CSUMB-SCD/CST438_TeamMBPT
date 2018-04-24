@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Challenge, ChallengeService} from '../../../services/challenge.service';
 import {AuthGuard} from '../../../../services/auth-guard.service';
 import {FileUploadService} from '../../../services/file-upload.service';
@@ -17,6 +17,7 @@ export class ChallengeDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private challengeService: ChallengeService,
     private fileUploadService: FileUploadService) { }
 
@@ -34,13 +35,12 @@ export class ChallengeDetailComponent implements OnInit {
     this.file = files.item(0);
   }
 
-  submissionUpload() {
+  submit() {
     const reader = new FileReader();
     reader.onload = () => {
       this.fileUploadService.submissionUpload(AuthGuard.getAccessToken(),
         reader.result, 1, this.challenge.challenge_id).subscribe(object => {
-        console.log('File uploaded!');
-        console.log(object);
+          this.router.navigate(['/submission/' + object['id']]);
       });
     };
     reader.readAsText(this.file);

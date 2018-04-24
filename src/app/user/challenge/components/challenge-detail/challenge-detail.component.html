@@ -9,12 +9,12 @@
   <div [innerHTML]="challenge.content"></div>
   <br>
 
-  <!-- File submissionUpload -->
+  <!-- File submit -->
   <div class="form-group">
     <label for="file">Upload submission here</label>
     <br>
     <input type="file" id="file" (change)="handleFileInput($event.target.files)">
-    <button mat-raised-button (click)="submissionUpload()">Submit</button>
+    <button mat-raised-button (click)="submit()">Submit</button>
   </div>
   <div>
     {{ challenge.publisher }}
