@@ -5,6 +5,9 @@ import { LogoutComponent } from './components/logout/logout.component';
 import {AuthGuard} from '../services/auth-guard.service';
 import {ProfileComponent} from './components/profile/profile.component';
 import {SubmissionListComponent} from './components/submission-list/submission-list.component';
+import {TodoListComponent} from './components/todo-list/todo-list.component';
+import {PostListComponent} from './components/post-list/post-list.component';
+import {StatisticsComponent} from './components/statistics/statistics.component';
 
 const routes: Routes = [
   {
@@ -18,6 +21,9 @@ const routes: Routes = [
       { path: 'discussion', loadChildren: './discussion/discussion.module#DiscussionModule' },
       { path: 'scoreboard', loadChildren: './scoreboard/scoreboard.module#ScoreboardModule' },
       { path: 'submission', component: SubmissionListComponent },
+      { path: 'todo', component: TodoListComponent },
+      { path: 'post', component: PostListComponent },
+      { path: 'statistics', component: StatisticsComponent },
       { path: 'profile', component: ProfileComponent},
       { path: 'redirectLogout', component: LogoutComponent},
     ]

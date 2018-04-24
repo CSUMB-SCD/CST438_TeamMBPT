@@ -45,6 +45,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { SubmissionListComponent } from './components/submission-list/submission-list.component';
 import {SidenavService} from './services/sidenav.service';
 import {ProfileService} from './services/profile.service';
+import { TodoListComponent } from './components/todo-list/todo-list.component';
+import { PostListComponent } from './components/post-list/post-list.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
 
 @NgModule({
   imports: [
@@ -88,7 +91,7 @@ import {ProfileService} from './services/profile.service';
     HttpClientModule,
     UserRoutingModule
   ],
-  declarations: [UserComponent, LogoutComponent, NavbarComponent, ProfileComponent, SubmissionListComponent],
+  declarations: [UserComponent, LogoutComponent, NavbarComponent, ProfileComponent, SubmissionListComponent, TodoListComponent, PostListComponent, StatisticsComponent],
   providers: [SidenavService, ProfileService]
 })
 export class UserModule { }
