@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ChallengeComponent } from './challenge.component';
 import { ChallengeRoutingModule } from './challenge-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import {MatPaginatorModule, MatTableModule} from '@angular/material';
+import {MatButtonModule, MatPaginatorModule, MatTableModule} from '@angular/material';
 import {ChallengeDetailComponent} from './components/challenge-detail/challenge-detail.component';
 import {ChallengeTableComponent} from './components/challenge-table/challenge-table.component';
 
@@ -14,7 +14,8 @@ import {ChallengeTableComponent} from './components/challenge-table/challenge-ta
     HttpClientModule,
     ChallengeRoutingModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatButtonModule
   ],
   declarations: [
     ChallengeTableComponent,

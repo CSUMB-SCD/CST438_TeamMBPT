@@ -66,7 +66,11 @@ export class ProfileComponent implements OnInit {
     this.lastName.setValue(this.profile.last_name);
     this.displayName.setValue(this.profile.display_name);
     this.username.setValue(this.profile.username);
-    this.selectedLanguage = this.profile.default_language.id;
+    if (this.profile.default_language !== null) {
+      this.selectedLanguage = this.profile.default_language.id;
+    } else {
+      this.selectedLanguage = 0;
+    }
   }
 
   getFirstNameErrorMessage() {
@@ -114,7 +118,10 @@ export class ProfileComponent implements OnInit {
     if (this.lastName.valid && this.lastName.value !== this.profile.last_name) {
       body['last_name'] = this.lastName.value;
     }
-    if (this.selectedLanguage !== 0 && this.selectedLanguage !== this.profile.default_language.id) {
+    if (this.selectedLanguage !== 0 && this.profile.default_language !== null
+      && this.selectedLanguage !== this.profile.default_language.id) {
+      body['lang_id'] = this.selectedLanguage;
+    } else if (this.profile.default_language === null) {
       body['lang_id'] = this.selectedLanguage;
     }
     if (this.username.valid && this.username.value !== this.profile.username) {
