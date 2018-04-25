@@ -4,6 +4,21 @@ import {AuthGuard} from '../../services/auth-guard.service';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs/Observable';
 
+export interface Language {
+  id: number;
+  name: string;
+}
+
+export interface Profile {
+  username: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  default_language: Language;
+  display_name: string;
+  image: string;
+}
+
 @Injectable()
 export class ProfileService {
 
@@ -22,27 +37,28 @@ export class ProfileService {
     return '';
   }
 
-  query(token: string) {
+  query(token: string): Observable<Profile> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token
     });
-    return this.http.get(environment.profile_url, {
+    return this.http.get<Profile>(environment.profile_url, {
        headers: headers
     }).catch(err => {
       if (err.status === 423) {
         console.log('should not happen anymore');
       }
-      return this.auth.redirectLogout();
+      this.auth.redirectLogout();
+      return Observable.of(null);
     });
   }
 
-  update(token: string, body: any) {
+  update(token: string, body: any): Observable<Profile> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token
     });
-    return this.http.put(environment.profile_url, body, {
+    return this.http.put<Profile>(environment.profile_url, body, {
       headers: headers
     });
   }
@@ -56,19 +72,4 @@ export class ProfileService {
       headers: headers
     });
   }
-}
-
-export interface Language {
-  id: number;
-  name: string;
-}
-
-export interface Profile {
-  username: string;
-  first_name: string;
-  last_name: string;
-  email: string;
-  lang_id: number;
-  display_name: string;
-  image: string;
 }
