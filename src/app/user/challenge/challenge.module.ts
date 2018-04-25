@@ -14,7 +14,7 @@ import {ChallengeTableComponent} from './components/challenge-table/challenge-ta
     HttpClientModule,
     ChallengeRoutingModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
   ],
   declarations: [
     ChallengeTableComponent,

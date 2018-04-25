@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import {Profile, ProfileService} from '../../services/profile.service';
+import {AuthGuard} from '../../../services/auth-guard.service';
 
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
-  styleUrls: ['./post-list.component.css']
+  styleUrls: ['./post-list.component.css'],
+  providers: [ProfileService]
 })
 export class PostListComponent implements OnInit {
+  public profile: Profile;
 
-  posts = [
+  public posts = [
     {
       'id': 1,
       'title': 'Mock Discussion From Database 1',
@@ -72,9 +76,23 @@ export class PostListComponent implements OnInit {
       'tags': []
     }
   ];
-  constructor() { }
 
-  ngOnInit() {
+  public userPosts = [];
+
+  constructor(private service: ProfileService) { }
+
+  ngOnInit() { // TODO: Get user info from ProfileService and match the username to publisher name to find posts only by user.
+    // this.service.query(AuthGuard.getAccessToken()).subscribe(object => {
+    //   this.profile = new Profile(object);
+    // });
+    this.getUserPosts();
   }
 
+  getUserPosts () {
+    for (const post of this.posts) {
+      if ('root' === post.publisher) {
+        this.userPosts.push(post);
+      }
+    }
+  }
 }
