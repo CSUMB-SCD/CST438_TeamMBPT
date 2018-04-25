@@ -45,4 +45,8 @@ export class ChallengeDetailComponent implements OnInit {
     };
     reader.readAsText(this.file);
   }
+
+  favorite() {
+    console.log('Added to favorites');
+  }
 }
