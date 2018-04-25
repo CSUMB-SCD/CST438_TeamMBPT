@@ -3,22 +3,25 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Challenge, ChallengeService} from '../../../services/challenge.service';
 import {AuthGuard} from '../../../../services/auth-guard.service';
 import {FileUploadService} from '../../../services/file-upload.service';
+import {TodoService} from '../../../services/todo.service';
 
 @Component({
   selector: 'app-challenge-detail',
   templateUrl: './challenge-detail.component.html',
   styleUrls: ['./challenge-detail.component.css'],
-  providers: [ChallengeService, FileUploadService],
+  providers: [ChallengeService, FileUploadService, TodoService],
   encapsulation: ViewEncapsulation.None
 })
 export class ChallengeDetailComponent implements OnInit {
   challenge: Challenge;
   file: File = null;
+  completed = false;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private challengeService: ChallengeService,
+    private todoService: TodoService,
     private fileUploadService: FileUploadService) { }
 
   ngOnInit() {
@@ -47,6 +50,6 @@ export class ChallengeDetailComponent implements OnInit {
   }
 
   favorite() {
-    console.log('Added to favorites');
+    this.todoService.add(AuthGuard.getAccessToken(), this.challenge.challenge_id).subscribe();
   }
 }
