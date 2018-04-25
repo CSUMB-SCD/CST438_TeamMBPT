@@ -51,8 +51,8 @@ export class ProfileComponent implements OnInit {
 
   resetFormValue() {
     this.profileService.query(AuthGuard.getAccessToken()).subscribe(object => {
-      this.profile = new Profile(object);
-      this.profile.changeImageSize(164);
+      this.profile = object as Profile;
+      this.profile.image = ProfileService.resizeImage(this.profile.image, 164);
       this.firstName.setValue(this.profile.first_name);
       this.lastName.setValue(this.profile.last_name);
       this.displayName.setValue(this.profile.display_name);

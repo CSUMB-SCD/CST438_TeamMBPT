@@ -11,7 +11,16 @@ export class ProfileService {
     private http: HttpClient,
     private auth: AuthGuard) { }
 
-
+  public static resizeImage(image: string, size: number): string {
+    if (image === null || image === undefined) {
+      return '';
+    }
+    const sizeIndex = image.lastIndexOf('sz=');
+    if (sizeIndex >= 0) {
+      return image.substring(0, sizeIndex) + 'sz=' + size;
+    }
+    return '';
+  }
 
   query(token: string) {
     const headers = new HttpHeaders({
@@ -54,7 +63,7 @@ export interface Language {
   name: string;
 }
 
-export class Profile {
+export interface Profile {
   username: string;
   first_name: string;
   last_name: string;
@@ -62,24 +71,4 @@ export class Profile {
   lang_id: number;
   display_name: string;
   image: string;
-
-  constructor(object) {
-    this.username = object['username'];
-    this.first_name = object['first_name'];
-    this.last_name = object['last_name'];
-    this.email = object['email'];
-    this.lang_id = object['lang_id'];
-    this.display_name = object['display_name'];
-    this.image = object['image'];
-  }
-
-  public changeImageSize(size: number) {
-    if (this.image === null || this.image === undefined) {
-      return;
-    }
-    const sizeIndex = this.image.lastIndexOf('sz=');
-    if (sizeIndex >= 0) {
-      this.image = this.image.substring(0, sizeIndex) + 'sz=' + size;
-    }
-  }
 }

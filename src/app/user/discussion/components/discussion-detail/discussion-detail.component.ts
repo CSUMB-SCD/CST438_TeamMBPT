@@ -11,6 +11,7 @@ import {ActivatedRoute} from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class DiscussionDetailComponent implements OnInit {
+  public editorContent: string;
   discussion: Discussion;
 
   constructor(
@@ -24,5 +25,9 @@ export class DiscussionDetailComponent implements OnInit {
         this.discussion = object;
       });
     });
+  }
+
+  submit() {
+    console.log(this.editorContent);
   }
 }

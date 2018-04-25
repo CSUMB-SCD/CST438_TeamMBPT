@@ -3,19 +3,19 @@
 </head>
 <body *ngIf="discussion !== null">
   <h1>{{discussion.title}}</h1>
-  <mat-card> <!-- Start of card for main post -->
+  <mat-card>
     <mat-card-header>
-      <!--This is where the avatar of the user will go-->
-      <div mat-card-avatar>
-        <mat-icon>account_circle</mat-icon>
+      <div class="discussion-user-icon">
+        <mat-icon *ngIf="discussion.image === ''">account_circle</mat-icon>
+        <div mat-card-avatar *ngIf="discussion.image !== ''"
+             [style.backgroundImage]="'url('+ discussion.image + ')'"></div>
       </div>
-
       <mat-card-title>
-        <h6>{{discussion.publisher}}</h6>
+        <h6>{{discussion.display_name}}</h6>
       </mat-card-title>
 
       <mat-card-subtitle>
-        {{discussion.created | date: 'MM/dd/yyyy'}}
+        {{discussion.created | date: 'yyyy-MM-dd HH:MM:SS'}}
       </mat-card-subtitle>
     </mat-card-header>
 
@@ -43,13 +43,6 @@
   <h2>Comments</h2>
 
   <mat-divider></mat-divider>
-
-  <form class="detail-form">
-    <mat-form-field class="full-width">
-      <textarea matInput placeholder="Leave a comment"></textarea>
-    </mat-form-field>
-    <button mat-raised-button class="detail-reply">Reply</button>
-  </form>
 
   <mat-card *ngFor="let comment of discussion.comments; let i = index"> <!-- Start of card for comments -->
     <mat-card-header>
@@ -80,4 +73,12 @@
       </div>
     </mat-card-content>
   </mat-card>
+
+  <hr>
+  <h2>Your Comment</h2>
+  <form>
+    <div [froalaEditor] [(froalaModel)]="editorContent"></div>
+    <br>
+    <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+  </form>
 </body>

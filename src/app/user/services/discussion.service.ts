@@ -4,15 +4,25 @@ import {environment} from '../../../environments/environment';
 import {AuthGuard} from '../../services/auth-guard.service';
 import {Observable} from 'rxjs/Observable';
 
+export interface Comment {
+  id: number;
+  content: string;
+  created: string;
+  display_name: string;
+  image: string;
+  upvotes: number;
+}
+
 export interface Discussion {
   id: number;
   title: string;
   created: string;
   view_count: number;
   upvotes: number;
-  publisher: string;
   comments: any;
-  content: string;
+  content: Comment[];
+  display_name: string;
+  image: string;
 }
 
 @Injectable()
