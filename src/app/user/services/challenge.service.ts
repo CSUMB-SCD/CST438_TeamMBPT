@@ -14,6 +14,9 @@ export interface Challenge {
   publisher: string;
   content: string;
   difficulty: number;
+  accepted: boolean;
+  attempted: boolean;
+  todo: boolean;
 }
 
 @Injectable()

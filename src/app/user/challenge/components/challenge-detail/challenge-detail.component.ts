@@ -15,7 +15,6 @@ import {TodoService} from '../../../services/todo.service';
 export class ChallengeDetailComponent implements OnInit {
   challenge: Challenge;
   file: File = null;
-  completed = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -50,6 +49,7 @@ export class ChallengeDetailComponent implements OnInit {
   }
 
   favorite() {
+    this.challenge.todo = !this.challenge.todo;
     this.todoService.add(AuthGuard.getAccessToken(), this.challenge.challenge_id).subscribe();
   }
 }
