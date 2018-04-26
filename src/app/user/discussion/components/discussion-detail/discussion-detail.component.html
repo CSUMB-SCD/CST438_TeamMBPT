@@ -53,7 +53,7 @@
       </div>
 
       <mat-card-title>
-        <h6>{{comment.publisher}}</h6>
+        <h6>{{comment.display_name}}</h6>
       </mat-card-title>
 
       <mat-card-subtitle>
@@ -68,11 +68,20 @@
         {{comment.content}}
       </div>
       <div *ngIf="comment.parent_comment !== null">
-        <b>{{comment.parent_comment.publisher}} posted...</b>
+        <b>{{comment.parent_comment.display_name}} posted...</b>
         <blockquote>{{comment.parent_comment.content}}</blockquote>
         {{comment.content}}
       </div>
     </mat-card-content>
+    <mat-card-actions>
+      <div mat-line>
+        <button mat-icon-button (click)="upvoteComment(i)">
+          <mat-icon color="primary" *ngIf="comment.upvoted">thumb_up</mat-icon>
+          <mat-icon *ngIf="!comment.upvoted">thumb_up</mat-icon>
+        </button>
+        {{comment.upvotes}}
+      </div>
+    </mat-card-actions>
   </mat-card>
 
   <hr>

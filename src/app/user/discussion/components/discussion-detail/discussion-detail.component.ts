@@ -40,4 +40,14 @@ export class DiscussionDetailComponent implements OnInit {
     }
     this.service.upvoteDiscussion(AuthGuard.getAccessToken(), this.discussion.id).subscribe();
   }
+
+  upvoteComment(id: number) {
+    this.discussion.comments[id].upvoted = !this.discussion.comments[id].upvoted;
+    if (this.discussion.comments[id].upvoted) {
+      ++this.discussion.comments[id].upvotes;
+    } else {
+      --this.discussion.comments[id].upvotes;
+    }
+    this.service.upvoteComment(AuthGuard.getAccessToken(), this.discussion.comments[id].id).subscribe();
+  }
 }

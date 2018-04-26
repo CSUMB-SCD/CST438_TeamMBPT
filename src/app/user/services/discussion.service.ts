@@ -12,6 +12,7 @@ export interface Comment {
   image: string;
   upvotes: number;
   upvoted: boolean;
+  parent_comment: Comment;
 }
 
 export interface Discussion {
@@ -20,8 +21,8 @@ export interface Discussion {
   created: string;
   view_count: number;
   upvotes: number;
-  comments: any;
-  content: Comment[];
+  comments: Comment[];
+  content: string;
   display_name: string;
   image: string;
   upvoted: boolean;
@@ -75,6 +76,19 @@ export class DiscussionService {
       'Authorization': 'Bearer ' + token
     });
     return this.http.put(environment.discussion_url + id + '/upvote', '', {
+      headers: headers
+    }).catch((err) => {
+      console.log(err);
+      this.auth.redirectLogout();
+      return Observable.of(null);
+    });
+  }
+
+  upvoteComment(token: string, id: number) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + token
+    });
+    return this.http.put(environment.comment_url + id + '/upvote', '', {
       headers: headers
     }).catch((err) => {
       console.log(err);

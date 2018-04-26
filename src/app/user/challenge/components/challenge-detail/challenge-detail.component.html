@@ -6,7 +6,7 @@
     <b>{{challenge.title}}</b>
   </h1>
   <div *ngIf="challenge.accepted === true">
-    <mat-icon>check_circle</mat-icon>
+    <mat-icon color="primary">check_circle</mat-icon>
   </div>
   <div *ngIf="challenge.accepted === false">
     <mat-icon *ngIf="challenge.attempted === true">error_outline</mat-icon>
@@ -14,7 +14,7 @@
   <br>
   <div *ngIf="challenge.accepted === false">
     <button mat-icon-button (click)="favorite()">
-      <mat-icon *ngIf="challenge.todo">start</mat-icon>
+      <mat-icon *ngIf="challenge.todo" color="primary">start</mat-icon>
       <mat-icon *ngIf="!challenge.todo">star_border</mat-icon>
     </button>
   </div>
