@@ -3,6 +3,7 @@ import {Discussion, DiscussionService} from '../services/discussion.service';
 import {MatDialog} from '@angular/material';
 import {DiscussionDialogComponent} from './components/discussion-dialog/discussion-dialog.component';
 import {AuthGuard} from '../../services/auth-guard.service';
+import {ProfileService} from '../services/profile.service';
 
 @Component({
   selector: 'app-discussion',
@@ -19,6 +20,9 @@ export class DiscussionComponent implements OnInit {
   ngOnInit() {
     this.service.getDiscussion(AuthGuard.getAccessToken()).subscribe(object => {
       this.discussions = object as Discussion[];
+      for (const discussion of this.discussions) {
+        discussion.image = ProfileService.resizeImage(discussion.image, 24);
+      }
     });
   }
 

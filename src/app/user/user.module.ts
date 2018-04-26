@@ -101,7 +101,7 @@ import { SubmissionComponent } from './components/submission/submission.componen
     TodoListComponent,
     PostListComponent,
     StatisticsComponent,
-    SubmissionComponent
+    SubmissionComponent,
   ],
   providers: [
     SidenavService,

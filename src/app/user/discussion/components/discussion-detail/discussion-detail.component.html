@@ -3,19 +3,19 @@
 </head>
 <body *ngIf="discussion !== null">
   <h1>{{discussion.title}}</h1>
-  <mat-card> <!-- Start of card for main post -->
+  <mat-card>
     <mat-card-header>
-      <!--This is where the avatar of the user will go-->
-      <div mat-card-avatar>
-        <mat-icon>account_circle</mat-icon>
+      <div class="discussion-user-icon">
+        <mat-icon *ngIf="discussion.image === ''">account_circle</mat-icon>
+        <div mat-card-avatar *ngIf="discussion.image !== ''"
+             [style.backgroundImage]="'url('+ discussion.image + ')'"></div>
       </div>
-
       <mat-card-title>
-        <h6>{{discussion.publisher}}</h6>
+        <h6>{{discussion.display_name}}</h6>
       </mat-card-title>
 
       <mat-card-subtitle>
-        {{discussion.created | date: 'MM/dd/yyyy'}}
+        {{discussion.created | date: 'yyyy-MM-dd HH:MM:SS'}}
       </mat-card-subtitle>
     </mat-card-header>
 
@@ -28,10 +28,13 @@
 
     <mat-divider [inset]="true"></mat-divider>
 
-    <mat-card-actions>
+    <mat-card-actions align="end">
       <div mat-line>
-        <button mat-icon-button>
-          <mat-icon>thumb_up</mat-icon>
+      </div>
+      <div class="upvote">
+        <button mat-icon-button (click)="upvoteDiscussion()">
+          <mat-icon color="primary" *ngIf="discussion.upvoted">thumb_up</mat-icon>
+          <mat-icon *ngIf="!discussion.upvoted">thumb_up</mat-icon>
         </button>
         {{discussion.upvotes}}
       </div>
@@ -44,40 +47,46 @@
 
   <mat-divider></mat-divider>
 
-  <form class="detail-form">
-    <mat-form-field class="full-width">
-      <textarea matInput placeholder="Leave a comment"></textarea>
-    </mat-form-field>
-    <button mat-raised-button class="detail-reply">Reply</button>
+  <div *ngFor="let comment of discussion.comments; let i = index">
+    <mat-card>
+      <mat-card-header>
+        <div class="discussion-user-icon">
+          <mat-icon *ngIf="comment.image === ''">account_circle</mat-icon>
+          <div mat-card-avatar *ngIf="comment.image !== ''"
+               [style.backgroundImage]="'url('+ comment.image + ')'"></div>
+        </div>
+        <mat-card-title>
+          <h6>{{comment.display_name}}</h6>
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{comment.created | date: 'yyyy-MM-dd HH:MM:SS'}}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-divider [inset]="true"></mat-divider>
+      <mat-card-content>
+        <br>
+        <div [innerHTML]="comment.content"></div>
+      </mat-card-content>
+      <mat-divider [inset]="true"></mat-divider>
+      <mat-card-actions align="end">
+        <div mat-line>
+        </div>
+        <div class="upvote">
+          <button mat-icon-button (click)="upvoteComment(i)">
+            <mat-icon color="primary" *ngIf="comment.upvoted">thumb_up</mat-icon>
+            <mat-icon *ngIf="!comment.upvoted">thumb_up</mat-icon>
+          </button>
+          {{comment.upvotes}}
+        </div>
+      </mat-card-actions>
+    </mat-card>
+    <div class="comment-divider"></div>
+  </div>
+  <hr>
+  <h2>Your Comment</h2>
+  <form>
+    <div [froalaEditor] [(froalaModel)]="editorContent"></div>
+    <br>
+    <button mat-raised-button color="primary" (click)="submit()">Submit</button>
   </form>
-
-  <mat-card *ngFor="let comment of discussion.comments; let i = index"> <!-- Start of card for comments -->
-    <mat-card-header>
-      <!--This is where the avatar of the user will go-->
-      <div mat-card-avatar>
-        <mat-icon>account_circle</mat-icon>
-      </div>
-
-      <mat-card-title>
-        <h6>{{comment.publisher}}</h6>
-      </mat-card-title>
-
-      <mat-card-subtitle>
-        {{comment.created | date: 'MM/dd/yyyy'}}
-      </mat-card-subtitle>
-    </mat-card-header>
-
-    <mat-divider [inset]="true"></mat-divider>
-
-    <mat-card-content>
-      <div *ngIf="comment.parent_comment == null">
-        {{comment.content}}
-      </div>
-      <div *ngIf="comment.parent_comment !== null">
-        <b>{{comment.parent_comment.publisher}} posted...</b>
-        <blockquote>{{comment.parent_comment.content}}</blockquote>
-        {{comment.content}}
-      </div>
-    </mat-card-content>
-  </mat-card>
 </body>

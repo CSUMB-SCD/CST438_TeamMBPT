@@ -82,7 +82,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
   ],
   providers: [
     AuthGuard,

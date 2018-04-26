@@ -31,7 +31,7 @@
 
   <ng-container matColumnDef="lang">
     <mat-header-cell *matHeaderCellDef> Language </mat-header-cell>
-    <mat-cell *matCellDef="let submission"> Python </mat-cell>
+    <mat-cell *matCellDef="let submission"> {{submission.language.name}} </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

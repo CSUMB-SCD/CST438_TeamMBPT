@@ -1,26 +1,41 @@
-<!DOCTYPE html>
-<html>
-<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 <div *ngIf="challenge !== null">
   <h1 class="title">
-    <b>{{challenge.title}}</b>
+    {{challenge.title}}
+    <div *ngIf="challenge.accepted === true" class="challenge-status-icon">
+      <mat-icon color="primary">check_circle</mat-icon>
+    </div>
+    <div *ngIf="challenge.accepted === false" class="challenge-status-icon">
+      <mat-icon *ngIf="challenge.attempted === true">error_outline</mat-icon>
+    </div>
   </h1>
+  <div *ngIf="challenge.accepted === false">
+    <button mat-icon-button (click)="favorite()">
+      <mat-icon *ngIf="challenge.todo" color="primary">start</mat-icon>
+      <mat-icon *ngIf="!challenge.todo">star_border</mat-icon>
+    </button>
+  </div>
+  <hr>
   <br>
   <div [innerHTML]="challenge.content"></div>
   <br>
 
-  <!-- File submit -->
   <div class="form-group">
-    <label for="file">Upload submission here</label>
-    <br>
-    <input type="file" id="file" (change)="handleFileInput($event.target.files)">
-    <button mat-raised-button (click)="submit()">Submit</button>
-  </div>
-  <div>
-    {{ challenge.publisher }}
-  </div>
-  <div>
-    {{ challenge.created | date: 'MM/dd/yyyy' }}
+    <button mat-raised-button (click)="fileinput.click()">Choose file</button>
+    <input #fileinput type="file" id="file-input" (change)="handleFileInput($event.target.files)" [hidden]="true">
+    <h3 *ngIf="file" class="file-title"><br>{{file.name}}</h3>
+    <pre *ngIf="code" class="file-content">
+      <code highlight>
+      {{code}}
+      </code>
+    </pre>
+    <hr>
+    <mat-form-field>
+      <mat-select placeholder="Solution Language" [(value)]="selectedLanguage">
+        <mat-option *ngFor="let language of languages" [value]="language.id">
+          {{ language.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button (click)="submit()" color="primary">Submit</button>
   </div>
 </div>
-</html>

@@ -17,4 +17,16 @@ export class TodoService {
       headers: headers
     });
   }
+
+  add(token: string, challenge_id: string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+    return this.http.put(environment.todo_url, {
+      challenge_id: challenge_id
+    }, {
+      headers: headers
+    });
+  }
 }

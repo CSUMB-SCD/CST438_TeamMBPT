@@ -13,12 +13,18 @@
           {{discussion.title}}
         </mat-panel-title>
         <mat-panel-description>
-          by {{discussion.publisher}} on {{discussion.created | date: 'MM/dd/yyyy'}}
+          {{discussion.created | date: 'MM/dd/yyyy'}}
         </mat-panel-description>
-        <mat-icon class="card-avatar">account_circle</mat-icon>
+        <span class="discussion-display-name">
+          {{discussion.display_name}}
+        </span>
+        <div class="card-avatar">
+          <mat-icon *ngIf="discussion.image === ''" class="discussion-list-user-icon">account_circle</mat-icon>
+          <div mat-card-avatar *ngIf="discussion.image !== ''"
+               [style.backgroundImage]="'url('+ discussion.image + ')'" class="discussion-list-user-icon"></div>
+        </div>
       </mat-expansion-panel-header>
       {{discussion.content}}
-
       <mat-action-row>
         <div class="card-info">
           <div mat-line>{{discussion.upvotes}} votes</div>

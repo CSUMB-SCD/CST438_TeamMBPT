@@ -1,6 +1,7 @@
 blockquote {
   border-style: solid;
   padding: 10px;
+  background-color: whitesmoke;
 }
 
 .detail-reply {
@@ -12,3 +13,21 @@ blockquote {
   width: 100%;
 }
 
+.discussion-user-icon .mat-card-avatar, .discussion-user-icon .mat-icon {
+  width: 50px;
+  height: 50px;
+  font-size: 50px;
+}
+
+.fr-wrapper {
+  min-height: 250px;
+}
+
+.upvote {
+  margin-right: 20px;
+}
+
+.comment-divider {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

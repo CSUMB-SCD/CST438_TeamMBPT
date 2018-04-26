@@ -18,3 +18,12 @@
 .element-row.expanded {
   border-bottom-color: transparent;
 }
+
+.challenge-expanded-detail {
+  text-align: right;
+}
+
+.challenge-expanded-detail-desc {
+  display: flex;
+  align-items: center;
+}

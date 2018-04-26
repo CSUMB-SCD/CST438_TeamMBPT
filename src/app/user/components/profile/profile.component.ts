@@ -41,24 +41,36 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.selectedLanguage = 0;
-    this.profile = null;
     this.languages = [];
+    this.profile = null;
     this.profileService.getLanguages(AuthGuard.getAccessToken()).subscribe(object => {
       this.languages = object as Language[];
     });
-    this.resetFormValue();
+    this.profileService.query(AuthGuard.getAccessToken()).subscribe(object => {
+      this.setForms(object);
+    });
   }
 
-  resetFormValue() {
-    this.profileService.query(AuthGuard.getAccessToken()).subscribe(object => {
-      this.profile = new Profile(object);
-      this.profile.changeImageSize(164);
-      this.firstName.setValue(this.profile.first_name);
-      this.lastName.setValue(this.profile.last_name);
-      this.displayName.setValue(this.profile.display_name);
-      this.username.setValue(this.profile.username);
-      this.selectedLanguage = this.profile.lang_id;
-    });
+  resetForms() {
+    this.firstName.reset();
+    this.lastName.reset();
+    this.displayName.reset();
+    this.username.reset();
+    this.selectedLanguage = 0;
+  }
+
+  setForms(object: Profile) {
+    this.profile = object;
+    this.profile.image = ProfileService.resizeImage(this.profile.image, 164);
+    this.firstName.setValue(this.profile.first_name);
+    this.lastName.setValue(this.profile.last_name);
+    this.displayName.setValue(this.profile.display_name);
+    this.username.setValue(this.profile.username);
+    if (this.profile.default_language !== null) {
+      this.selectedLanguage = this.profile.default_language.id;
+    } else {
+      this.selectedLanguage = 0;
+    }
   }
 
   getFirstNameErrorMessage() {
@@ -106,7 +118,10 @@ export class ProfileComponent implements OnInit {
     if (this.lastName.valid && this.lastName.value !== this.profile.last_name) {
       body['last_name'] = this.lastName.value;
     }
-    if (this.selectedLanguage !== 0 && this.selectedLanguage !== this.profile.lang_id) {
+    if (this.selectedLanguage !== 0 && this.profile.default_language !== null
+      && this.selectedLanguage !== this.profile.default_language.id) {
+      body['lang_id'] = this.selectedLanguage;
+    } else if (this.profile.default_language === null) {
       body['lang_id'] = this.selectedLanguage;
     }
     if (this.username.valid && this.username.value !== this.profile.username) {
@@ -115,11 +130,11 @@ export class ProfileComponent implements OnInit {
     if (this.password.valid && this.password.value === this.confirmPassword.value) {
       body['password'] = this.password.value;
     }
-    console.log('Updated profile:');
-    console.log(body);
+    this.resetForms();
     this.profileService.update(AuthGuard.getAccessToken(), body).catch(err => {
       return this.errorHandler(err);
-    }).subscribe();
-    this.resetFormValue();
+    }).subscribe(object => {
+      this.setForms(object as Profile);
+    });
   }
 }

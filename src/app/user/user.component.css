@@ -14,3 +14,12 @@
 .mat-list-item mat-icon {
   vertical-align: middle;
 }
+
+
+.user-content-container {
+  margin-bottom: 50px;
+}
+
+.mat-drawer-container {
+  background-color: white;
+}

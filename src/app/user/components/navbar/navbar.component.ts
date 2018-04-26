@@ -26,8 +26,8 @@ export class NavbarComponent implements OnInit {
     this.profile = null;
     this.showSearchBar = false;
     this.profileService.query(AuthGuard.getAccessToken()).subscribe(object => {
-      this.profile = new Profile(object);
-      this.profile.changeImageSize(40);
+      this.profile = object as Profile;
+      this.profile.image = ProfileService.resizeImage(this.profile.image, 40);
     });
   }
 

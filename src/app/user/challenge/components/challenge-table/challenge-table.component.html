@@ -16,9 +16,9 @@
       <mat-cell *matCellDef="let challenge"> {{challenge.accepted_count}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="created">
-      <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
-      <mat-cell *matCellDef="let challenge"> {{ challenge.created | date: 'MM/dd/yyyy'}} </mat-cell>
+    <ng-container matColumnDef="difficulty">
+      <mat-header-cell *matHeaderCellDef> Points </mat-header-cell>
+      <mat-cell *matCellDef="let challenge"> {{ challenge.difficulty }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="publisher">
@@ -29,8 +29,14 @@
     <!-- Expanded Content Column - The detail row is made up of this one column -->
     <ng-container matColumnDef="expandedDetail">
       <mat-cell *matCellDef="let detail">
-        {{detail.challenge.description}}
-        <a mat-button routerLink="/challenge/{{ detail.challenge.challenge_id }}">Detail</a>
+        <div class="row">
+          <div class="col-md-8 challenge-expanded-detail-desc"> {{detail.challenge.description}} </div>
+          <div class="col-md-4 challenge-expanded-detail">
+            <a routerLink="/challenge/{{ detail.challenge.challenge_id }}" class="col-md-4">
+              <button mat-raised-button color="primary"> Detail </button>
+            </a>
+          </div>
+        </div>
       </mat-cell>
     </ng-container>
 
