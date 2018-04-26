@@ -1,16 +1,22 @@
 <div *ngIf="submission !== null">
-  <h3>
+  <p>
     <a routerLink="/challenge/{{submission.challenge_id}}">
       Back to the challenge
     </a>
-  </h3>
+  </p>
   <h3>
-    {{submission.id}}: {{submission.status}}
-  </h3>
-  <h3>
-    Submission ({{submission.language.name}})
+    {{submission.challenge_id}}
   </h3>
   <p>
-    {{submission.content}}
+    <span class="submission-id">{{submission.id}}</span>
+      <strong class="{{submission.status === 'Accepted' ? 'accepted' : ''}}">
+        {{submission.status}}
+      </strong>
+    ({{submission.language.name}})
   </p>
+  <pre class="file-content">
+    <code>
+      {{submission.content}}
+    </code>
+  </pre>
 </div>

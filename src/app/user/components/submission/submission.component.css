@@ -1,0 +1,13 @@
+.file-content {
+  background-color: whitesmoke;
+  text-align: left;
+}
+
+.submission-id {
+  color: gray;
+  margin-right: 10px;
+}
+
+.accepted {
+  color: green;
+}
