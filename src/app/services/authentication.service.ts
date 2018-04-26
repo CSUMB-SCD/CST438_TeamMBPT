@@ -73,7 +73,7 @@ export class AuthenticationService {
     }).catch(err => {
       return errorHandler(err);
     }).subscribe(user => {
-      if (token !== undefined && token !== null && token !== '') {
+      if (token) {
         return this.authGuard.redirectLogin(token);
       } else {
         return this.getToken(data.username, data.password).subscribe();

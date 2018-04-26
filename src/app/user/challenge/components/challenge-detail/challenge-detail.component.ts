@@ -32,7 +32,7 @@ export class ChallengeDetailComponent implements OnInit {
     this.challenge = null;
     this.code = null;
     this.selectedLanguage = 0;
-    if (ProfileService.sharedProfile) {
+    if (ProfileService.sharedProfile && ProfileService.sharedProfile.default_language) {
       this.selectedLanguage = ProfileService.sharedProfile.default_language.id;
     }
     this.route.params.forEach(param => {
