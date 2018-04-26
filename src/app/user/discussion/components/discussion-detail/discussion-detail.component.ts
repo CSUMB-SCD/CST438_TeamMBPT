@@ -30,4 +30,14 @@ export class DiscussionDetailComponent implements OnInit {
   submit() {
     console.log(this.editorContent);
   }
+
+  upvoteDiscussion() {
+    this.discussion.upvoted = !this.discussion.upvoted;
+    if (this.discussion.upvoted) {
+      ++this.discussion.upvotes;
+    } else {
+      --this.discussion.upvotes;
+    }
+    this.service.upvoteDiscussion(AuthGuard.getAccessToken(), this.discussion.id).subscribe();
+  }
 }

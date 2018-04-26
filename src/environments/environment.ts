@@ -17,4 +17,5 @@ export const environment = {
   submission_list_url: 'https://mbpt-api.herokuapp.com/challenge/submission/',
   submission_url: 'https://mbpt-api.herokuapp.com/submission/',
   todo_url: 'https://mbpt-api.herokuapp.com/todo/',
+  comment_url: 'https://mbpt-api.herokuapp.com/discussion/comment/',
 };

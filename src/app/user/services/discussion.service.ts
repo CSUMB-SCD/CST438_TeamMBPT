@@ -11,6 +11,7 @@ export interface Comment {
   display_name: string;
   image: string;
   upvotes: number;
+  upvoted: boolean;
 }
 
 export interface Discussion {
@@ -23,6 +24,7 @@ export interface Discussion {
   content: Comment[];
   display_name: string;
   image: string;
+  upvoted: boolean;
 }
 
 @Injectable()
@@ -63,6 +65,19 @@ export class DiscussionService {
     return this.http.get<Discussion>(environment.discussion_url + id, {
       headers: headers
     }).catch(() => {
+      this.auth.redirectLogout();
+      return Observable.of(null);
+    });
+  }
+
+  upvoteDiscussion(token: string, id: number) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + token
+    });
+    return this.http.put(environment.discussion_url + id + '/upvote', '', {
+      headers: headers
+    }).catch((err) => {
+      console.log(err);
       this.auth.redirectLogout();
       return Observable.of(null);
     });
