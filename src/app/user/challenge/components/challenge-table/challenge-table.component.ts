@@ -22,7 +22,7 @@ import {Observable} from 'rxjs/Observable';
   providers: [ChallengeService]
 })
 export class ChallengeTableComponent implements OnInit {
-  displayedColumns = ['title', 'submission_count', 'accepted_count', 'created', 'publisher'];
+  displayedColumns = ['title', 'submission_count', 'accepted_count', 'difficulty', 'publisher'];
   dataSource: ChallengeTableDataSource;
   expandedElement: any;
   isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow');

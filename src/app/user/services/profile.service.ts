@@ -21,6 +21,7 @@ export interface Profile {
 
 @Injectable()
 export class ProfileService {
+  public static sharedProfile: Profile;
 
   constructor(
     private http: HttpClient,
@@ -50,6 +51,9 @@ export class ProfileService {
       }
       this.auth.redirectLogout();
       return Observable.of(null);
+    }).map(profile => {
+      ProfileService.sharedProfile = profile;
+      return profile;
     });
   }
 
@@ -60,6 +64,9 @@ export class ProfileService {
     });
     return this.http.put<Profile>(environment.profile_url, body, {
       headers: headers
+    }).map(profile => {
+      ProfileService.sharedProfile = profile;
+      return profile;
     });
   }
 

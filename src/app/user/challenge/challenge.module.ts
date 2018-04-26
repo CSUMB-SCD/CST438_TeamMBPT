@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ChallengeComponent } from './challenge.component';
 import { ChallengeRoutingModule } from './challenge-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import {MatButtonModule, MatIconModule, MatPaginatorModule, MatTableModule} from '@angular/material';
+import {MatButtonModule, MatFormFieldModule, MatIconModule, MatPaginatorModule, MatSelectModule, MatTableModule} from '@angular/material';
 import {ChallengeDetailComponent} from './components/challenge-detail/challenge-detail.component';
 import {ChallengeTableComponent} from './components/challenge-table/challenge-table.component';
-
+import {HighlightCodeDirective} from './highlight-code.directive';
 
 @NgModule({
   imports: [
@@ -16,9 +16,12 @@ import {ChallengeTableComponent} from './components/challenge-table/challenge-ta
     MatTableModule,
     MatIconModule,
     MatPaginatorModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   declarations: [
+    HighlightCodeDirective,
     ChallengeTableComponent,
     ChallengeDetailComponent,
     ChallengeComponent,
