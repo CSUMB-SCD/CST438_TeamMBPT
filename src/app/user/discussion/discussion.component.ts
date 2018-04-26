@@ -21,7 +21,7 @@ export class DiscussionComponent implements OnInit {
     this.service.getDiscussion(AuthGuard.getAccessToken()).subscribe(object => {
       this.discussions = object as Discussion[];
       for (const discussion of this.discussions) {
-        discussion.image = ProfileService.resizeImage(discussion.image, 40);
+        discussion.image = ProfileService.resizeImage(discussion.image, 24);
       }
     });
   }

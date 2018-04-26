@@ -9,6 +9,7 @@ import {TodoListComponent} from './components/todo-list/todo-list.component';
 import {PostListComponent} from './components/post-list/post-list.component';
 import {StatisticsComponent} from './components/statistics/statistics.component';
 import {SubmissionComponent} from './components/submission/submission.component';
+import {DiscussionDetailComponent} from './discussion/components/discussion-detail/discussion-detail.component';
 
 const routes: Routes = [
   {
