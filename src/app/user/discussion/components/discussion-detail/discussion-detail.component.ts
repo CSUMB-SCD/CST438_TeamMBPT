@@ -2,6 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {AuthGuard} from '../../../../services/auth-guard.service';
 import {Discussion, DiscussionService} from '../../../services/discussion.service';
 import {ActivatedRoute} from '@angular/router';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-discussion-detail',
@@ -16,7 +17,8 @@ export class DiscussionDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private service: DiscussionService) { }
+    private service: DiscussionService,
+    public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.discussion = null;
@@ -28,7 +30,18 @@ export class DiscussionDetailComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.editorContent);
+    this.service.createComment(AuthGuard.getAccessToken(), {
+      content: this.editorContent,
+      discussion: this.discussion.id
+    }).subscribe(() => {
+      this.service.query_id(AuthGuard.getAccessToken(), this.discussion.id).subscribe(object => {
+        this.discussion = object;
+      });
+    });
+    this.snackBar.open('Comment Submitted!', 'Okay', {
+      duration: 1500,
+    });
+    this.editorContent = '';
   }
 
   upvoteDiscussion() {

@@ -58,7 +58,19 @@ export class DiscussionService {
     });
   }
 
-  query_id(token: string, id: string): Observable<Discussion> {
+  createComment(token: string, body: any) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+    return this.http.post(environment.comment_url, body,  {
+      headers: headers
+    }).catch(() => {
+      return this.auth.redirectLogout();
+    });
+  }
+
+  query_id(token: string, id: any): Observable<Discussion> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token
