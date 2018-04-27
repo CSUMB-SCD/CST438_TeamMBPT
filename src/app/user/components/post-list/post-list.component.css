@@ -3,8 +3,20 @@
 }
 
 .card-avatar {
-  padding-right: 40px;
+  margin-right: 10px;
+  display: inline-block;
 }
+
 .card-info {
   padding-right: 79%;
+}
+
+.discussion-list-user-icon {
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+}
+
+.discussion-display-name {
+  margin-right: 10px;
 }
