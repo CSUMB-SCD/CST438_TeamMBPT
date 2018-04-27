@@ -12,5 +12,6 @@ export const environment = {
   submission_list_url: 'http://localhost:8000/challenge/submission/',
   submission_url: 'http://localhost:8000/submission/',
   todo_url: 'http://localhost:8000/todo/',
-  comment_url: 'http://localhost:8000/discussion/comment/'
+  comment_url: 'http://localhost:8000/discussion/comment/',
+  scoreboard_url: 'http://localhost:8000/scoreboard/'
 };

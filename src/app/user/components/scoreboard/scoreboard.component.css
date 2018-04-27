@@ -1,0 +1,11 @@
+.scoreboard-user-icon {
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+}
+
+.scoreboard-user {
+  display: flex;
+  text-align: left;
+  align-items: center;
+}

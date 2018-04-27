@@ -1,0 +1,31 @@
+<mat-table #table [dataSource]="dataSource">
+
+  <ng-container matColumnDef="display_name">
+    <mat-header-cell *matHeaderCellDef> User </mat-header-cell>
+    <mat-cell *matCellDef="let profile">
+      <div class="scoreboard-user">
+        <mat-icon *ngIf="profile.image === ''" class="scoreboard-user-icon">account_circle</mat-icon>
+        <div mat-card-avatar *ngIf="profile.image !== ''"
+             [style.backgroundImage]="'url('+ profile.image + ')'" class="scoreboard-user-icon"></div>
+        {{profile.display_name}}
+      </div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="points">
+    <mat-header-cell *matHeaderCellDef> points </mat-header-cell>
+    <mat-cell *matCellDef="let profile"> {{profile.points}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="default_language">
+    <mat-header-cell *matHeaderCellDef> Language </mat-header-cell>
+    <mat-cell *matCellDef="let profile">
+      <span *ngIf="profile.default_language">
+        {{profile.default_language.name}}
+      </span>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

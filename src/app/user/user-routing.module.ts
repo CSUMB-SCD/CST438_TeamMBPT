@@ -9,7 +9,7 @@ import {TodoListComponent} from './components/todo-list/todo-list.component';
 import {PostListComponent} from './components/post-list/post-list.component';
 import {StatisticsComponent} from './components/statistics/statistics.component';
 import {SubmissionComponent} from './components/submission/submission.component';
-import {DiscussionDetailComponent} from './discussion/components/discussion-detail/discussion-detail.component';
+import {ScoreboardComponent} from './components/scoreboard/scoreboard.component';
 
 const routes: Routes = [
   {
@@ -21,7 +21,7 @@ const routes: Routes = [
       { path: 'challenge', loadChildren: './challenge/challenge.module#ChallengeModule' },
       { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
       { path: 'discussion', loadChildren: './discussion/discussion.module#DiscussionModule' },
-      { path: 'scoreboard', loadChildren: './scoreboard/scoreboard.module#ScoreboardModule' },
+      { path: 'scoreboard', component: ScoreboardComponent },
       { path: 'submission', component: SubmissionListComponent },
       { path: 'submission/:id', component: SubmissionComponent },
       { path: 'todo', component: TodoListComponent },

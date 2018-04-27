@@ -49,6 +49,7 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { SubmissionComponent } from './components/submission/submission.component';
+import {ScoreboardComponent} from './components/scoreboard/scoreboard.component';
 
 @NgModule({
   imports: [
@@ -102,6 +103,7 @@ import { SubmissionComponent } from './components/submission/submission.componen
     PostListComponent,
     StatisticsComponent,
     SubmissionComponent,
+    ScoreboardComponent
   ],
   providers: [
     SidenavService,
