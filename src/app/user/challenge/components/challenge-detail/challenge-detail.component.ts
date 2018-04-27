@@ -56,6 +56,9 @@ export class ChallengeDetailComponent implements OnInit {
   }
 
   submit() {
+    if (this.code === '' || !this.code) {
+      return;
+    }
     this.fileUploadService.submissionUpload(AuthGuard.getAccessToken(),
       this.code, this.selectedLanguage, this.challenge.challenge_id).subscribe(object => {
         this.router.navigate(['/submission/' + object['id']]);

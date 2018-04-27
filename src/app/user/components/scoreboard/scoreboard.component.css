@@ -1,10 +1,13 @@
 .scoreboard-user-icon {
-  width: 40px;
-  height: 40px;
-  font-size: 40px;
+  width: 50px;
+  height: 50px;
+  font-size: 50px;
+  margin-right: 10px;
 }
 
 .scoreboard-user {
+  margin-top: 5px;
+  margin-bottom: 5px;
   display: flex;
   text-align: left;
   align-items: center;
